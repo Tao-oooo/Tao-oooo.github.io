@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git的使用</title>
+    <url>/2025/01/27/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="1-进入自己的个人网站"><a href="#1-进入自己的个人网站" class="headerlink" title="1 进入自己的个人网站"></a>1 进入自己的个人网站</h1><p>个人网站仓库地址：<br><a class="link"   href="https://github.com/Tao-oooo/Tao-oooo.github.io.git" >https://github.com/Tao-oooo/Tao-oooo.github.io.git<i class="fas fa-external-link-alt"></i></a><br>去掉中间部分即为个人网站地址<br><a class="link"   href="https://tao-oooo.github.io/" >https://tao-oooo.github.io/<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="2-Github仓库中创建文件夹"><a href="#2-Github仓库中创建文件夹" class="headerlink" title="2 Github仓库中创建文件夹"></a>2 Github仓库中创建文件夹</h1><ol>
+<li><p>点击Create New File</p>
+</li>
+<li><p>输入文件夹名字</p>
+</li>
+</ol>
+<p>输入名字后这里还是File，这时需要在名字后加上”&#x2F;“，此时会自动生成文件夹<br>![[Pasted image 20230925233615.png]]<br>![[Pasted image 20230925233651.png]]<br>因为Github不允许创建空文件，因此需要新建一个临时文件<br>![[Pasted image 20230925233741.png]]<br>然后点击右上角“Commit changes”<br>![[Pasted image 20230925233826.png]]<br>![[Pasted image 20230925233839.png]]</p>
+<h1 id="3-初次使用Github上传代码"><a href="#3-初次使用Github上传代码" class="headerlink" title="3 初次使用Github上传代码"></a>3 初次使用Github上传代码</h1><h2 id="3-1-在-Github-上创建新的仓库"><a href="#3-1-在-Github-上创建新的仓库" class="headerlink" title="3.1 在 Github 上创建新的仓库"></a>3.1 在 Github 上创建新的仓库</h2><p>这边可以看网上的资料创建仓库。</p>
+<h2 id="3-2-在-Github-上添加-SSH-Key"><a href="#3-2-在-Github-上添加-SSH-Key" class="headerlink" title="3.2 在 Github 上添加 SSH Key"></a>3.2 在 Github 上添加 SSH Key</h2><p>首先需要在本地生成 SSH Key，先使用以下命令配置一下 Git Config：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;SkyRim&quot;</span><br><span class="line">git config --global user.email &quot;zch1240784990@163.com&quot;</span><br></pre></td></tr></table></figure>
+<p>name 和 email 的信息要与 Github 上申请的账号一致。</p>
+<p>然后通过以下命令生成 SSH Key：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;zch1240784990@163.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这里的邮箱也要与 Github 上的一致，使用此命令后，如果不需要做其他特殊设置的话可以一路回车到底，最后 Git Bash 上可见如下的画面：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-1.png"
+                        alt="alt text"
+                 ></p>
+<p>然后使用如下命令查看 SSH Key 的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>内容如下：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-2.png"
+                        alt="alt text"
+                 ></p>
+<p>最后复制上述 SSH Key 的内容，填到 Github 网站即可。</p>
+<h2 id="3-3-从本地仓库上传代码到-Github-上"><a href="#3-3-从本地仓库上传代码到-Github-上" class="headerlink" title="3.3 从本地仓库上传代码到 Github 上"></a>3.3 从本地仓库上传代码到 Github 上</h2><h3 id="3-3-1-检查是否与-Github-连接成功"><a href="#3-3-1-检查是否与-Github-连接成功" class="headerlink" title="3.3.1 检查是否与 Github 连接成功"></a>3.3.1 检查是否与 Github 连接成功</h3><p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>有时候可能会出现报如下错误的情况 [<a class="link"   href="https://zhuanlan.zhihu.com/p/521340971]%EF%BC%8C" >https://zhuanlan.zhihu.com/p/521340971]，<i class="fas fa-external-link-alt"></i></a><br><code>ssh: connect to host github.com port 22: Connection refused</code> 这个错误提示的是连接 <code>github.com</code> 的22端口被拒绝了。此时可以尝试连接 443 端口，做法是修改 SSH 的配置文件。在 Git Bash 中使用 vim 命令打开 config：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
+<p>然后再config文件中输入如下文本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure>
+<p>然后输入如下命令保存退出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<p>回车后即可保存，再次检验是否连接成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果连接成功，则会提示如下信息 (如果是第一次的会提示是否continue，输入yes即可)：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hi xxxxx! You&#x27;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-3.png"
+                        alt="alt text"
+                 ></p>
+<h3 id="3-3-2-上传文件"><a href="#3-3-2-上传文件" class="headerlink" title="3.3.2 上传文件"></a>3.3.2 上传文件</h3><p>首先进入本地仓库文件夹，如果该文件夹还没有创建主分支，则使用如下命令初始化：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>完成后会在文件夹后面显示主分支名，如图中红框所示：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-4.png"
+                        alt="alt text"
+                 ></p>
+<p>然后使用如下命令与 Github 上新建项目连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure>
+<p>xxx 部分就是 Github 仓库的链接，如下图所示：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-5.png"
+                        alt="alt text"
+                 ></p>
+<p>接着使用如下命令将本地仓库中的文件加入暂存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>“.” 表示将本地文件夹下所有文件都加入暂存区。<br>如图所示：<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-6.png"
+                        alt="alt text"
+                 ></p>
+<p>然后为本地上传文件添加注释，方便以后查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;20240922&quot;</span><br></pre></td></tr></table></figure>
+<p>“20240922” 就是加的注释，可以按照需求添加内容。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-7.png"
+                        alt="alt text"
+                 ></p>
+<p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-8.png"
+                        alt="alt text"
+                 ></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   href="https://zhuanlan.zhihu.com/p/138305054" >https://zhuanlan.zhihu.com/p/138305054<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://zhuanlan.zhihu.com/p/193140870" >https://zhuanlan.zhihu.com/p/193140870<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Welcome to use Hexo Theme Keep</title>
     <url>/2022/10/25/welcome-to-use-hexo-theme-keep/</url>
     <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
