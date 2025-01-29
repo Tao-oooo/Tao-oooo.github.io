@@ -125,7 +125,7 @@
                        data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-4.png"
                         alt="创建主分支"
                  ><br><code>master</code> 就是主分支名字，最新版的 GitHub 主分支名变成了 <code>main</code> ，但两者其实是一个意思。</p>
-<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code> 的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash 进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code> 之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub ，那么同样需要使用上述命令创建分支。为了避免出现位置问题，建议使用 <code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用 <code>git clone</code> 拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
+<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code> 的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash 进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code> 之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub ，那么同样需要使用上述命令创建分支。为了避免出现未知问题，建议使用 <code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用 <code>git clone</code> 拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
 <p>一种简单的查看项目文件夹是否创建分支的方法：打开隐藏文件可视化，如果项目文件夹中出现 <code>.git</code> 文件夹，则说明此项目有分支信息，否则无分支信息。</p>
 <p>然后使用如下命令与 Github 上新建项目连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure>
@@ -161,5 +161,14 @@
                  ></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   href="https://zhuanlan.zhihu.com/p/138305054" >https://zhuanlan.zhihu.com/p/138305054<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://zhuanlan.zhihu.com/p/193140870" >https://zhuanlan.zhihu.com/p/193140870<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GitHub</tag>
+        <tag>Git的使用</tag>
+        <tag>GitHub上传</tag>
+      </tags>
   </entry>
 </search>
