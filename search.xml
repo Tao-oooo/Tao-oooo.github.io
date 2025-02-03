@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo基本用法</title>
-    <url>/2025/02/03/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="1-新建一篇博客"><a href="#1-新建一篇博客" class="headerlink" title="1 新建一篇博客"></a>1 新建一篇博客</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-<p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-1.png"
-                        alt="创建一篇博客文章"
-                 ></p>
-<p>只需再次文件中编辑需要发布的内容即可。</p>
-<h2 id="2-发布文章"><a href="#2-发布文章" class="headerlink" title="2 发布文章"></a>2 发布文章</h2><p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到 github.io 仓库中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code> 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code> 命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code> 的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code> 则表示发布成功。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-2.png"
-                        alt="博客文件上传"
-                 ><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-3.png"
-                        alt="博客文件上传"
-                 ></p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>个人博客</tag>
-        <tag>Hexo基本使用方法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git的使用</title>
     <url>/2025/01/27/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="1-进入自己的个人网站"><a href="#1-进入自己的个人网站" class="headerlink" title="1 进入自己的个人网站"></a>1 进入自己的个人网站</h1><p>个人网站仓库地址：<br><a class="link"   href="https://github.com/Tao-oooo/Tao-oooo.github.io.git" >https://github.com/Tao-oooo/Tao-oooo.github.io.git<i class="fas fa-external-link-alt"></i></a><br>去掉中间部分即为个人网站地址<br><a href="https://tao-oooo.github.io/">https://tao-oooo.github.io/</a></p>
@@ -172,6 +135,44 @@
         <tag>GitHub</tag>
         <tag>Git的使用</tag>
         <tag>GitHub上传</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo基本用法</title>
+    <url>/2025/02/03/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="1-新建一篇博客"><a href="#1-新建一篇博客" class="headerlink" title="1 新建一篇博客"></a>1 新建一篇博客</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+<p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-1.png"
+                        alt="创建一篇博客文章"
+                 ></p>
+<p>只需再此文件中编辑需要发布的内容即可。</p>
+<h2 id="2-发布文章"><a href="#2-发布文章" class="headerlink" title="2 发布文章"></a>2 发布文章</h2><p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到 github.io 仓库中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code> 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code> 命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code> 的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+<p>运行命令后如下图所示，出现 <code>Deploy done: git</code> 则表示发布成功。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-2.png"
+                        alt="博客文件上传"
+                 ><br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-3.png"
+                        alt="博客文件上传"
+                 ></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a class="link"   href="https://keep-docs.xpoet.cn/" >Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://hexo.io/zh-cn/docs/writing" >Hexo 文档<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://easyhexo.com/1-Hexo-install-and-config/" >Hexo 安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+        <tag>Hexo基本使用方法</tag>
       </tags>
   </entry>
   <entry>
