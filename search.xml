@@ -138,6 +138,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo基本用法</title>
+    <url>/2025/02/03/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="1-新建一篇博客"><a href="#1-新建一篇博客" class="headerlink" title="1 新建一篇博客"></a>1 新建一篇博客</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+<p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-1.png"
+                        alt="创建一篇博客文章"
+                 ></p>
+<p>只需再次文件中编辑需要发布的内容即可。</p>
+<h2 id="2-发布文章"><a href="#2-发布文章" class="headerlink" title="2 发布文章"></a>2 发布文章</h2><p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到 github.io 仓库中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code> 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code> 命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code> 的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+        <tag>Hexo基本使用方法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Template</title>
     <url>/2025/01/25/Template/</url>
     <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
