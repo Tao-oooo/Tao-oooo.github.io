@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Git的使用</title>
-    <url>/2025/01/27/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/git%E7%9A%84%E4%BD%BF%E7%94%A8/index.html</url>
     <content><![CDATA[<h1 id="1-进入自己的个人网站"><a href="#1-进入自己的个人网站" class="headerlink" title="1 进入自己的个人网站"></a>1 进入自己的个人网站</h1><p>个人网站仓库地址：<br><a class="link"   href="https://github.com/Tao-oooo/Tao-oooo.github.io.git" >https://github.com/Tao-oooo/Tao-oooo.github.io.git<i class="fas fa-external-link-alt"></i></a><br>去掉中间部分即为个人网站地址<br><a href="https://tao-oooo.github.io/">https://tao-oooo.github.io/</a></p>
 <h1 id="2-Github仓库中创建文件夹"><a href="#2-Github仓库中创建文件夹" class="headerlink" title="2 Github仓库中创建文件夹"></a>2 Github仓库中创建文件夹</h1><ol>
 <li>点击Create New File</li>
@@ -138,8 +138,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Template</title>
+    <url>/template/index.html</url>
+    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
+<p>This is your very first post. Check <a class="link"   href="https://keep-docs.xpoet.cn/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Keep theme, you can ask me on <a class="link"   href="https://github.com/XPoet/hexo-theme-keep/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
+<span id="more"></span>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/../images/keep-slogan.svg"
+                        alt="keep-slogan"
+                 ></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Keep</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo基本用法</title>
-    <url>/2025/02/03/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
     <content><![CDATA[<h2 id="1-新建一篇博客"><a href="#1-新建一篇博客" class="headerlink" title="1 新建一篇博客"></a>1 新建一篇博客</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
 <p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
@@ -173,40 +207,6 @@
         <tag>Hexo</tag>
         <tag>个人博客</tag>
         <tag>Hexo基本使用方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Template</title>
-    <url>/2025/01/25/Template/</url>
-    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
-<p>This is your very first post. Check <a class="link"   href="https://keep-docs.xpoet.cn/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Keep theme, you can ask me on <a class="link"   href="https://github.com/XPoet/hexo-theme-keep/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<span id="more"></span>
-
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/keep-slogan.svg"
-                        alt="keep-slogan"
-                 ></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Keep</tag>
       </tags>
   </entry>
 </search>
