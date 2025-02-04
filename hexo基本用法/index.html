@@ -32,7 +32,119 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -305,52 +417,64 @@
                     
 
                     
-                         <h1 id="1-新建一篇博客文章"><a href="#1-新建一篇博客文章" class="headerlink" title="1 新建一篇博客文章"></a>1 新建一篇博客文章</h1><h2 id="1-1-新建一篇需要发布的博客文章"><a href="#1-1-新建一篇需要发布的博客文章" class="headerlink" title="1.1 新建一篇需要发布的博客文章"></a>1.1 新建一篇需要发布的博客文章</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-<p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-1.png"
-                        alt="创建一篇博客文章"
-                 ></p>
+                         <h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
+<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
+<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
+同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，在个人博客项目的 <code>source/_posts</code>
+目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
 <p>只需再此文件中编辑需要发布的内容即可。</p>
-<h2 id="1-2-新建一篇草稿文章"><a href="#1-2-新建一篇草稿文章" class="headerlink" title="1.2 新建一篇草稿文章"></a>1.2 新建一篇草稿文章</h2><p>1.1 节中的 <code>hexo new post</code> 命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以 Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
-<p>使用上述命令后，会在 <code>source</code> 目录下生成 <code>/_drafts</code> 目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。<br>当草稿文章完成编辑后，需要将其移至 <code>/_posts</code> 目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code> 目录中，即将草稿文章发布为正式文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-本地预览"><a href="#2-本地预览" class="headerlink" title="2 本地预览"></a>2 本地预览</h1><p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：</p>
+<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
+<p>1.1 节中的 <code>hexo new post</code>
+命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
+Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，会在 <code>source</code> 目录下生成
+<code>/_drafts</code>
+目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
+当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
+目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
+目录中，即将草稿文章发布为正式文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
+<h1 id="本地预览">2 本地预览</h1>
+<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-正式发布文章"><a href="#3-正式发布文章" class="headerlink" title="3 正式发布文章"></a>3 正式发布文章</h1><p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到 github.io 仓库中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code> 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code> 命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code> 的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code> 则表示发布成功。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-2.png"
-                        alt="博客文件上传"
-                 ><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-3.png"
-                        alt="博客文件上传"
-                 ></p>
-<h1 id="4-删除一篇文章"><a href="#4-删除一篇文章" class="headerlink" title="4 删除一篇文章"></a>4 删除一篇文章</h1><p>从本地的 <code>/_posts</code> 文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
-<h1 id="5-更改本地预览的-IP-地址和端口号"><a href="#5-更改本地预览的-IP-地址和端口号" class="headerlink" title="5 更改本地预览的 IP 地址和端口号"></a>5 更改本地预览的 IP 地址和端口号</h1><p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code> 命令进行本地预览时，默认情况下，预览网站是 <code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP 地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址) ，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP 地址和端口号避免冲突发生.<br>可以使用如下命令更改端口号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-<p>可以使用如下命令更改 IP 地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-<p>如果两个都想修改，则使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-博客文章文件名修改"><a href="#6-博客文章文件名修改" class="headerlink" title="6 博客文章文件名修改"></a>6 博客文章文件名修改</h1><p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code> 命令会生成 <code>博客文章名称.md</code> 文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题) ，如下所示。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>正常情况下， <code>title</code> 名称会与新建的文件名称一致。<br>但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code> ，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md 和内文标题 title 不一致的情况。<br>这里如果手工将 oldFilename 和 title 一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/" >Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing" >Hexo 文档<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://easyhexo.com/1-Hexo-install-and-config/" >Hexo 安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
+<h1 id="正式发布文章">3 正式发布文章</h1>
+<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
+github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
+实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
+<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
+命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
+的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
+则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
+<h1 id="删除一篇文章">4 删除一篇文章</h1>
+<p>从本地的 <code>/_posts</code>
+文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
+<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
+地址和端口号</h1>
+<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
+命令进行本地预览时，默认情况下，预览网站是
+<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
+地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
+，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
+地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
+可以使用如下命令更改 IP 地址： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
+如果两个都想修改，则使用如下命令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
+<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
+<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
+命令会生成 <code>博客文章名称.md</code>
+文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
+，如下所示。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
+名称会与新建的文件名称一致。
+但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
+，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
+和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
+一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a class="link" target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" target="_blank" rel="noopener" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
+安装与配置<i class="fas fa-external-link-alt"></i></a></p>
 
                     
                 </div>
@@ -516,7 +640,8 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1 新建一篇博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1.1 新建一篇需要发布的博客文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E8%8D%89%E7%A8%BF%E6%96%87%E7%AB%A0"><span class="nav-text">1.2 新建一篇草稿文章</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-text">2 本地预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-text">3 正式发布文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-text">4 删除一篇文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E7%9A%84-IP-%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-text">5 更改本地预览的 IP 地址和端口号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%96%87%E4%BB%B6%E5%90%8D%E4%BF%AE%E6%94%B9"><span class="nav-text">6 博客文章文件名修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1 新建一篇博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1.1 新建一篇需要发布的博客文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E8%8D%89%E7%A8%BF%E6%96%87%E7%AB%A0"><span class="nav-text">1.2 新建一篇草稿文章</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-text">2 本地预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-text">3 正式发布文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-text">4 删除一篇文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E7%9A%84-ip-%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-text">5 更改本地预览的 IP
+地址和端口号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%96%87%E4%BB%B6%E5%90%8D%E4%BF%AE%E6%94%B9"><span class="nav-text">6 博客文章文件名修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 
@@ -551,7 +676,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">2.9k</span>
+                    <span class="item-value border-box word">3.6k</span>
                 </span>
             
 
@@ -699,7 +824,8 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1 新建一篇博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1.1 新建一篇需要发布的博客文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E8%8D%89%E7%A8%BF%E6%96%87%E7%AB%A0"><span class="nav-text">1.2 新建一篇草稿文章</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-text">2 本地预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-text">3 正式发布文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-text">4 删除一篇文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E7%9A%84-IP-%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-text">5 更改本地预览的 IP 地址和端口号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%96%87%E4%BB%B6%E5%90%8D%E4%BF%AE%E6%94%B9"><span class="nav-text">6 博客文章文件名修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1 新建一篇博客文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-text">1.1 新建一篇需要发布的博客文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E8%8D%89%E7%A8%BF%E6%96%87%E7%AB%A0"><span class="nav-text">1.2 新建一篇草稿文章</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-text">2 本地预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-text">3 正式发布文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-text">4 删除一篇文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E7%9A%84-ip-%E5%9C%B0%E5%9D%80%E5%92%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-text">5 更改本地预览的 IP
+地址和端口号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%96%87%E4%BB%B6%E5%90%8D%E4%BF%AE%E6%94%B9"><span class="nav-text">6 博客文章文件名修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 

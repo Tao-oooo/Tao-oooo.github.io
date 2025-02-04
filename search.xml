@@ -1,190 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo基本用法</title>
-    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
-    <content><![CDATA[<h1 id="1-新建一篇博客文章"><a href="#1-新建一篇博客文章" class="headerlink" title="1 新建一篇博客文章"></a>1 新建一篇博客文章</h1><h2 id="1-1-新建一篇需要发布的博客文章"><a href="#1-1-新建一篇需要发布的博客文章" class="headerlink" title="1.1 新建一篇需要发布的博客文章"></a>1.1 新建一篇需要发布的博客文章</h2><p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD 同样可以进行相同操作，使用如下命令新建一篇博客文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-<p>使用上述命令后，在个人博客项目的 <code>source/_posts</code> 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-1.png"
-                        alt="创建一篇博客文章"
-                 ></p>
-<p>只需再此文件中编辑需要发布的内容即可。</p>
-<h2 id="1-2-新建一篇草稿文章"><a href="#1-2-新建一篇草稿文章" class="headerlink" title="1.2 新建一篇草稿文章"></a>1.2 新建一篇草稿文章</h2><p>1.1 节中的 <code>hexo new post</code> 命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以 Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
-<p>使用上述命令后，会在 <code>source</code> 目录下生成 <code>/_drafts</code> 目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。<br>当草稿文章完成编辑后，需要将其移至 <code>/_posts</code> 目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code> 目录中，即将草稿文章发布为正式文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-本地预览"><a href="#2-本地预览" class="headerlink" title="2 本地预览"></a>2 本地预览</h1><p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-正式发布文章"><a href="#3-正式发布文章" class="headerlink" title="3 正式发布文章"></a>3 正式发布文章</h1><p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到 github.io 仓库中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code> 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code> 命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code> 的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code> 则表示发布成功。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-2.png"
-                        alt="博客文件上传"
-                 ><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/image-3.png"
-                        alt="博客文件上传"
-                 ></p>
-<h1 id="4-删除一篇文章"><a href="#4-删除一篇文章" class="headerlink" title="4 删除一篇文章"></a>4 删除一篇文章</h1><p>从本地的 <code>/_posts</code> 文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
-<h1 id="5-更改本地预览的-IP-地址和端口号"><a href="#5-更改本地预览的-IP-地址和端口号" class="headerlink" title="5 更改本地预览的 IP 地址和端口号"></a>5 更改本地预览的 IP 地址和端口号</h1><p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code> 命令进行本地预览时，默认情况下，预览网站是 <code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP 地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址) ，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP 地址和端口号避免冲突发生.<br>可以使用如下命令更改端口号：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-<p>可以使用如下命令更改 IP 地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-<p>如果两个都想修改，则使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-博客文章文件名修改"><a href="#6-博客文章文件名修改" class="headerlink" title="6 博客文章文件名修改"></a>6 博客文章文件名修改</h1><p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code> 命令会生成 <code>博客文章名称.md</code> 文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题) ，如下所示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>正常情况下， <code>title</code> 名称会与新建的文件名称一致。<br>但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code> ，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md 和内文标题 title 不一致的情况。<br>这里如果手工将 oldFilename 和 title 一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   href="https://keep-docs.xpoet.cn/" >Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://hexo.io/zh-cn/docs/writing" >Hexo 文档<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://easyhexo.com/1-Hexo-install-and-config/" >Hexo 安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+    <title>Hexo中LaTeX数学公式渲染</title>
+    <url>/hexo%E4%B8%ADlatex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93/index.html</url>
+    <content><![CDATA[<h1 id="概述">0 概述</h1>
+<p>在没有做过任何设置的情况下，Hexo 博客文章本身并没有支持 LaTeX
+公式渲染，也就是说 LaTeX
+公式在博客发布后的网页上并不会显示出来，仍然是以 LaTeX
+语法的形式显示。本文的目的是记录博客文章中开启 LaTeX
+公式渲染的过程。</p>
+<h1 id="步骤">1 步骤</h1>
+<h2 id="卸载原有的渲染器">1.1 卸载原有的渲染器</h2>
+<p>想要渲染 LaTeX 公式，需要替换掉原来的渲染器。 Hexo 默认的渲染器是
+<code>hexo-renderer-marked</code> ，我们需要使用如下的命令卸载此渲染器。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装必要的工具包">1.2 安装必要的工具包</h2>
+<h3 id="本地安装-pandoc-工具包">1.2.1 本地安装 pandoc 工具包</h3>
+<p>此工具包需要先在本地安装，工具包下载地址：<a class="link" href="https://pandoc.org/getting-started.html">Pandoc<i class="fas fa-external-link-alt"></i></a>
+。安装包也可以从这里拿到：<a href="../images/Hexo中LaTeX数学公式渲染/pandoc-3.6.2-windows-x86_64.msi">Pandoc</a>
+。下载安装包后，直接安装即可。
+安装完成后需要重启电脑，否则后续的过程可能会出现问题。比如在最后使用
+<code>hexo g</code> 命令后出现 <code>pandoc exited with code null</code>
+的错误。</p>
+<h3 id="安装渲染器">1.2.2 安装渲染器</h3>
+<p>在 pandoc 本地安装完成后，再安装新的渲染器
+<code>hexo-renderer-pandoc</code> 。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装-mathjax-插件">1.2.3 安装 mathjax 插件</h3>
+<p>上述安装完成后再安装 <code>hexo-filter-mathjax</code> 插件。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改配置文件">1.3 修改配置文件</h2>
+<p>将如下内容添加到 <code>_config.yml</code> 文件中 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">none</span> <span class="comment"># 或 'ams' 或 'all'</span></span><br><span class="line">  <span class="attr">single_dollars:</span> <span class="literal">true</span> <span class="comment"># 启用单个美元符号作为内联（行内）数学公式定界符</span></span><br><span class="line">  <span class="attr">cjk_width:</span> <span class="number">0.9</span> <span class="comment"># 相对 CJK 字符宽度</span></span><br><span class="line">  <span class="attr">normal_width:</span> <span class="number">0.6</span> <span class="comment"># 相对正常（等宽）宽度</span></span><br><span class="line">  <span class="attr">append_css:</span> <span class="literal">true</span> <span class="comment"># 将 CSS 添加到每个页面</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">true</span> <span class="comment"># 如果为 true，那么无论每篇文章的前题中的 `mathjax` 设置如何，每页都将由 mathjax 呈现</span></span><br></pre></td></tr></table></figure>
+<code>every_page</code> 参数为 <code>true</code>
+表示默认每篇文章都会自动进行 LaTeX 公式渲染。如果设置为
+<code>false</code> ，则需要在需要渲染的文章开头添加
+<code>mathjax: true</code> ，如下所示，表示该文章在发布时需要被渲染。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 博客文章名词</span><br><span class="line">tags: [TAG]</span><br><span class="line">categories: [CAT]</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
+<h2 id="清理-hexo-缓存">1.4 清理 Hexo 缓存</h2>
+<p>因为修改了 <code>_config.yml</code>
+文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成静态文件">1.5 生成静态文件</h2>
+<p>最后使用如下命令生成静态文件。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
+LaTeX 公式就可以正常渲染了。</p>
+<h1 id="其他">2 其他</h1>
+<h2 id="关于公式编号无法显示的问题">2.1 关于公式编号无法显示的问题</h2>
+<p>默认情况下， <code>_config.yml</code> 文件中 <code>tags</code>
+参数设置为 <code>none</code> ，只需要将其设置为 <code>ams</code>
+即可解决公式编号无法显示的问题。 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">ams</span></span><br></pre></td></tr></table></figure>
+设置完成后需要重新进行上面 1.4 和 1.5 小节的操作。</p>
 ]]></content>
       <categories>
         <category>Handbook</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-        <tag>个人博客</tag>
-        <tag>Hexo基本使用方法</tag>
+        <tag>LaTeX公式渲染</tag>
+        <tag>数学公式渲染</tag>
       </tags>
   </entry>
   <entry>
     <title>Git的使用</title>
     <url>/git%E7%9A%84%E4%BD%BF%E7%94%A8/index.html</url>
-    <content><![CDATA[<h1 id="1-进入自己的个人网站"><a href="#1-进入自己的个人网站" class="headerlink" title="1 进入自己的个人网站"></a>1 进入自己的个人网站</h1><p>个人网站仓库地址：<br><a class="link"   href="https://github.com/Tao-oooo/Tao-oooo.github.io.git" >https://github.com/Tao-oooo/Tao-oooo.github.io.git<i class="fas fa-external-link-alt"></i></a><br>去掉中间部分即为个人网站地址<br><a href="https://tao-oooo.github.io/">https://tao-oooo.github.io/</a></p>
-<h1 id="2-Github仓库中创建文件夹"><a href="#2-Github仓库中创建文件夹" class="headerlink" title="2 Github仓库中创建文件夹"></a>2 Github仓库中创建文件夹</h1><ol>
+    <content><![CDATA[<h1 id="进入自己的个人网站">1 进入自己的个人网站</h1>
+<p>个人网站仓库地址： https://github.com/Tao-oooo/Tao-oooo.github.io.git
+去掉中间部分即为个人网站地址 https://tao-oooo.github.io/</p>
+<h1 id="github仓库中创建文件夹">2 Github仓库中创建文件夹</h1>
+<ol type="1">
 <li>点击Create New File</li>
 <li>输入文件夹名字</li>
 </ol>
-<p>输入名字后这里还是File，这时需要在名字后加上”&#x2F;“，此时会自动生成文件夹<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-10.png"
-                        alt="创建文件夹"
-                 ><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-11.png"
-                        alt="创建文件夹"
-                 ><br>因为Github不允许创建空文件，因此需要新建一个临时文件<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-12.png"
-                        alt="创建文件夹"
-                 ><br>然后点击右上角“Commit changes”<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-13.png"
-                        alt="创建文件夹"
-                 ><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-14.png"
-                        alt="创建文件夹"
-                 ></p>
-<h1 id="3-初次使用Github上传代码"><a href="#3-初次使用Github上传代码" class="headerlink" title="3 初次使用Github上传代码"></a>3 初次使用Github上传代码</h1><h2 id="3-1-在-Github-上创建新的仓库"><a href="#3-1-在-Github-上创建新的仓库" class="headerlink" title="3.1 在 Github 上创建新的仓库"></a>3.1 在 Github 上创建新的仓库</h2><p>这边可以看网上的资料创建仓库。</p>
-<h2 id="3-2-安装-Git-工具包"><a href="#3-2-安装-Git-工具包" class="headerlink" title="3.2 安装 Git 工具包"></a>3.2 安装 Git 工具包</h2><p>Git 工具包可以去官方网站下载，并安装。<br>安装完成后，Windows 系统的开始菜单中会有 Git 软件，如下图所示：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-9.png"
-                        alt="Git 软件"
-                 ><br>其中， Git Bash 就是 Git 工具的命令行窗口，后续的 GitHub 相关操作都会在此命令行窗口中执行。</p>
-<h2 id="3-3-在-Github-上添加-SSH-Key"><a href="#3-3-在-Github-上添加-SSH-Key" class="headerlink" title="3.3 在 Github 上添加 SSH Key"></a>3.3 在 Github 上添加 SSH Key</h2><p>在 GitHub 上添加 SSH Key 之前需要在本地先生成 SSH Key。<br>打开上面讲到的 Git Bash 命令行窗口，先使用以下命令配置一下 Git Config：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.email &quot;emile-name@email.com&quot;</span><br></pre></td></tr></table></figure>
-<p><code>username</code> 和 <code>emile-name@email.com</code> 的信息要与 Github 上申请的账号一致。</p>
-<p>然后通过以下命令生成 SSH Key：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;emile-name@email.com&quot;</span><br></pre></td></tr></table></figure>
-<p>这里的邮箱也要与 Github 上的一致，使用此命令后，如果不需要做其他特殊设置的话可以一路回车到底，最后 Git Bash 上可见如下的画面：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-1.png"
-                        alt="生成 SSH Key"
-                 ></p>
-<p>然后使用如下命令查看 SSH Key 的内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>内容如下：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-2.png"
-                        alt="查看 SSH Key"
-                 ></p>
+<p>输入名字后这里还是File，这时需要在名字后加上"/"，此时会自动生成文件夹
+<img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-10.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-11.png">
+因为Github不允许创建空文件，因此需要新建一个临时文件 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-12.png">
+然后点击右上角“Commit changes” <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-13.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-14.png"></p>
+<h1 id="初次使用github上传代码">3 初次使用Github上传代码</h1>
+<h2 id="在-github-上创建新的仓库">3.1 在 Github 上创建新的仓库</h2>
+<p>这边可以看网上的资料创建仓库。</p>
+<h2 id="安装-git-工具包">3.2 安装 Git 工具包</h2>
+<p>Git 工具包可以去官方网站下载，并安装。 安装完成后，Windows
+系统的开始菜单中会有 Git 软件，如下图所示： <img lazyload="" alt="Git 软件" data-src="../images/Git的使用/image-9.png"> 其中， Git Bash
+就是 Git 工具的命令行窗口，后续的 GitHub
+相关操作都会在此命令行窗口中执行。</p>
+<h2 id="在-github-上添加-ssh-key">3.3 在 Github 上添加 SSH Key</h2>
+<p>在 GitHub 上添加 SSH Key 之前需要在本地先生成 SSH Key。
+打开上面讲到的 Git Bash 命令行窗口，先使用以下命令配置一下 Git Config：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name "username"</span><br><span class="line">git config --global user.email "emile-name@email.com"</span><br></pre></td></tr></table></figure> <code>username</code> 和 <code>emile-name@email.com</code>
+的信息要与 Github 上申请的账号一致。</p>
+<p>然后通过以下命令生成 SSH Key： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "emile-name@email.com"</span><br></pre></td></tr></table></figure> 这里的邮箱也要与 Github
+上的一致，使用此命令后，如果不需要做其他特殊设置的话可以一路回车到底，最后
+Git Bash 上可见如下的画面： <img lazyload="" alt="生成 SSH Key" data-src="../images/Git的使用/image-1.png"></p>
+<p>然后使用如下命令查看 SSH Key 的内容： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure> 内容如下： <img lazyload="" alt="查看 SSH Key" data-src="../images/Git的使用/image-2.png"></p>
 <p>最后复制上述 SSH Key 的内容，填到 Github 网站即可。</p>
-<h2 id="3-4-从本地仓库上传代码到-Github-上"><a href="#3-4-从本地仓库上传代码到-Github-上" class="headerlink" title="3.4 从本地仓库上传代码到 Github 上"></a>3.4 从本地仓库上传代码到 Github 上</h2><h3 id="3-4-1-检查是否与-Github-连接成功"><a href="#3-4-1-检查是否与-Github-连接成功" class="headerlink" title="3.4.1 检查是否与 Github 连接成功"></a>3.4.1 检查是否与 Github 连接成功</h3><p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
+<h2 id="从本地仓库上传代码到-github-上">3.4 从本地仓库上传代码到 Github
+上</h2>
+<h3 id="检查是否与-github-连接成功">3.4.1 检查是否与 Github
+连接成功</h3>
+<p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>有时候可能会出现报如下错误的情况 [<a class="link"   href="https://zhuanlan.zhihu.com/p/521340971]%EF%BC%8C" >https://zhuanlan.zhihu.com/p/521340971]，<i class="fas fa-external-link-alt"></i></a><br><code>ssh: connect to host github.com port 22: Connection refused</code> 这个错误提示的是连接 <code>github.com</code> 的22端口被拒绝了。此时可以尝试连接 443 端口，做法是修改 SSH 的配置文件。在 Git Bash 中使用 vim 命令打开 config：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
-<p>然后再config文件中输入如下文本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure>
-<p>然后输入如下命令保存退出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
-<p>回车后即可保存，再次检验是否连接成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
+<p>有时候可能会出现报如下错误的情况
+[https://zhuanlan.zhihu.com/p/521340971]，
+<code>ssh: connect to host github.com port 22: Connection refused</code>
+这个错误提示的是连接 <code>github.com</code>
+的22端口被拒绝了。此时可以尝试连接 443 端口，做法是修改 SSH
+的配置文件。在 Git Bash 中使用 vim 命令打开 config： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
+然后再config文件中输入如下文本： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure> 然后输入如下命令保存退出
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure> 回车后即可保存，再次检验是否连接成功 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>如果连接成功，则会提示如下信息 (如果是第一次的会提示是否continue，输入yes即可)：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hi xxxxx! You&#x27;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
-<p>如图所示：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-3.png"
-                        alt="SSH 连接成功"
-                 ></p>
-<h3 id="3-4-2-上传文件"><a href="#3-4-2-上传文件" class="headerlink" title="3.4.2 上传文件"></a>3.4.2 上传文件</h3><p>首先进入本地仓库文件夹，如果还没有本地仓库文件夹，那么可以创建一个新的文件夹。通常的做法是，本地仓库文件夹的名称与 GitHub 仓库名称一致。新创建的文件夹没有 Git Branch 的概念，所以需要先创建分支。可以使用如下命令创建主分支：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>完成后会在文件夹后面显示主分支名，如图中红框所示：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-4.png"
-                        alt="创建主分支"
-                 ><br><code>master</code> 就是主分支名字，最新版的 GitHub 主分支名变成了 <code>main</code> ，但两者其实是一个意思。</p>
-<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code> 的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash 进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code> 之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub ，那么同样需要使用上述命令创建分支。为了避免出现未知问题，建议使用 <code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用 <code>git clone</code> 拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
-<p>一种简单的查看项目文件夹是否创建分支的方法：打开隐藏文件可视化，如果项目文件夹中出现 <code>.git</code> 文件夹，则说明此项目有分支信息，否则无分支信息。</p>
-<p>然后使用如下命令与 Github 上新建项目连接：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure>
-<p>xxx 部分就是 Github 仓库的链接，如下图所示：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-5.png"
-                        alt="连接 GitHub 仓库地址"
-                 ></p>
-<p>接着使用如下命令将本地仓库中的文件加入暂存区：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<p><code>.</code> 表示将本地文件夹下所有文件都加入暂存区。<br>如图所示：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-6.png"
-                        alt="暂存区"
-                 ></p>
-<p>然后为本地上传文件添加注释，方便以后查看：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;20240922&quot;</span><br></pre></td></tr></table></figure>
-<p>“20240922” 就是加的注释，可以按照需求添加内容。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-7.png"
-                        alt="Commit"
-                 ></p>
-<p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/Git%E7%9A%84%E4%BD%BF%E7%94%A8/image-8.png"
-                        alt="提交"
-                 ></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   href="https://zhuanlan.zhihu.com/p/138305054" >https://zhuanlan.zhihu.com/p/138305054<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://zhuanlan.zhihu.com/p/193140870" >https://zhuanlan.zhihu.com/p/193140870<i class="fas fa-external-link-alt"></i></a></p>
+<p>如果连接成功，则会提示如下信息
+(如果是第一次的会提示是否continue，输入yes即可)： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hi xxxxx! You've successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
+如图所示： <img lazyload="" alt="SSH 连接成功" data-src="../images/Git的使用/image-3.png"></p>
+<h3 id="上传文件">3.4.2 上传文件</h3>
+<p>首先进入本地仓库文件夹，如果还没有本地仓库文件夹，那么可以创建一个新的文件夹。通常的做法是，本地仓库文件夹的名称与
+GitHub 仓库名称一致。新创建的文件夹没有 Git Branch
+的概念，所以需要先创建分支。可以使用如下命令创建主分支： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+完成后会在文件夹后面显示主分支名，如图中红框所示： <img lazyload="" alt="创建主分支" data-src="../images/Git的使用/image-4.png">
+<code>master</code> 就是主分支名字，最新版的 GitHub 主分支名变成了
+<code>main</code> ，但两者其实是一个意思。</p>
+<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code>
+的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash
+进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code>
+之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub
+，那么同样需要使用上述命令创建分支。为了避免出现未知问题，建议使用
+<code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用
+<code>git clone</code>
+拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
+<p>一种简单的查看项目文件夹是否创建分支的方法：打开隐藏文件可视化，如果项目文件夹中出现
+<code>.git</code> 文件夹，则说明此项目有分支信息，否则无分支信息。</p>
+<p>然后使用如下命令与 Github 上新建项目连接： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure> xxx
+部分就是 Github 仓库的链接，如下图所示： <img lazyload="" alt="连接 GitHub 仓库地址" data-src="../images/Git的使用/image-5.png"></p>
+<p>接着使用如下命令将本地仓库中的文件加入暂存区： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<code>.</code> 表示将本地文件夹下所有文件都加入暂存区。 如图所示： <img lazyload="" alt="暂存区" data-src="../images/Git的使用/image-6.png"></p>
+<p>然后为本地上传文件添加注释，方便以后查看： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m "20240922"</span><br></pre></td></tr></table></figure> "20240922"
+就是加的注释，可以按照需求添加内容。 <img lazyload="" alt="Commit" data-src="../images/Git的使用/image-7.png"></p>
+<p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure> <img lazyload="" alt="提交" data-src="../images/Git的使用/image-8.png"></p>
+<h1 id="参考文献">参考文献</h1>
+<p>https://zhuanlan.zhihu.com/p/138305054
+https://zhuanlan.zhihu.com/p/193140870</p>
 ]]></content>
       <categories>
         <category>Handbook</category>
@@ -197,30 +148,100 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo基本用法</title>
+    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
+    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
+<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
+<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
+同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，在个人博客项目的 <code>source/_posts</code>
+目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
+<p>只需再此文件中编辑需要发布的内容即可。</p>
+<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
+<p>1.1 节中的 <code>hexo new post</code>
+命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
+Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，会在 <code>source</code> 目录下生成
+<code>/_drafts</code>
+目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
+当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
+目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
+目录中，即将草稿文章发布为正式文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
+<h1 id="本地预览">2 本地预览</h1>
+<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
+<h1 id="正式发布文章">3 正式发布文章</h1>
+<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
+github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
+实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
+<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
+命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
+的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
+则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
+<h1 id="删除一篇文章">4 删除一篇文章</h1>
+<p>从本地的 <code>/_posts</code>
+文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
+<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
+地址和端口号</h1>
+<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
+命令进行本地预览时，默认情况下，预览网站是
+<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
+地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
+，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
+地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
+可以使用如下命令更改 IP 地址： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
+如果两个都想修改，则使用如下命令： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
+<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
+<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
+命令会生成 <code>博客文章名称.md</code>
+文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
+，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
+名称会与新建的文件名称一致。
+但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
+，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
+和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
+一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
+安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+        <tag>Hexo基本使用方法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Template</title>
     <url>/template/index.html</url>
     <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
-<p>This is your very first post. Check <a class="link"   href="https://keep-docs.xpoet.cn/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Keep theme, you can ask me on <a class="link"   href="https://github.com/XPoet/hexo-theme-keep/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
+<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
+you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
 <span id="more"></span>
-
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/keep-slogan.svg"
-                        alt="keep-slogan"
-                 ></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+<figure>
+<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
+<figcaption aria-hidden="true">keep-slogan</figcaption>
+</figure>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -233,18 +254,30 @@
   <entry>
     <title>科研作图</title>
     <url>/%E7%A7%91%E7%A0%94%E4%BD%9C%E5%9B%BE/index.html</url>
-    <content><![CDATA[<h1 id="0-概述"><a href="#0-概述" class="headerlink" title="0 概述"></a>0 概述</h1><p>在记笔记或者写文章的过程中，我们经常需要绘制插图。特别对于理工科相关科目而言，插图中通常还会包含更多的内容，比如<strong>数学公式、函数图像、流程图和手绘框图</strong>等等。然而这些元素往往只能使用单独的软件完成，而无法在同一个软件中全部实现。这篇文章的目的就是记录如何将数学公式、函数图像、流程图和手绘框图等等元素放入到同一张插图中，并且最终插图能够在 Markdown 文档中被导入。</p>
-<h1 id="1-作图软件"><a href="#1-作图软件" class="headerlink" title="1 作图软件"></a>1 作图软件</h1><h2 id="1-1-Draw-io"><a href="#1-1-Draw-io" class="headerlink" title="1.1 Draw.io"></a>1.1 Draw.io</h2><p>常用的流程图绘制软件 (当然不仅限于流程图绘制) ，并且文本可以支持解析 Markdown 公式语法。</p>
-<h2 id="1-2-Excalidraw"><a href="#1-2-Excalidraw" class="headerlink" title="1.2 Excalidraw"></a>1.2 Excalidraw</h2><p>支持手绘风格的绘图软件，但是不支持 Markdown 公式语法 (据说在 Obsidian 中使用 Excalidraw 可以支持插入 Markdown 公式) 。</p>
-<h2 id="1-3-GeoGebra-和-Inkscape"><a href="#1-3-GeoGebra-和-Inkscape" class="headerlink" title="1.3 GeoGebra 和 Inkscape"></a>1.3 GeoGebra 和 Inkscape</h2><p>GeoGebra 和 Inkscape 两款软件都可以免费绘制数学相关的图像。</p>
-<h2 id="1-4-作图软件之间的相互配合"><a href="#1-4-作图软件之间的相互配合" class="headerlink" title="1.4 作图软件之间的相互配合"></a>1.4 作图软件之间的相互配合</h2><p>上述几个软件绘制的图像最终都可以保存为 <code>.svg</code> 格式，通过 <code>.svg</code> 图像可以在不同的软件中导入。通过相互配合使用，就可以在同一张图片上实现<strong>数学几何绘图</strong>、 <strong>Markdown 公式输入</strong>、<strong>手绘风格笔记</strong>等特征。</p>
-<h1 id="2-在-Markdown-笔记中插入上述作图软件绘制的图像"><a href="#2-在-Markdown-笔记中插入上述作图软件绘制的图像" class="headerlink" title="2 在 Markdown 笔记中插入上述作图软件绘制的图像"></a>2 在 Markdown 笔记中插入上述作图软件绘制的图像</h1><p>先将绘制完成的图片导出为 <code>.svg</code> 格式，然后使用插入图片语法即可。下图中包含了上述提到的一些元素。<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/../images/%E7%A7%91%E7%A0%94%E4%BD%9C%E5%9B%BE/image-3.svg"
-                        alt="Excalidraw 图片"
-                 ></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a class="link"   href="https://zhuanlan.zhihu.com/p/496086808" >科研作图：写论文、作业时用得到的作图软件<i class="fas fa-external-link-alt"></i></a></p>
+    <content><![CDATA[<h1 id="概述">0 概述</h1>
+<p>在记笔记或者写文章的过程中，我们经常需要绘制插图。特别对于理工科相关科目而言，插图中通常还会包含更多的内容，比如<strong>数学公式、函数图像、流程图和手绘框图</strong>等等。然而这些元素往往只能使用单独的软件完成，而无法在同一个软件中全部实现。这篇文章的目的就是记录如何将数学公式、函数图像、流程图和手绘框图等等元素放入到同一张插图中，并且最终插图能够在
+Markdown 文档中被导入。</p>
+<h1 id="作图软件">1 作图软件</h1>
+<h2 id="draw.io">1.1 Draw.io</h2>
+<p>常用的流程图绘制软件 (当然不仅限于流程图绘制) ，并且文本可以支持解析
+Markdown 公式语法。</p>
+<h2 id="excalidraw">1.2 Excalidraw</h2>
+<p>支持手绘风格的绘图软件，但是不支持 Markdown 公式语法 (据说在 Obsidian
+中使用 Excalidraw 可以支持插入 Markdown 公式) 。</p>
+<h2 id="geogebra-和-inkscape">1.3 GeoGebra 和 Inkscape</h2>
+<p>GeoGebra 和 Inkscape 两款软件都可以免费绘制数学相关的图像。</p>
+<h2 id="作图软件之间的相互配合">1.4 作图软件之间的相互配合</h2>
+<p>上述几个软件绘制的图像最终都可以保存为 <code>.svg</code> 格式，通过
+<code>.svg</code>
+图像可以在不同的软件中导入。通过相互配合使用，就可以在同一张图片上实现<strong>数学几何绘图</strong>、
+<strong>Markdown
+公式输入</strong>、<strong>手绘风格笔记</strong>等特征。</p>
+<h1 id="在-markdown-笔记中插入上述作图软件绘制的图像">2 在 Markdown
+笔记中插入上述作图软件绘制的图像</h1>
+<p>先将绘制完成的图片导出为 <code>.svg</code>
+格式，然后使用插入图片语法即可。下图中包含了上述提到的一些元素。 <img lazyload="" alt="Excalidraw 图片" data-src="../images/科研作图/image-3.svg"></p>
+<h1 id="参考文献">参考文献</h1>
+<p><a class="link" href="https://zhuanlan.zhihu.com/p/496086808">科研作图：写论文、作业时用得到的作图软件<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>Handbook</category>
