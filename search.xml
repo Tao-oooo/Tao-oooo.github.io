@@ -57,6 +57,185 @@ LaTeX 公式就可以正常渲染了。</p>
       </tags>
   </entry>
   <entry>
+    <title>Hexo基本用法</title>
+    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
+    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
+<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
+<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
+同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，在个人博客项目的 <code>source/_posts</code>
+目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
+<p>只需再此文件中编辑需要发布的内容即可。</p>
+<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
+<p>1.1 节中的 <code>hexo new post</code>
+命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
+Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，会在 <code>source</code> 目录下生成
+<code>/_drafts</code>
+目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
+当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
+目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
+目录中，即将草稿文章发布为正式文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
+<h1 id="本地预览">2 本地预览</h1>
+<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
+<h1 id="正式发布文章">3 正式发布文章</h1>
+<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
+github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
+实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
+<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
+命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
+的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
+则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
+<h1 id="删除一篇文章">4 删除一篇文章</h1>
+<p>从本地的 <code>/_posts</code>
+文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
+<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
+地址和端口号</h1>
+<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
+命令进行本地预览时，默认情况下，预览网站是
+<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
+地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
+，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
+地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
+可以使用如下命令更改 IP 地址： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
+如果两个都想修改，则使用如下命令： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
+<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
+<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
+命令会生成 <code>博客文章名称.md</code>
+文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
+，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
+名称会与新建的文件名称一致。
+但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
+，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
+和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
+一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
+安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+        <tag>Hexo基本使用方法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo警示块</title>
+    <url>/hexo%E8%AD%A6%E7%A4%BA%E5%9D%97/index.html</url>
+    <content><![CDATA[<h1 id="概述">概述</h1>
+<p>Hexo警示块是指让Hexo博客能够支持渲染Markdown中的警示块功能，如下图所示。
+<img lazyload="" alt="图一" data-src="../images/Hexo警示块/image-1.png"></p>
+<h1 id="安装步骤">安装步骤</h1>
+<h2 id="安装hexo-admonition插件">安装hexo-admonition插件</h2>
+<p>第一步是安装Hexo内容辅助插件<code>hexo-admonition</code>，安装命令如下：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-admonition --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置样式">配置样式</h2>
+<h3 id="配置css样式">配置css样式</h3>
+<p>首先，我们现在<code>source/</code>目录下新建文件夹<code>css</code>，然后再<code>css</code>文件夹下新建css样式文件，可以命名为<code>admonition.css</code>。
+其次，将下述代码方放到<code>admonition.css</code>中，可以修改代码中的参数来定制自己想要的样式。
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.admonition</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1.5625em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border-left</span>: .<span class="number">3rem</span> solid <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: .<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0.1rem</span> <span class="number">0.4rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">05</span>), <span class="number">0</span> <span class="number">0</span> <span class="number">0.05rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fafafa</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span><span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">margin</span>: -.<span class="number">6rem</span> -.<span class="number">6rem</span> .<span class="number">8em</span> -.<span class="number">6rem</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">4rem</span> .<span class="number">6rem</span> .<span class="number">4rem</span> <span class="number">2.5rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(<span class="number">66</span>, <span class="number">185</span>, <span class="number">131</span>, .<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: .<span class="number">9rem</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">184</span>,<span class="number">212</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">145</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">82</span>,<span class="number">82</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.info</span>, <span class="selector-class">.admonition</span><span class="selector-class">.todo</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.warning</span>, <span class="selector-class">.admonition</span><span class="selector-class">.attention</span>, <span class="selector-class">.admonition</span><span class="selector-class">.caution</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.failure</span>, <span class="selector-class">.admonition</span><span class="selector-class">.missing</span>, <span class="selector-class">.admonition</span><span class="selector-class">.fail</span>, <span class="selector-class">.admonition</span><span class="selector-class">.error</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff5252</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff5252</span>;;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span>&gt;<span class="selector-pseudo">:last-child</span> {</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure> ### 配置keep.yml文件
+配置css样式之后还不能被直接使用，需要在<code>source/_data/keep.yml</code>中配置之后才可被真正使用。从<code>keep.yml</code>中找到如下代码：
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/css/admonition.css</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /css/custom-1.css</span></span><br><span class="line">      <span class="comment"># - /css/custom-2.css</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /js/custom-1.js</span></span><br><span class="line">      <span class="comment"># - /js/custom-2.js</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br></pre></td></tr></table></figure>
+在<code>css</code>那一栏填上<code>- /css/admonition.css</code>，这一步表示将样式添加到主体中。</p>
+<h2 id="清理hexo缓存及生成静态文件">清理Hexo缓存及生成静态文件</h2>
+<p>因为<code>keep.yml</code>被改动，所以保险起见还需要重新清理Hexo缓存及生成静态文件，使用如下2条命令即可。
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客应该就可以渲染Markdown警示块的效果了。</p>
+<h1 id="警示块markdown语法">警示块Markdown语法</h1>
+<p>警示块的Markdown语法如下样例所示： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!!! note 警示块标题</span><br><span class="line">    这是一个警示块</span><br></pre></td></tr></table></figure></p>
+<div class="admonition note">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!!! tip 警示块标题</span><br><span class="line">    这是一个警示块</span><br></pre></td></tr></table></figure>
+<p>!!! tip 警示块标题 这是一个警示块</p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!!! warning 警示块标题</span><br><span class="line">    这是一个警示块</span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!!! error 警示块标题</span><br><span class="line">    这是一个警示块</span><br></pre></td></tr></table></figure>
+<div class="admonition error">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!!! warning ""</span><br><span class="line">    这是一个警示块</span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<p>还有一些其他的警示块类型可以看<a class="link" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">reStructuredText
+Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
+<p>这里需要注意的是，为了让警示块能够尽可能的正常显示，警示块部分前后最好有空行，否则可能会失效。</p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>警示块</tag>
+        <tag>Admonition</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Template</title>
+    <url>/template/index.html</url>
+    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
+<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
+you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
+<span id="more"></span>
+<figure>
+<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
+<figcaption aria-hidden="true">keep-slogan</figcaption>
+</figure>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Keep</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git的使用</title>
     <url>/git%E7%9A%84%E4%BD%BF%E7%94%A8/index.html</url>
     <content><![CDATA[<h1 id="进入自己的个人网站">1 进入自己的个人网站</h1>
@@ -145,110 +324,6 @@ https://zhuanlan.zhihu.com/p/193140870</p>
         <tag>GitHub</tag>
         <tag>Git的使用</tag>
         <tag>GitHub上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo基本用法</title>
-    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
-    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
-<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
-<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
-同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，在个人博客项目的 <code>source/_posts</code>
-目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
-<p>只需再此文件中编辑需要发布的内容即可。</p>
-<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
-<p>1.1 节中的 <code>hexo new post</code>
-命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
-Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，会在 <code>source</code> 目录下生成
-<code>/_drafts</code>
-目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
-当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
-目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
-目录中，即将草稿文章发布为正式文章： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
-<h1 id="本地预览">2 本地预览</h1>
-<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
-<h1 id="正式发布文章">3 正式发布文章</h1>
-<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
-github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
-实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
-<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
-命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
-的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
-则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
-<h1 id="删除一篇文章">4 删除一篇文章</h1>
-<p>从本地的 <code>/_posts</code>
-文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
-<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
-地址和端口号</h1>
-<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
-命令进行本地预览时，默认情况下，预览网站是
-<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
-地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
-，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
-地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-可以使用如下命令更改 IP 地址： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-如果两个都想修改，则使用如下命令： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
-<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
-<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
-命令会生成 <code>博客文章名称.md</code>
-文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
-，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
-名称会与新建的文件名称一致。
-但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
-，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
-和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
-一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
-<h1 id="参考文献">参考文献</h1>
-<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
-安装与配置<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>个人博客</tag>
-        <tag>Hexo基本使用方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Template</title>
-    <url>/template/index.html</url>
-    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
-<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
-you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<span id="more"></span>
-<figure>
-<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
-<figcaption aria-hidden="true">keep-slogan</figcaption>
-</figure>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Keep</tag>
       </tags>
   </entry>
   <entry>
