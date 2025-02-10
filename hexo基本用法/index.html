@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Feb 03 2025 22:11:41 GMT+0800">2025-02-03 22:11:41</span>
+                    <span class="datetime" data-updated="Mon Feb 10 2025 22:09:38 GMT+0800">2025-02-10 22:09:38</span>
                 </span>
             
         
@@ -428,28 +428,28 @@ mjx-container[display="true"] + br {
                          <h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
 <h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
 <p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
-同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
 使用上述命令后，在个人博客项目的 <code>source/_posts</code>
 目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
 <p>只需再此文件中编辑需要发布的内容即可。</p>
 <h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
 <p>1.1 节中的 <code>hexo new post</code>
 命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
-Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
+Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
 使用上述命令后，会在 <code>source</code> 目录下生成
 <code>/_drafts</code>
 目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
 当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
 目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
-目录中，即将草稿文章发布为正式文章： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
+目录中，即将草稿文章发布为正式文章： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
 <h1 id="本地预览">2 本地预览</h1>
 <p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
 <h1 id="正式发布文章">3 正式发布文章</h1>
 <p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
-github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
+github.io 仓库中。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
 <p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
 实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
 <code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
@@ -467,9 +467,9 @@ github.io 仓库中。 <figure class="highlight plaintext"><table><tr><td class=
 <code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
 地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
 ，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
-地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-可以使用如下命令更改 IP 地址： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-如果两个都想修改，则使用如下命令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
+地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
+可以使用如下命令更改 IP 地址： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
+如果两个都想修改，则使用如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
 <h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
 <p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
 命令会生成 <code>博客文章名称.md</code>

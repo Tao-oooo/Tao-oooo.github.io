@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Feb 04 2025 19:10:28 GMT+0800">2025-02-04 19:10:28</span>
+                    <span class="datetime" data-updated="Mon Feb 10 2025 22:09:57 GMT+0800">2025-02-10 22:09:57</span>
                 </span>
             
         
@@ -432,7 +432,7 @@ mjx-container[display="true"] + br {
 <h2 id="卸载原有的渲染器">1.1 卸载原有的渲染器</h2>
 <p>想要渲染 LaTeX 公式，需要替换掉原来的渲染器。 Hexo 默认的渲染器是
 <code>hexo-renderer-marked</code> ，我们需要使用如下的命令卸载此渲染器。
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
 <h2 id="安装必要的工具包">1.2 安装必要的工具包</h2>
 <h3 id="本地安装-pandoc-工具包">1.2.1 本地安装 pandoc 工具包</h3>
 <p>此工具包需要先在本地安装，工具包下载地址：<a class="link" target="_blank" rel="noopener" href="https://pandoc.org/getting-started.html">Pandoc<i class="fas fa-external-link-alt"></i></a>
@@ -443,10 +443,10 @@ mjx-container[display="true"] + br {
 的错误。</p>
 <h3 id="安装渲染器">1.2.2 安装渲染器</h3>
 <p>在 pandoc 本地安装完成后，再安装新的渲染器
-<code>hexo-renderer-pandoc</code> 。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
+<code>hexo-renderer-pandoc</code> 。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
 <h3 id="安装-mathjax-插件">1.2.3 安装 mathjax 插件</h3>
 <p>上述安装完成后再安装 <code>hexo-filter-mathjax</code> 插件。
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
 <h2 id="修改配置文件">1.3 修改配置文件</h2>
 <p>将如下内容添加到 <code>_config.yml</code> 文件中 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">none</span> <span class="comment"># 或 'ams' 或 'all'</span></span><br><span class="line">  <span class="attr">single_dollars:</span> <span class="literal">true</span> <span class="comment"># 启用单个美元符号作为内联（行内）数学公式定界符</span></span><br><span class="line">  <span class="attr">cjk_width:</span> <span class="number">0.9</span> <span class="comment"># 相对 CJK 字符宽度</span></span><br><span class="line">  <span class="attr">normal_width:</span> <span class="number">0.6</span> <span class="comment"># 相对正常（等宽）宽度</span></span><br><span class="line">  <span class="attr">append_css:</span> <span class="literal">true</span> <span class="comment"># 将 CSS 添加到每个页面</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">true</span> <span class="comment"># 如果为 true，那么无论每篇文章的前题中的 `mathjax` 设置如何，每页都将由 mathjax 呈现</span></span><br></pre></td></tr></table></figure>
 <code>every_page</code> 参数为 <code>true</code>
@@ -456,9 +456,9 @@ mjx-container[display="true"] + br {
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 博客文章名词</span><br><span class="line">tags: [TAG]</span><br><span class="line">categories: [CAT]</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
 <h2 id="清理-hexo-缓存">1.4 清理 Hexo 缓存</h2>
 <p>因为修改了 <code>_config.yml</code>
-文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
+文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
 <h2 id="生成静态文件">1.5 生成静态文件</h2>
-<p>最后使用如下命令生成静态文件。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
+<p>最后使用如下命令生成静态文件。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
 LaTeX 公式就可以正常渲染了。</p>
 <h1 id="其他">2 其他</h1>
 <h2 id="关于公式编号无法显示的问题">2.1 关于公式编号无法显示的问题</h2>
