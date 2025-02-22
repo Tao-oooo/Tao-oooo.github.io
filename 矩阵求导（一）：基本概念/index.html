@@ -1,374 +1,428 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Git的使用</title>
-    <url>/git%E7%9A%84%E4%BD%BF%E7%94%A8/index.html</url>
-    <content><![CDATA[<h1 id="进入自己的个人网站">1 进入自己的个人网站</h1>
-<p>个人网站仓库地址： https://github.com/Tao-oooo/Tao-oooo.github.io.git
-去掉中间部分即为个人网站地址 https://tao-oooo.github.io/</p>
-<h1 id="github仓库中创建文件夹">2 Github仓库中创建文件夹</h1>
-<ol type="1">
-<li>点击Create New File</li>
-<li>输入文件夹名字</li>
-</ol>
-<p>输入名字后这里还是File，这时需要在名字后加上"/"，此时会自动生成文件夹
-<img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-10.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-11.png">
-因为Github不允许创建空文件，因此需要新建一个临时文件 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-12.png">
-然后点击右上角“Commit changes” <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-13.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-14.png"></p>
-<h1 id="初次使用github上传代码">3 初次使用Github上传代码</h1>
-<h2 id="在-github-上创建新的仓库">3.1 在 Github 上创建新的仓库</h2>
-<p>这边可以看网上的资料创建仓库。</p>
-<h2 id="安装-git-工具包">3.2 安装 Git 工具包</h2>
-<p>Git 工具包可以去官方网站下载，并安装。 安装完成后，Windows
-系统的开始菜单中会有 Git 软件，如下图所示： <img lazyload="" alt="Git 软件" data-src="../images/Git的使用/image-9.png"> 其中， Git Bash
-就是 Git 工具的命令行窗口，后续的 GitHub
-相关操作都会在此命令行窗口中执行。</p>
-<h2 id="在-github-上添加-ssh-key">3.3 在 Github 上添加 SSH Key</h2>
-<p>在 GitHub 上添加 SSH Key 之前需要在本地先生成 SSH Key。
-打开上面讲到的 Git Bash 命令行窗口，先使用以下命令配置一下 Git Config：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"emile-name@email.com"</span></span><br></pre></td></tr></table></figure> <code>username</code> 和 <code>emile-name@email.com</code>
-的信息要与 Github 上申请的账号一致。</p>
-<p>然后通过以下命令生成 SSH Key： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"emile-name@email.com"</span></span><br></pre></td></tr></table></figure> 这里的邮箱也要与 Github
-上的一致，使用此命令后，如果不需要做其他特殊设置的话可以一路回车到底，最后
-Git Bash 上可见如下的画面： <img lazyload="" alt="生成 SSH Key" data-src="../images/Git的使用/image-1.png"></p>
-<p>然后使用如下命令查看 SSH Key 的内容： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure> 内容如下： <img lazyload="" alt="查看 SSH Key" data-src="../images/Git的使用/image-2.png"></p>
-<p>最后复制上述 SSH Key 的内容，填到 Github 网站即可。</p>
-<h2 id="从本地仓库上传代码到-github-上">3.4 从本地仓库上传代码到 Github
-上</h2>
-<h3 id="检查是否与-github-连接成功">3.4.1 检查是否与 Github
-连接成功</h3>
-<p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>有时候可能会出现报如下错误的情况
-[https://zhuanlan.zhihu.com/p/521340971]，
-<code>ssh: connect to host github.com port 22: Connection refused</code>
-这个错误提示的是连接 <code>github.com</code>
-的22端口被拒绝了。此时可以尝试连接 443 端口，做法是修改 SSH
-的配置文件。在 Git Bash 中使用 vim 命令打开 config： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
-然后再config文件中输入如下文本： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure> 然后输入如下命令保存退出
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure> 回车后即可保存，再次检验是否连接成功 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>如果连接成功，则会提示如下信息
-(如果是第一次的会提示是否continue，输入yes即可)： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hi xxxxx! You've successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
-如图所示： <img lazyload="" alt="SSH 连接成功" data-src="../images/Git的使用/image-3.png"></p>
-<h3 id="上传文件">3.4.2 上传文件</h3>
-<p>首先进入本地仓库文件夹，如果还没有本地仓库文件夹，那么可以创建一个新的文件夹。通常的做法是，本地仓库文件夹的名称与
-GitHub 仓库名称一致。新创建的文件夹没有 Git Branch
-的概念，所以需要先创建分支。可以使用如下命令创建主分支： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-完成后会在文件夹后面显示主分支名，如图中红框所示： <img lazyload="" alt="创建主分支" data-src="../images/Git的使用/image-4.png">
-<code>master</code> 就是主分支名字，最新版的 GitHub 主分支名变成了
-<code>main</code> ，但两者其实是一个意思。</p>
-<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code>
-的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash
-进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code>
-之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub
-，那么同样需要使用上述命令创建分支。为了避免出现未知问题，建议使用
-<code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用
-<code>git clone</code>
-拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
-<p>一种简单的查看项目文件夹是否创建分支的方法：打开隐藏文件可视化，如果项目文件夹中出现
-<code>.git</code> 文件夹，则说明此项目有分支信息，否则无分支信息。</p>
-<p>然后使用如下命令与 Github 上新建项目连接： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure> xxx
-部分就是 Github 仓库的链接，如下图所示： <img lazyload="" alt="连接 GitHub 仓库地址" data-src="../images/Git的使用/image-5.png"></p>
-<p>接着使用如下命令将本地仓库中的文件加入暂存区： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<code>.</code> 表示将本地文件夹下所有文件都加入暂存区。 如图所示： <img lazyload="" alt="暂存区" data-src="../images/Git的使用/image-6.png"></p>
-<p>然后为本地上传文件添加注释，方便以后查看： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"20240922"</span></span><br></pre></td></tr></table></figure> "20240922"
-就是加的注释，可以按照需求添加内容。 <img lazyload="" alt="Commit" data-src="../images/Git的使用/image-7.png"></p>
-<p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure> <img lazyload="" alt="提交" data-src="../images/Git的使用/image-8.png"></p>
-<h1 id="参考文献">参考文献</h1>
-<p>https://zhuanlan.zhihu.com/p/138305054
-https://zhuanlan.zhihu.com/p/193140870</p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GitHub</tag>
-        <tag>Git的使用</tag>
-        <tag>GitHub上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo中LaTeX数学公式渲染</title>
-    <url>/hexo%E4%B8%ADlatex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93/index.html</url>
-    <content><![CDATA[<h1 id="概述">0 概述</h1>
-<p>在没有做过任何设置的情况下，Hexo 博客文章本身并没有支持 LaTeX
-公式渲染，也就是说 LaTeX
-公式在博客发布后的网页上并不会显示出来，仍然是以 LaTeX
-语法的形式显示。本文的目的是记录博客文章中开启 LaTeX
-公式渲染的过程。</p>
-<h1 id="步骤">1 步骤</h1>
-<h2 id="卸载原有的渲染器">1.1 卸载原有的渲染器</h2>
-<p>想要渲染 LaTeX 公式，需要替换掉原来的渲染器。 Hexo 默认的渲染器是
-<code>hexo-renderer-marked</code> ，我们需要使用如下的命令卸载此渲染器。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
-<h2 id="安装必要的工具包">1.2 安装必要的工具包</h2>
-<h3 id="本地安装-pandoc-工具包">1.2.1 本地安装 pandoc 工具包</h3>
-<p>此工具包需要先在本地安装，工具包下载地址：<a class="link" href="https://pandoc.org/getting-started.html">Pandoc<i class="fas fa-external-link-alt"></i></a>
-。安装包也可以从这里拿到：<a href="../images/Hexo中LaTeX数学公式渲染/pandoc-3.6.2-windows-x86_64.msi">Pandoc</a>
-。下载安装包后，直接安装即可。
-安装完成后需要重启电脑，否则后续的过程可能会出现问题。比如在最后使用
-<code>hexo g</code> 命令后出现 <code>pandoc exited with code null</code>
-的错误。</p>
-<h3 id="安装渲染器">1.2.2 安装渲染器</h3>
-<p>在 pandoc 本地安装完成后，再安装新的渲染器
-<code>hexo-renderer-pandoc</code> 。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装-mathjax-插件">1.2.3 安装 mathjax 插件</h3>
-<p>上述安装完成后再安装 <code>hexo-filter-mathjax</code> 插件。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
-<h2 id="修改配置文件">1.3 修改配置文件</h2>
-<p>将如下内容添加到 <code>_config.yml</code> 文件中 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">none</span> <span class="comment"># 或 'ams' 或 'all'</span></span><br><span class="line">  <span class="attr">single_dollars:</span> <span class="literal">true</span> <span class="comment"># 启用单个美元符号作为内联（行内）数学公式定界符</span></span><br><span class="line">  <span class="attr">cjk_width:</span> <span class="number">0.9</span> <span class="comment"># 相对 CJK 字符宽度</span></span><br><span class="line">  <span class="attr">normal_width:</span> <span class="number">0.6</span> <span class="comment"># 相对正常（等宽）宽度</span></span><br><span class="line">  <span class="attr">append_css:</span> <span class="literal">true</span> <span class="comment"># 将 CSS 添加到每个页面</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">true</span> <span class="comment"># 如果为 true，那么无论每篇文章的前题中的 `mathjax` 设置如何，每页都将由 mathjax 呈现</span></span><br></pre></td></tr></table></figure>
-<code>every_page</code> 参数为 <code>true</code>
-表示默认每篇文章都会自动进行 LaTeX 公式渲染。如果设置为
-<code>false</code> ，则需要在需要渲染的文章开头添加
-<code>mathjax: true</code> ，如下所示，表示该文章在发布时需要被渲染。
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 博客文章名词</span><br><span class="line">tags: [TAG]</span><br><span class="line">categories: [CAT]</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
-<h2 id="清理-hexo-缓存">1.4 清理 Hexo 缓存</h2>
-<p>因为修改了 <code>_config.yml</code>
-文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<h2 id="生成静态文件">1.5 生成静态文件</h2>
-<p>最后使用如下命令生成静态文件。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
-LaTeX 公式就可以正常渲染了。</p>
-<h1 id="其他">2 其他</h1>
-<h2 id="关于公式编号无法显示的问题">2.1 关于公式编号无法显示的问题</h2>
-<p>默认情况下， <code>_config.yml</code> 文件中 <code>tags</code>
-参数设置为 <code>none</code> ，只需要将其设置为 <code>ams</code>
-即可解决公式编号无法显示的问题。 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">ams</span></span><br></pre></td></tr></table></figure>
-设置完成后需要重新进行上面 1.4 和 1.5 小节的操作。</p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>LaTeX公式渲染</tag>
-        <tag>数学公式渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo基本用法</title>
-    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
-    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
-<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
-<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
-同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，在个人博客项目的 <code>source/_posts</code>
-目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
-<p>只需再此文件中编辑需要发布的内容即可。</p>
-<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
-<p>1.1 节中的 <code>hexo new post</code>
-命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
-Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，会在 <code>source</code> 目录下生成
-<code>/_drafts</code>
-目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
-当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
-目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
-目录中，即将草稿文章发布为正式文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
-<h1 id="本地预览">2 本地预览</h1>
-<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
-<h1 id="正式发布文章">3 正式发布文章</h1>
-<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
-github.io 仓库中。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
-实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
-<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
-命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
-的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
-则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
-<h1 id="删除一篇文章">4 删除一篇文章</h1>
-<p>从本地的 <code>/_posts</code>
-文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
-<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
-地址和端口号</h1>
-<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
-命令进行本地预览时，默认情况下，预览网站是
-<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
-地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
-，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
-地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-可以使用如下命令更改 IP 地址： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-如果两个都想修改，则使用如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
-<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
-<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
-命令会生成 <code>博客文章名称.md</code>
-文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
-，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
-名称会与新建的文件名称一致。
-但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
-，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
-和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
-一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
-<h1 id="参考文献">参考文献</h1>
-<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
-安装与配置<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>个人博客</tag>
-        <tag>Hexo基本使用方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo警示块</title>
-    <url>/hexo%E8%AD%A6%E7%A4%BA%E5%9D%97/index.html</url>
-    <content><![CDATA[<h1 id="概述">概述</h1>
-<p>Hexo警示块是指让Hexo博客能够支持渲染Markdown中的警示块功能，如下图所示。
-<img lazyload="" alt="图一" data-src="../images/Hexo警示块/image-1.png"></p>
-<h1 id="安装步骤">安装步骤</h1>
-<h2 id="安装hexo-admonition插件">安装hexo-admonition插件</h2>
-<p>第一步是安装Hexo内容辅助插件<code>hexo-admonition</code>，安装命令如下：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-admonition --save</span><br></pre></td></tr></table></figure></p>
-<h2 id="配置样式">配置样式</h2>
-<h3 id="配置css样式">配置css样式</h3>
-<p>首先，我们先在<code>source/</code>目录下新建文件夹<code>css</code>，然后在<code>css</code>文件夹下新建<code>css样式文件</code>，可以命名为<code>admonition.css</code>。
-其次，将下述代码放到<code>admonition.css</code>中，当然，可以修改代码中的参数来定制自己想要的样式。
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.admonition</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1.5625em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border-left</span>: .<span class="number">3rem</span> solid <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: .<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0.1rem</span> <span class="number">0.4rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">05</span>), <span class="number">0</span> <span class="number">0</span> <span class="number">0.05rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fafafa</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span><span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">margin</span>: -.<span class="number">6rem</span> -.<span class="number">6rem</span> .<span class="number">8em</span> -.<span class="number">6rem</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">4rem</span> .<span class="number">6rem</span> .<span class="number">4rem</span> <span class="number">2.5rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(<span class="number">66</span>, <span class="number">185</span>, <span class="number">131</span>, .<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: .<span class="number">9rem</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">184</span>,<span class="number">212</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">145</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">82</span>,<span class="number">82</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.info</span>, <span class="selector-class">.admonition</span><span class="selector-class">.todo</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.warning</span>, <span class="selector-class">.admonition</span><span class="selector-class">.attention</span>, <span class="selector-class">.admonition</span><span class="selector-class">.caution</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.failure</span>, <span class="selector-class">.admonition</span><span class="selector-class">.missing</span>, <span class="selector-class">.admonition</span><span class="selector-class">.fail</span>, <span class="selector-class">.admonition</span><span class="selector-class">.error</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff5252</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff5252</span>;;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span>&gt;<span class="selector-pseudo">:last-child</span> {</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置keep.yml文件">配置keep.yml文件</h3>
-<p>配置css样式之后还不能被直接使用，需要在<code>source/_data/keep.yml</code>中配置之后才可被真正使用。从<code>keep.yml</code>中找到如下代码：
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/css/admonition.css</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /css/custom-1.css</span></span><br><span class="line">      <span class="comment"># - /css/custom-2.css</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /js/custom-1.js</span></span><br><span class="line">      <span class="comment"># - /js/custom-2.js</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br></pre></td></tr></table></figure>
-在<code>css</code>那一栏填上<code>- /css/admonition.css</code>，这一步表示将样式添加到主体中。</p>
-<h2 id="清理hexo缓存及生成静态文件">清理Hexo缓存及生成静态文件</h2>
-<p>因为<code>keep.yml</code>被改动，所以保险起见还需要重新清理Hexo缓存及生成静态文件，使用如下2条命令即可。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客应该就可以渲染Markdown警示块的效果了。</p>
-<h1 id="警示块markdown语法">警示块Markdown语法</h1>
-<p>警示块的Markdown语法如下样例所示： <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! note 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure></p>
-<div class="admonition note">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个警示块
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Tao-oooo">
+    
+    <title>
+        
+            矩阵求导（一）：基本概念 |
+        
+        Tao-oooo
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo/Tao-oooo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+        
+            
+                
+<link rel="stylesheet" href="/css/admonition.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"tao-oooo.github.io","root":"/","language":"en","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Tao-oooo","author":"Tao-oooo","avatar":"/images/logo/Tao-oooo.png","logo":"/images/logo/Tao-oooo.png","favicon":"/images/logo/Tao-oooo.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"道可道 非常道 || 名可名 非常名","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/admonition.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition warning">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个警示块
-</p>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo/Tao-oooo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Tao-oooo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        矩阵求导（一）：基本概念
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/logo/Tao-oooo.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Tao-oooo</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-22 10:10:17</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sat Feb 22 2025 12:44:30 GMT+0800">2025-02-22 12:44:30</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Mathematics/">Mathematics</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%9F%A9%E9%98%B5/">矩阵</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/">矩阵求导</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.4k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
 </div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! error 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition error">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个没有标题的警示块
-</p>
-</div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning ""</span><br><span class="line"><span class="code">    这是一个没有标题的警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition warning">
-<p>
-这是一个没有标题的警示块
-</p>
-</div>
-<hr>
-<p>还有一些其他的警示块类型可以看<a class="link" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">reStructuredText
-Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
-<p>这里需要注意的是，为了让警示块能够尽可能的正常显示，警示块部分前后最好有空行，否则可能会失效。</p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>警示块</tag>
-        <tag>Admonition</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>科研作图</title>
-    <url>/%E7%A7%91%E7%A0%94%E4%BD%9C%E5%9B%BE/index.html</url>
-    <content><![CDATA[<h1 id="概述">0 概述</h1>
-<p>在记笔记或者写文章的过程中，我们经常需要绘制插图。特别对于理工科相关科目而言，插图中通常还会包含更多的内容，比如<strong>数学公式、函数图像、流程图和手绘框图</strong>等等。然而这些元素往往只能使用单独的软件完成，而无法在同一个软件中全部实现。这篇文章的目的就是记录如何将数学公式、函数图像、流程图和手绘框图等等元素放入到同一张插图中，并且最终插图能够在
-Markdown 文档中被导入。</p>
-<h1 id="作图软件">1 作图软件</h1>
-<h2 id="draw.io">1.1 Draw.io</h2>
-<p>常用的流程图绘制软件 (当然不仅限于流程图绘制) ，并且文本可以支持解析
-Markdown 公式语法。</p>
-<h2 id="excalidraw">1.2 Excalidraw</h2>
-<p>支持手绘风格的绘图软件，但是不支持 Markdown 公式语法 (据说在 Obsidian
-中使用 Excalidraw 可以支持插入 Markdown 公式) 。</p>
-<h2 id="geogebra-和-inkscape">1.3 GeoGebra 和 Inkscape</h2>
-<p>GeoGebra 和 Inkscape 两款软件都可以免费绘制数学相关的图像。</p>
-<h2 id="作图软件之间的相互配合">1.4 作图软件之间的相互配合</h2>
-<p>上述几个软件绘制的图像最终都可以保存为 <code>.svg</code> 格式，通过
-<code>.svg</code>
-图像可以在不同的软件中导入。通过相互配合使用，就可以在同一张图片上实现<strong>数学几何绘图</strong>、
-<strong>Markdown
-公式输入</strong>、<strong>手绘风格笔记</strong>等特征。</p>
-<h1 id="在-markdown-笔记中插入上述作图软件绘制的图像">2 在 Markdown
-笔记中插入上述作图软件绘制的图像</h1>
-<p>先将绘制完成的图片导出为 <code>.svg</code>
-格式，然后使用插入图片语法即可。下图中包含了上述提到的一些元素。 <img lazyload="" alt="Excalidraw 图片" data-src="../images/科研作图/image-3.svg"></p>
-<h1 id="参考文献">参考文献</h1>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/496086808">科研作图：写论文、作业时用得到的作图软件<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Handbook</category>
-      </categories>
-      <tags>
-        <tag>科研作图</tag>
-        <tag>函数图像绘制</tag>
-        <tag>手绘框图</tag>
-        <tag>Draw.io</tag>
-        <tag>Excalidraw</tag>
-        <tag>GeoGebra</tag>
-        <tag>Inkscape</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Template</title>
-    <url>/template/index.html</url>
-    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
-<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
-you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<span id="more"></span>
-<figure>
-<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
-<figcaption aria-hidden="true">keep-slogan</figcaption>
-</figure>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Keep</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>矩阵求导（一）：基本概念</title>
-    <url>/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html</url>
-    <content><![CDATA[<style>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <style>
   .katex {
     color: blue;
   }
@@ -667,13 +721,439 @@ Layout)。两种布局的主要差异是排列时是以分子部分的尺寸为�
 </tr>
 </tbody>
 </table>
-]]></content>
-      <categories>
-        <category>Mathematics</category>
-      </categories>
-      <tags>
-        <tag>矩阵</tag>
-        <tag>矩阵求导</tag>
-      </tags>
-  </entry>
-</search>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                矩阵求导（一）：基本概念
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                矩阵求导（一）：基本概念/index.html
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Tao-oooo</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2025-02-22 10:10</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%9F%A9%E9%98%B5/">矩阵</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/">矩阵求导</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/hexo%E8%AD%A6%E7%A4%BA%E5%9D%97/index.html"
+                                   title="Hexo警示块"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Hexo警示块</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="nav-text">函数的类别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%A0%87%E9%87%8F%E6%B1%82%E5%AF%BC%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-text">矩阵、向量、标量求导的本质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B1%80layout"><span class="nav-text">布局(Layout)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%AD%90%E5%B8%83%E5%B1%80numerator-layout"><span class="nav-text">分子布局(Numerator Layout)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%AF%8D%E5%B8%83%E5%B1%80denominator-layout"><span class="nav-text">分母布局(Denominator Layout)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E5%88%86%E5%AD%90%E5%B8%83%E5%B1%80%E5%92%8C%E5%88%86%E6%AF%8D%E5%B8%83%E5%B1%80"><span class="nav-text">实际应用中的分子布局和分母布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E5%B8%83%E5%B1%80"><span class="nav-text">混合布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%A1%8C%E5%90%91%E9%87%8F%E5%8F%82%E4%B8%8E%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="nav-text">关于行向量参与的导数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Tao-oooo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">6.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="nav-text">函数的类别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%A0%87%E9%87%8F%E6%B1%82%E5%AF%BC%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-text">矩阵、向量、标量求导的本质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B1%80layout"><span class="nav-text">布局(Layout)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%AD%90%E5%B8%83%E5%B1%80numerator-layout"><span class="nav-text">分子布局(Numerator Layout)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%AF%8D%E5%B8%83%E5%B1%80denominator-layout"><span class="nav-text">分母布局(Denominator Layout)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E5%88%86%E5%AD%90%E5%B8%83%E5%B1%80%E5%92%8C%E5%88%86%E6%AF%8D%E5%B8%83%E5%B1%80"><span class="nav-text">实际应用中的分子布局和分母布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E5%B8%83%E5%B1%80"><span class="nav-text">混合布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%A1%8C%E5%90%91%E9%87%8F%E5%8F%82%E4%B8%8E%E7%9A%84%E5%AF%BC%E6%95%B0"><span class="nav-text">关于行向量参与的导数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+    
+        
+    
+
+</body>
+</html>
