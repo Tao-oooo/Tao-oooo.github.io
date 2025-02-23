@@ -1,0 +1,3 @@
+.MathJax .mo, .MathJax .mi, .MathJax .mn {
+    color: blue !important;  /* 设置公式颜色为蓝色 */
+  }
