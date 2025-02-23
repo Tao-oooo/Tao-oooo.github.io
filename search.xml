@@ -148,39 +148,6 @@ LaTeX 公式就可以正常渲染了。</p>
       </tags>
   </entry>
   <entry>
-    <title>Template</title>
-    <url>/template/index.html</url>
-    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
-<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
-you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<span id="more"></span>
-<figure>
-<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
-<figcaption aria-hidden="true">keep-slogan</figcaption>
-</figure>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Keep</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo基本用法</title>
     <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
     <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
@@ -252,76 +219,36 @@ github.io 仓库中。 <figure class="highlight bash"><table><tr><td class="code
       </tags>
   </entry>
   <entry>
-    <title>Hexo警示块</title>
-    <url>/hexo%E8%AD%A6%E7%A4%BA%E5%9D%97/index.html</url>
-    <content><![CDATA[<h1 id="概述">概述</h1>
-<p>Hexo警示块是指让Hexo博客能够支持渲染Markdown中的警示块功能，如下图所示。
-<img lazyload="" alt="图一" data-src="../images/Hexo警示块/image-1.png"></p>
-<h1 id="安装步骤">安装步骤</h1>
-<h2 id="安装hexo-admonition插件">安装hexo-admonition插件</h2>
-<p>第一步是安装Hexo内容辅助插件<code>hexo-admonition</code>，安装命令如下：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-admonition --save</span><br></pre></td></tr></table></figure></p>
-<h2 id="配置样式">配置样式</h2>
-<h3 id="配置css样式">配置css样式</h3>
-<p>首先，我们先在<code>source/</code>目录下新建文件夹<code>css</code>，然后在<code>css</code>文件夹下新建<code>css样式文件</code>，可以命名为<code>admonition.css</code>。
-其次，将下述代码放到<code>admonition.css</code>中，当然，可以修改代码中的参数来定制自己想要的样式。
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.admonition</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1.5625em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border-left</span>: .<span class="number">3rem</span> solid <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: .<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0.1rem</span> <span class="number">0.4rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">05</span>), <span class="number">0</span> <span class="number">0</span> <span class="number">0.05rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fafafa</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span><span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">margin</span>: -.<span class="number">6rem</span> -.<span class="number">6rem</span> .<span class="number">8em</span> -.<span class="number">6rem</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">4rem</span> .<span class="number">6rem</span> .<span class="number">4rem</span> <span class="number">2.5rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(<span class="number">66</span>, <span class="number">185</span>, <span class="number">131</span>, .<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: .<span class="number">9rem</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">184</span>,<span class="number">212</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">145</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">82</span>,<span class="number">82</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.info</span>, <span class="selector-class">.admonition</span><span class="selector-class">.todo</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.warning</span>, <span class="selector-class">.admonition</span><span class="selector-class">.attention</span>, <span class="selector-class">.admonition</span><span class="selector-class">.caution</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.failure</span>, <span class="selector-class">.admonition</span><span class="selector-class">.missing</span>, <span class="selector-class">.admonition</span><span class="selector-class">.fail</span>, <span class="selector-class">.admonition</span><span class="selector-class">.error</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff5252</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff5252</span>;;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span>&gt;<span class="selector-pseudo">:last-child</span> {</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置keep.yml文件">配置keep.yml文件</h3>
-<p>配置css样式之后还不能被直接使用，需要在<code>source/_data/keep.yml</code>中配置之后才可被真正使用。从<code>keep.yml</code>中找到如下代码：
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/css/admonition.css</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /css/custom-1.css</span></span><br><span class="line">      <span class="comment"># - /css/custom-2.css</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /js/custom-1.js</span></span><br><span class="line">      <span class="comment"># - /js/custom-2.js</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br></pre></td></tr></table></figure>
-在<code>css</code>那一栏填上<code>- /css/admonition.css</code>，这一步表示将样式添加到主体中。</p>
-<h2 id="清理hexo缓存及生成静态文件">清理Hexo缓存及生成静态文件</h2>
-<p>因为<code>keep.yml</code>被改动，所以保险起见还需要重新清理Hexo缓存及生成静态文件，使用如下2条命令即可。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客应该就可以渲染Markdown警示块的效果了。</p>
-<h1 id="警示块markdown语法">警示块Markdown语法</h1>
-<p>警示块的Markdown语法如下样例所示： <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! note 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure></p>
-<div class="admonition note">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个警示块
-</p>
-</div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition warning">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个警示块
-</p>
-</div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! error 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition error">
-<p class="admonition-title">
-警示块标题
-</p>
-<p>
-这是一个没有标题的警示块
-</p>
-</div>
-<hr>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning ""</span><br><span class="line"><span class="code">    这是一个没有标题的警示块</span></span><br></pre></td></tr></table></figure>
-<div class="admonition warning">
-<p>
-这是一个没有标题的警示块
-</p>
-</div>
-<hr>
-<p>还有一些其他的警示块类型可以看<a class="link" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">reStructuredText
-Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
-<p>这里需要注意的是，为了让警示块能够尽可能的正常显示，警示块部分前后最好有空行，否则可能会失效。</p>
+    <title>Template</title>
+    <url>/template/index.html</url>
+    <content><![CDATA[<p>Welcome to use Hexo Theme Keep.</p>
+<p>This is your very first post. Check <a class="link" href="https://keep-docs.xpoet.cn/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If
+you get any problems when using Keep theme, you can ask me on <a class="link" href="https://github.com/XPoet/hexo-theme-keep/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
+<span id="more"></span>
+<figure>
+<img lazyload="" alt="keep-slogan" data-src="../images/keep-slogan.svg">
+<figcaption aria-hidden="true">keep-slogan</figcaption>
+</figure>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
-        <category>Handbook</category>
+        <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
-        <tag>警示块</tag>
-        <tag>Admonition</tag>
+        <tag>Keep</tag>
       </tags>
   </entry>
   <entry>
@@ -633,6 +560,79 @@ Layout)。两种布局的主要差异是排列时是以分子部分的尺寸为�
       <tags>
         <tag>矩阵</tag>
         <tag>矩阵求导</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo警示块</title>
+    <url>/hexo%E8%AD%A6%E7%A4%BA%E5%9D%97/index.html</url>
+    <content><![CDATA[<h1 id="概述">概述</h1>
+<p>Hexo警示块是指让Hexo博客能够支持渲染Markdown中的警示块功能，如下图所示。
+<img lazyload="" alt="图一" data-src="../images/Hexo警示块/image-1.png"></p>
+<h1 id="安装步骤">安装步骤</h1>
+<h2 id="安装hexo-admonition插件">安装hexo-admonition插件</h2>
+<p>第一步是安装Hexo内容辅助插件<code>hexo-admonition</code>，安装命令如下：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-admonition --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置样式">配置样式</h2>
+<h3 id="配置css样式">配置css样式</h3>
+<p>首先，我们先在<code>source/</code>目录下新建文件夹<code>css</code>，然后在<code>css</code>文件夹下新建<code>css样式文件</code>，可以命名为<code>admonition.css</code>。
+其次，将下述代码放到<code>admonition.css</code>中，当然，可以修改代码中的参数来定制自己想要的样式。
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.admonition</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1.5625em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border-left</span>: .<span class="number">3rem</span> solid <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: .<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0.1rem</span> <span class="number">0.4rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">05</span>), <span class="number">0</span> <span class="number">0</span> <span class="number">0.05rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fafafa</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span><span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">margin</span>: -.<span class="number">6rem</span> -.<span class="number">6rem</span> .<span class="number">8em</span> -.<span class="number">6rem</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">4rem</span> .<span class="number">6rem</span> .<span class="number">4rem</span> <span class="number">2.5rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(<span class="number">66</span>, <span class="number">185</span>, <span class="number">131</span>, .<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: .<span class="number">9rem</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">184</span>,<span class="number">212</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">145</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">82</span>,<span class="number">82</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.info</span>, <span class="selector-class">.admonition</span><span class="selector-class">.todo</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.warning</span>, <span class="selector-class">.admonition</span><span class="selector-class">.attention</span>, <span class="selector-class">.admonition</span><span class="selector-class">.caution</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.failure</span>, <span class="selector-class">.admonition</span><span class="selector-class">.missing</span>, <span class="selector-class">.admonition</span><span class="selector-class">.fail</span>, <span class="selector-class">.admonition</span><span class="selector-class">.error</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff5252</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff5252</span>;;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span>&gt;<span class="selector-pseudo">:last-child</span> {</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置keep.yml文件">配置keep.yml文件</h3>
+<p>配置css样式之后还不能被直接使用，需要在<code>source/_data/keep.yml</code>中配置之后才可被真正使用。从<code>keep.yml</code>中找到如下代码：
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/css/admonition.css</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /css/custom-1.css</span></span><br><span class="line">      <span class="comment"># - /css/custom-2.css</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /js/custom-1.js</span></span><br><span class="line">      <span class="comment"># - /js/custom-2.js</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br></pre></td></tr></table></figure>
+在<code>css</code>那一栏填上<code>- /css/admonition.css</code>，这一步表示将样式添加到主体中。</p>
+<h2 id="清理hexo缓存及生成静态文件">清理Hexo缓存及生成静态文件</h2>
+<p>因为<code>keep.yml</code>被改动，所以保险起见还需要重新清理Hexo缓存及生成静态文件，使用如下2条命令即可。
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客应该就可以渲染Markdown警示块的效果了。</p>
+<h1 id="警示块markdown语法">警示块Markdown语法</h1>
+<p>警示块的Markdown语法如下样例所示： <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! note 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure></p>
+<div class="admonition note">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! error 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition error">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">!!! warning ""</span><br><span class="line"><span class="code">    这是一个没有标题的警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<p>还有一些其他的警示块类型可以看<a class="link" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">reStructuredText
+Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
+<p>这里需要注意的是，为了让警示块能够尽可能的正常显示，警示块部分前后最好有空行，否则可能会失效。</p>
+]]></content>
+      <categories>
+        <category>Handbook</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>警示块</tag>
+        <tag>Admonition</tag>
       </tags>
   </entry>
   <entry>
