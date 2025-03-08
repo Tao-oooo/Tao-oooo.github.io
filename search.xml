@@ -92,59 +92,74 @@ https://zhuanlan.zhihu.com/p/193140870</p>
       </tags>
   </entry>
   <entry>
-    <title>Hexo中LaTeX数学公式渲染</title>
-    <url>/hexo%E4%B8%ADlatex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93/index.html</url>
-    <content><![CDATA[<h1 id="概述">0 概述</h1>
-<p>在没有做过任何设置的情况下，Hexo 博客文章本身并没有支持 LaTeX
-公式渲染，也就是说 LaTeX
-公式在博客发布后的网页上并不会显示出来，仍然是以 LaTeX
-语法的形式显示。本文的目的是记录博客文章中开启 LaTeX
-公式渲染的过程。</p>
-<h1 id="步骤">1 步骤</h1>
-<h2 id="卸载原有的渲染器">1.1 卸载原有的渲染器</h2>
-<p>想要渲染 LaTeX 公式，需要替换掉原来的渲染器。 Hexo 默认的渲染器是
-<code>hexo-renderer-marked</code> ，我们需要使用如下的命令卸载此渲染器。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
-<h2 id="安装必要的工具包">1.2 安装必要的工具包</h2>
-<h3 id="本地安装-pandoc-工具包">1.2.1 本地安装 pandoc 工具包</h3>
-<p>此工具包需要先在本地安装，工具包下载地址：<a class="link" href="https://pandoc.org/getting-started.html">Pandoc<i class="fas fa-external-link-alt"></i></a>
-。安装包也可以从这里拿到：<a href="../images/Hexo中LaTeX数学公式渲染/pandoc-3.6.2-windows-x86_64.msi">Pandoc</a>
-。下载安装包后，直接安装即可。
-安装完成后需要重启电脑，否则后续的过程可能会出现问题。比如在最后使用
-<code>hexo g</code> 命令后出现 <code>pandoc exited with code null</code>
-的错误。</p>
-<h3 id="安装渲染器">1.2.2 安装渲染器</h3>
-<p>在 pandoc 本地安装完成后，再安装新的渲染器
-<code>hexo-renderer-pandoc</code> 。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装-mathjax-插件">1.2.3 安装 mathjax 插件</h3>
-<p>上述安装完成后再安装 <code>hexo-filter-mathjax</code> 插件。
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
-<h2 id="修改配置文件">1.3 修改配置文件</h2>
-<p>将如下内容添加到 <code>_config.yml</code> 文件中 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">none</span> <span class="comment"># 或 'ams' 或 'all'</span></span><br><span class="line">  <span class="attr">single_dollars:</span> <span class="literal">true</span> <span class="comment"># 启用单个美元符号作为内联（行内）数学公式定界符</span></span><br><span class="line">  <span class="attr">cjk_width:</span> <span class="number">0.9</span> <span class="comment"># 相对 CJK 字符宽度</span></span><br><span class="line">  <span class="attr">normal_width:</span> <span class="number">0.6</span> <span class="comment"># 相对正常（等宽）宽度</span></span><br><span class="line">  <span class="attr">append_css:</span> <span class="literal">true</span> <span class="comment"># 将 CSS 添加到每个页面</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">true</span> <span class="comment"># 如果为 true，那么无论每篇文章的前题中的 `mathjax` 设置如何，每页都将由 mathjax 呈现</span></span><br></pre></td></tr></table></figure>
-<code>every_page</code> 参数为 <code>true</code>
-表示默认每篇文章都会自动进行 LaTeX 公式渲染。如果设置为
-<code>false</code> ，则需要在需要渲染的文章开头添加
-<code>mathjax: true</code> ，如下所示，表示该文章在发布时需要被渲染。
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 博客文章名词</span><br><span class="line">tags: [TAG]</span><br><span class="line">categories: [CAT]</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
-<h2 id="清理-hexo-缓存">1.4 清理 Hexo 缓存</h2>
-<p>因为修改了 <code>_config.yml</code>
-文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<h2 id="生成静态文件">1.5 生成静态文件</h2>
-<p>最后使用如下命令生成静态文件。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
-LaTeX 公式就可以正常渲染了。</p>
-<h1 id="其他">2 其他</h1>
-<h2 id="关于公式编号无法显示的问题">2.1 关于公式编号无法显示的问题</h2>
-<p>默认情况下， <code>_config.yml</code> 文件中 <code>tags</code>
-参数设置为 <code>none</code> ，只需要将其设置为 <code>ams</code>
-即可解决公式编号无法显示的问题。 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">ams</span></span><br></pre></td></tr></table></figure>
-设置完成后需要重新进行上面 1.4 和 1.5 小节的操作。</p>
+    <title>Hexo基本用法</title>
+    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
+    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
+<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
+<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
+同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，在个人博客项目的 <code>source/_posts</code>
+目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
+<p>只需再此文件中编辑需要发布的内容即可。</p>
+<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
+<p>1.1 节中的 <code>hexo new post</code>
+命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
+Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
+使用上述命令后，会在 <code>source</code> 目录下生成
+<code>/_drafts</code>
+目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
+当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
+目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
+目录中，即将草稿文章发布为正式文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
+<h1 id="本地预览">2 本地预览</h1>
+<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
+<h1 id="正式发布文章">3 正式发布文章</h1>
+<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
+github.io 仓库中。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
+实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
+<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
+命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
+的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
+<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
+则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
+<h1 id="删除一篇文章">4 删除一篇文章</h1>
+<p>从本地的 <code>/_posts</code>
+文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
+<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
+地址和端口号</h1>
+<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
+命令进行本地预览时，默认情况下，预览网站是
+<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
+地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
+，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
+地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
+可以使用如下命令更改 IP 地址： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
+如果两个都想修改，则使用如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
+<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
+<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
+命令会生成 <code>博客文章名称.md</code>
+文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
+，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
+名称会与新建的文件名称一致。
+但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
+，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
+和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
+一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
+安装与配置<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>Handbook</category>
       </categories>
       <tags>
-        <tag>LaTeX公式渲染</tag>
-        <tag>数学公式渲染</tag>
+        <tag>Hexo</tag>
+        <tag>个人博客</tag>
+        <tag>Hexo基本使用方法</tag>
       </tags>
   </entry>
   <entry>
@@ -221,74 +236,59 @@ Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
       </tags>
   </entry>
   <entry>
-    <title>Hexo基本用法</title>
-    <url>/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html</url>
-    <content><![CDATA[<h1 id="新建一篇博客文章">1 新建一篇博客文章</h1>
-<h2 id="新建一篇需要发布的博客文章">1.1 新建一篇需要发布的博客文章</h2>
-<p>打开命令行窗口，这里以 Git Bash 为例， Windows CMD
-同样可以进行相同操作，使用如下命令新建一篇博客文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new post 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，在个人博客项目的 <code>source/_posts</code>
-目录下会自动生成 <code>博客文章名称.md</code> 文件，如下图所示。 <img lazyload="" alt="创建一篇博客文章" data-src="../images/Hexo基本用法/image-1.png"></p>
-<p>只需再此文件中编辑需要发布的内容即可。</p>
-<h2 id="新建一篇草稿文章">1.2 新建一篇草稿文章</h2>
-<p>1.1 节中的 <code>hexo new post</code>
-命令是新建一篇马上要发布的文章，在使用发布文章命令后，此文章就会被上传到博客网站。即使此文章还未编辑完成，仍然会被发布出去，也就是说博客网站仍然能看到尚未完成的文章。所以
-Hexo 提供了草稿模式，使用如下命令就可以创建一篇草稿文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft 博客文章名称</span><br></pre></td></tr></table></figure>
-使用上述命令后，会在 <code>source</code> 目录下生成
-<code>/_drafts</code>
-目录，并将新建的文章保存进此目录中。此时再次使用发布文章命令时，此文件夹下的文章不会被更新到博客网站。
-当草稿文章完成编辑后，需要将其移至 <code>/_posts</code>
-目录下才可进行发布，使用如下命令即可将文章放入 <code>/_posts</code>
-目录中，即将草稿文章发布为正式文章： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish post 博客文章名词</span><br></pre></td></tr></table></figure></p>
-<h1 id="本地预览">2 本地预览</h1>
-<p>如果我们想在博客内容发布前先本地预览，则使用如下命令即可：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-当然，直接使用上面的命令并不会显示草稿文章。如果我们希望草稿文章也同样被预览，则可以使用如下命令：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></p>
-<h1 id="正式发布文章">3 正式发布文章</h1>
-<p>依然是在 Git Bash 中操作，使用如下命令行将更新的博客文章上传到
-github.io 仓库中。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure></p>
-<p>这里需要注意的是， <code>hexo clean &amp;&amp; hexo d -g</code>
-实际上是 2 句命令行，拆分为 <code>hexo clean</code> 和
-<code>hexo d -g</code> 分别运行也是可以的。另外， <code>hexo</code>
-命令在 Windows CMD 中同样可以运行，但是无法识别 <code>&amp;&amp;</code>
-的含义，此时就可以将其拆分为 2 条命令分别运行。</p>
-<p>运行命令后如下图所示，出现 <code>Deploy done: git</code>
-则表示发布成功。 <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-2.png"> <img lazyload="" alt="博客文件上传" data-src="../images/Hexo基本用法/image-3.png"></p>
-<h1 id="删除一篇文章">4 删除一篇文章</h1>
-<p>从本地的 <code>/_posts</code>
-文件夹中删除需要删除的文章，并执行正式发布文章的命令，即可完成文章的删除。</p>
-<h1 id="更改本地预览的-ip-地址和端口号">5 更改本地预览的 IP
-地址和端口号</h1>
-<p>如果想要主动更换 IP 地址或端口号，或者使用 <code>hexo server</code>
-命令进行本地预览时，默认情况下，预览网站是
-<code>http://localhost:4000</code> 。有时候可能会出现此地址的 IP
-地址和端口号冲突导致无法本地预览 (比如还有其他后端服务也使用此地址)
-，在执行时遇到了 <code>EADDRINUSE</code> 错误，此时需要更改 IP
-地址和端口号避免冲突发生. 可以使用如下命令更改端口号： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -p 8000</span><br></pre></td></tr></table></figure>
-可以使用如下命令更改 IP 地址： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2</span><br></pre></td></tr></table></figure>
-如果两个都想修改，则使用如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server -i 127.0.0.2 -p 8000</span><br></pre></td></tr></table></figure></p>
-<h1 id="博客文章文件名修改">6 博客文章文件名修改</h1>
-<p>在新建博客文章时使用 <code>hexo new post 博客文章名称</code>
-命令会生成 <code>博客文章名称.md</code>
-文件，并且在文件内会自动生成博客文章标题 (在博客网站上显示的标题)
-，如下所示。 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo基本用法</span><br><span class="line">date: 2025-02-03 11:02:27</span><br><span class="line">tags: [Hexo, 个人博客, Hexo基本使用方法]</span><br><span class="line">categories: [Handbook]</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 正常情况下， <code>title</code>
-名称会与新建的文件名称一致。
-但有时会在创建文章后又对文件名不满意，如果仅仅修改 <code>title</code>
-，就会造成 <code>source/_post</code> 下的文件名 oldFileName.md
-和内文标题 title 不一致的情况。 这里如果手工将 oldFilename 和 title
-一起修改，可能会出现不预期的问题。所以推荐的方法是重新新建新标题文章，然后将老博客内容复制过来，并删除老博文。</p>
-<h1 id="参考文献">参考文献</h1>
-<p><a class="link" href="https://keep-docs.xpoet.cn/">Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://hexo.io/zh-cn/docs/writing">Hexo 文档<i class="fas fa-external-link-alt"></i></a> <a class="link" href="https://easyhexo.com/1-Hexo-install-and-config/">Hexo
-安装与配置<i class="fas fa-external-link-alt"></i></a></p>
+    <title>Hexo中LaTeX数学公式渲染</title>
+    <url>/hexo%E4%B8%ADlatex%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93/index.html</url>
+    <content><![CDATA[<h1 id="概述">0 概述</h1>
+<p>在没有做过任何设置的情况下，Hexo 博客文章本身并没有支持 LaTeX
+公式渲染，也就是说 LaTeX
+公式在博客发布后的网页上并不会显示出来，仍然是以 LaTeX
+语法的形式显示。本文的目的是记录博客文章中开启 LaTeX
+公式渲染的过程。</p>
+<h1 id="步骤">1 步骤</h1>
+<h2 id="卸载原有的渲染器">1.1 卸载原有的渲染器</h2>
+<p>想要渲染 LaTeX 公式，需要替换掉原来的渲染器。 Hexo 默认的渲染器是
+<code>hexo-renderer-marked</code> ，我们需要使用如下的命令卸载此渲染器。
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装必要的工具包">1.2 安装必要的工具包</h2>
+<h3 id="本地安装-pandoc-工具包">1.2.1 本地安装 pandoc 工具包</h3>
+<p>此工具包需要先在本地安装，工具包下载地址：<a class="link" href="https://pandoc.org/getting-started.html">Pandoc<i class="fas fa-external-link-alt"></i></a>
+。安装包也可以从这里拿到：<a href="../images/Hexo中LaTeX数学公式渲染/pandoc-3.6.2-windows-x86_64.msi">Pandoc</a>
+。下载安装包后，直接安装即可。
+安装完成后需要重启电脑，否则后续的过程可能会出现问题。比如在最后使用
+<code>hexo g</code> 命令后出现 <code>pandoc exited with code null</code>
+的错误。</p>
+<h3 id="安装渲染器">1.2.2 安装渲染器</h3>
+<p>在 pandoc 本地安装完成后，再安装新的渲染器
+<code>hexo-renderer-pandoc</code> 。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装-mathjax-插件">1.2.3 安装 mathjax 插件</h3>
+<p>上述安装完成后再安装 <code>hexo-filter-mathjax</code> 插件。
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改配置文件">1.3 修改配置文件</h2>
+<p>将如下内容添加到 <code>_config.yml</code> 文件中 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">none</span> <span class="comment"># 或 'ams' 或 'all'</span></span><br><span class="line">  <span class="attr">single_dollars:</span> <span class="literal">true</span> <span class="comment"># 启用单个美元符号作为内联（行内）数学公式定界符</span></span><br><span class="line">  <span class="attr">cjk_width:</span> <span class="number">0.9</span> <span class="comment"># 相对 CJK 字符宽度</span></span><br><span class="line">  <span class="attr">normal_width:</span> <span class="number">0.6</span> <span class="comment"># 相对正常（等宽）宽度</span></span><br><span class="line">  <span class="attr">append_css:</span> <span class="literal">true</span> <span class="comment"># 将 CSS 添加到每个页面</span></span><br><span class="line">  <span class="attr">every_page:</span> <span class="literal">true</span> <span class="comment"># 如果为 true，那么无论每篇文章的前题中的 `mathjax` 设置如何，每页都将由 mathjax 呈现</span></span><br></pre></td></tr></table></figure>
+<code>every_page</code> 参数为 <code>true</code>
+表示默认每篇文章都会自动进行 LaTeX 公式渲染。如果设置为
+<code>false</code> ，则需要在需要渲染的文章开头添加
+<code>mathjax: true</code> ，如下所示，表示该文章在发布时需要被渲染。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 博客文章名词</span><br><span class="line">tags: [TAG]</span><br><span class="line">categories: [CAT]</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
+<h2 id="清理-hexo-缓存">1.4 清理 Hexo 缓存</h2>
+<p>因为修改了 <code>_config.yml</code>
+文件，因此需要让设置生效的话，需要清理 Hexo 缓存。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成静态文件">1.5 生成静态文件</h2>
+<p>最后使用如下命令生成静态文件。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客文章中的
+LaTeX 公式就可以正常渲染了。</p>
+<h1 id="其他">2 其他</h1>
+<h2 id="关于公式编号无法显示的问题">2.1 关于公式编号无法显示的问题</h2>
+<p>默认情况下， <code>_config.yml</code> 文件中 <code>tags</code>
+参数设置为 <code>none</code> ，只需要将其设置为 <code>ams</code>
+即可解决公式编号无法显示的问题。 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">ams</span></span><br></pre></td></tr></table></figure>
+设置完成后需要重新进行上面 1.4 和 1.5 小节的操作。</p>
 ]]></content>
       <categories>
         <category>Handbook</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-        <tag>个人博客</tag>
-        <tag>Hexo基本使用方法</tag>
+        <tag>LaTeX公式渲染</tag>
+        <tag>数学公式渲染</tag>
       </tags>
   </entry>
   <entry>
@@ -410,8 +410,8 @@ Density Function, PDF)</h2>
 的概念。在游戏中，Agent做出动作后，环境会给出相应的奖励，这个奖励有正面奖励也有负面奖励。比如角色执行向上走的动作，拿到宝箱，那么游戏就会给出正面奖励。如果角色执行向右走的动作，碰到敌人，角色受到伤害，那么游戏就会给出负面奖励。而在强化学习中，奖励通常都需要User自行设定，糟糕的奖励设定对强化学习算法的性能产生很大的影响。
 <strong>从奖励角度来看，强化学习的目标就是希望Agent拿到的奖励总和更高</strong>
 。因为我们并不知道环境/状态未来给予智能体的奖励是多少，因此奖励本身是具有随机性的，可以用大写字母<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.048ex;" xmlns="http://www.w3.org/2000/svg" width="1.717ex" height="1.593ex" role="img" focusable="false" viewBox="0 -683 759 704"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path></g></g></g></svg></mjx-container></span>表示奖励这个随机变量。而已经获得的奖励以及确定，所以是观测值，用小写字母<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.02ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 451 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span>表示。</p>
-<h3 id="状态转移state-treansation">状态转移(State Treansation)</h3>
-<p><strong>状态转移(state Treansation)</strong>
+<h3 id="状态转移state-transition">状态转移(State Transition)</h3>
+<p><strong>状态转移(state Transition)</strong>
 是指当Agent执行某个Action后，Old State转换为New
 State的过程。比如游戏中，角色移动后游戏画面会产生变化，状态转移可以是固定的，但通常往住是随机的，因为状态的切换与环境有关，所以状态的随机性来自于环境。比如游戏过程中，游戏画面的决定来自于游戏程序，游戏中敌人的移动可能也带有随机性。
 用数学描述状态转移就是如下公式： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true" width="full" style="min-width: 43.407ex;"><svg style="vertical-align: -0.632ex; min-width: 43.407ex;" xmlns="http://www.w3.org/2000/svg" width="100%" height="2.396ex" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(0.0181,-0.0181) translate(0, -779.5)"><g data-mml-node="math"><g data-mml-node="mtable" transform="translate(2078,0) translate(-2078,0)"><g transform="translate(0 779.5) matrix(1 0 0 -1 0 0) scale(55.25)"><svg data-table="true" preserveAspectRatio="xMidYMid" viewBox="7515 -779.5 1 1059"><g transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mlabeledtr" transform="translate(0,-29.5)"><g data-mml-node="mtd"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msup" transform="translate(892,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(502,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1638.5,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(1916.5,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(2385.5,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(2830.1,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(3359.1,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(4025.9,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5081.7,0)"><g data-mml-node="mi"><path data-c="2119" d="M16 666Q16 675 28 683H195Q334 683 370 682T437 672Q511 657 554 611T597 495Q597 343 404 309Q402 308 401 308Q381 303 319 303H261V181Q261 157 262 120Q262 60 267 50T304 36Q310 35 313 35Q352 35 352 17Q352 10 346 3L339 -1H28Q16 5 16 16Q16 35 53 35Q68 36 75 37T87 42T95 52Q98 61 98 341T95 630Q91 640 83 643T53 648Q16 648 16 666ZM235 35Q228 46 227 84Q226 129 226 337V621L230 635L237 648H128Q128 647 133 632Q136 620 136 341Q136 64 133 50L128 35H235ZM301 341H313Q339 341 354 344T389 362T417 410T426 498Q426 586 401 616T322 647Q301 647 293 643Q271 637 264 621Q261 617 261 479V341H301ZM429 350Q431 350 443 353T476 367T515 391T548 432T562 490Q562 550 524 592Q507 607 484 619Q481 621 448 635L433 639L439 621Q462 578 462 506Q462 448 454 413T437 366T428 350H429Z"></path></g></g><g data-mml-node="mo" transform="translate(5692.7,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msup" transform="translate(6081.7,0)"><g data-mml-node="mi"><path data-c="1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path></g><g data-mml-node="TeXAtom" transform="translate(729.6,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path></g></g></g><g data-mml-node="mo" transform="translate(7333.5,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(8389.3,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(8858.3,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(9136.3,0)"><path data-c="1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path></g><g data-mml-node="mo" transform="translate(10059.1,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(11114.8,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(11583.8,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(12028.5,0)"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path></g><g data-mml-node="mo" transform="translate(13056.3,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(14112.1,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(14641.1,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></g></svg><svg data-labels="true" preserveAspectRatio="xMaxYMid" viewBox="1278 -779.5 1 1059"><g data-labels="true" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mtd" id="mjx-eqn:6" transform="translate(0,720.5)"><text data-id-align="true"></text><g data-idbox="true" transform="translate(0,-750)"><g data-mml-node="mtext"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(389,0)"></path><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z" transform="translate(889,0)"></path></g></g></g></g></svg></g></g></g></g></svg></mjx-container></span></p>
