@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Feb 10 2025 22:10:15 GMT+0800">2025-02-10 22:10:15</span>
+                    <span class="datetime" data-updated="Fri Apr 25 2025 22:47:09 GMT+0800">2025-04-25 22:47:09</span>
                 </span>
             
         
@@ -428,10 +428,10 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <h1 id="进入自己的个人网站">1 进入自己的个人网站</h1>
+                         <h1 id="进入自己的个人网站">进入自己的个人网站</h1>
 <p>个人网站仓库地址： https://github.com/Tao-oooo/Tao-oooo.github.io.git
 去掉中间部分即为个人网站地址 https://tao-oooo.github.io/</p>
-<h1 id="github仓库中创建文件夹">2 Github仓库中创建文件夹</h1>
+<h1 id="github仓库中创建文件夹">Github仓库中创建文件夹</h1>
 <ol type="1">
 <li>点击Create New File</li>
 <li>输入文件夹名字</li>
@@ -440,15 +440,15 @@ mjx-container[display="true"] + br {
 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-10.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-11.png">
 因为Github不允许创建空文件，因此需要新建一个临时文件 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-12.png">
 然后点击右上角“Commit changes” <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-13.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-14.png"></p>
-<h1 id="初次使用github上传代码">3 初次使用Github上传代码</h1>
-<h2 id="在-github-上创建新的仓库">3.1 在 Github 上创建新的仓库</h2>
+<h1 id="初次使用github上传代码">初次使用Github上传代码</h1>
+<h2 id="在-github-上创建新的仓库">在 Github 上创建新的仓库</h2>
 <p>这边可以看网上的资料创建仓库。</p>
-<h2 id="安装-git-工具包">3.2 安装 Git 工具包</h2>
+<h2 id="安装-git-工具包">安装 Git 工具包</h2>
 <p>Git 工具包可以去官方网站下载，并安装。 安装完成后，Windows
 系统的开始菜单中会有 Git 软件，如下图所示： <img lazyload="" alt="Git 软件" data-src="../images/Git的使用/image-9.png"> 其中， Git Bash
 就是 Git 工具的命令行窗口，后续的 GitHub
 相关操作都会在此命令行窗口中执行。</p>
-<h2 id="在-github-上添加-ssh-key">3.3 在 Github 上添加 SSH Key</h2>
+<h2 id="在-github-上添加-ssh-key">在 Github 上添加 SSH Key</h2>
 <p>在 GitHub 上添加 SSH Key 之前需要在本地先生成 SSH Key。
 打开上面讲到的 Git Bash 命令行窗口，先使用以下命令配置一下 Git Config：
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"emile-name@email.com"</span></span><br></pre></td></tr></table></figure> <code>username</code> 和 <code>emile-name@email.com</code>
@@ -458,10 +458,9 @@ mjx-container[display="true"] + br {
 Git Bash 上可见如下的画面： <img lazyload="" alt="生成 SSH Key" data-src="../images/Git的使用/image-1.png"></p>
 <p>然后使用如下命令查看 SSH Key 的内容： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure> 内容如下： <img lazyload="" alt="查看 SSH Key" data-src="../images/Git的使用/image-2.png"></p>
 <p>最后复制上述 SSH Key 的内容，填到 Github 网站即可。</p>
-<h2 id="从本地仓库上传代码到-github-上">3.4 从本地仓库上传代码到 Github
+<h2 id="从本地仓库上传代码到-github-上">从本地仓库上传代码到 Github
 上</h2>
-<h3 id="检查是否与-github-连接成功">3.4.1 检查是否与 Github
-连接成功</h3>
+<h3 id="检查是否与-github-连接成功">检查是否与 Github 连接成功</h3>
 <p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
 <hr>
@@ -477,7 +476,7 @@ Git Bash 上可见如下的画面： <img lazyload="" alt="生成 SSH Key" data-
 <p>如果连接成功，则会提示如下信息
 (如果是第一次的会提示是否continue，输入yes即可)： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi xxxxx! You've successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
 如图所示： <img lazyload="" alt="SSH 连接成功" data-src="../images/Git的使用/image-3.png"></p>
-<h3 id="上传文件">3.4.2 上传文件</h3>
+<h3 id="上传文件">上传文件</h3>
 <p>首先进入本地仓库文件夹，如果还没有本地仓库文件夹，那么可以创建一个新的文件夹。通常的做法是，本地仓库文件夹的名称与
 GitHub 仓库名称一致。新创建的文件夹没有 Git Branch
 的概念，所以需要先创建分支。可以使用如下命令创建主分支： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
@@ -674,9 +673,8 @@ https://zhuanlan.zhihu.com/p/193140870</p>
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">1 进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">2 Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">3 初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">3.1 在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">3.2 安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-text">3.3 在 Github 上添加 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">3.4 从本地仓库上传代码到 Github
-上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">3.4.1 检查是否与 Github
-连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">3.4.2 上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-text">在 Github 上添加 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">从本地仓库上传代码到 Github
+上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">检查是否与 Github 连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 
@@ -859,9 +857,8 @@ https://zhuanlan.zhihu.com/p/193140870</p>
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">1 进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">2 Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">3 初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">3.1 在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">3.2 安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-text">3.3 在 Github 上添加 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">3.4 从本地仓库上传代码到 Github
-上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">3.4.1 检查是否与 Github
-连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">3.4.2 上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-text">在 Github 上添加 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">从本地仓库上传代码到 Github
+上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">检查是否与 Github 连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 
