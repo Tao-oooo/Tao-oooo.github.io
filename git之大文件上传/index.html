@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri May 09 2025 22:40:30 GMT+0800">2025-05-09 22:40:30</span>
+                    <span class="datetime" data-updated="Fri May 09 2025 22:54:43 GMT+0800">2025-05-09 22:54:43</span>
                 </span>
             
         
@@ -404,7 +404,7 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>268 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>415 Words</span>
             </span>
         
         
@@ -439,12 +439,19 @@ mjx-container[display="true"] + br {
 Storage，大文件存储)来解决这个问题。Git
 LFS可以简单的理解为存储大文本、视频、数据集的Git。以下是<a class="link" target="_blank" rel="noopener" href="https://git-lfs.com/">官网<i class="fas fa-external-link-alt"></i></a>的定义： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.</span><br></pre></td></tr></table></figure></p>
 <p>具体使用方法如下。</p>
-<p>首先执行如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
+<p>第一步，先要恢复到没有上传大文件的那次commit记录，否则可能出现问题。使用如下命令查看Git上传记录。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+执行命令后如下图所示，其中绿色框内的2次提交记录就是失败的提交记录，黄色框内的提交记录为我们需要回滚的版本。
+<img lazyload="" alt="image-4" data-src="../images/Git之大文件上传/image-4.png#pic_center"></p>
+<p>使用如下命令回滚到之前版本。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset commit_id</span><br></pre></td></tr></table></figure>
+执行完命令再使用<code>git log</code>查看提交记录，如下图所示，已经回滚到之前的版本。
+<img lazyload="" alt="image-5" data-src="../images/Git之大文件上传/image-5.png#pic_center"></p>
+<p>第二步，执行如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
 如果提示<code>git lfs initialized</code>则表示执行成功，如下图所示。
 <img lazyload="" alt="image-2" data-src="../images/Git之大文件上传/image-2.png#pic_center"></p>
-<p>然后执行如下命令追踪需要上传的大文件： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track <span class="string">"大文件名"</span></span><br></pre></td></tr></table></figure>
+<p>第三步，执行如下命令追踪需要上传的大文件： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track <span class="string">"大文件名"</span></span><br></pre></td></tr></table></figure>
 执行后如下图所示。 <img lazyload="" alt="image-3" data-src="../images/Git之大文件上传/image-3.png#pic_center"></p>
-<p>做完上面的事情后，接着使用常规的Git上传命令即可上传文件。
+<p>第四步，做完上面的事情后，接着使用常规的Git上传命令即可上传文件。
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"上传大文件"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
 
                     
@@ -638,7 +645,7 @@ LFS可以简单的理解为存储大文本、视频、数据集的Git。以下�
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">17.6k</span>
+                    <span class="item-value border-box word">17.7k</span>
                 </span>
             
 
