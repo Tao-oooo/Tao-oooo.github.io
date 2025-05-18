@@ -436,7 +436,7 @@ mjx-container[display="true"] + br {
 <li>点击Create New File</li>
 <li>输入文件夹名字</li>
 </ol>
-<p>输入名字后这里还是File，这时需要在名字后加上"/"，此时会自动生成文件夹
+<p>输入名字后这里还是File，这时需要在名字后加上”/“，此时会自动生成文件夹
 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-10.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-11.png">
 因为Github不允许创建空文件，因此需要新建一个临时文件 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-12.png">
 然后点击右上角“Commit changes” <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-13.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-14.png"></p>
@@ -497,7 +497,7 @@ GitHub 仓库名称一致。新创建的文件夹没有 Git Branch
 部分就是 Github 仓库的链接，如下图所示： <img lazyload="" alt="连接 GitHub 仓库地址" data-src="../images/Git的使用/image-5.png"></p>
 <p>接着使用如下命令将本地仓库中的文件加入暂存区： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
 <code>.</code> 表示将本地文件夹下所有文件都加入暂存区。 如图所示： <img lazyload="" alt="暂存区" data-src="../images/Git的使用/image-6.png"></p>
-<p>然后为本地上传文件添加注释，方便以后查看： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"20240922"</span></span><br></pre></td></tr></table></figure> "20240922"
+<p>然后为本地上传文件添加注释，方便以后查看： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"20240922"</span></span><br></pre></td></tr></table></figure> “20240922”
 就是加的注释，可以按照需求添加内容。 <img lazyload="" alt="Commit" data-src="../images/Git的使用/image-7.png"></p>
 <p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure> <img lazyload="" alt="提交" data-src="../images/Git的使用/image-8.png"></p>
