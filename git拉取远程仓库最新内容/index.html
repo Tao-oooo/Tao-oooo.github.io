@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Sep 23 2025 19:25:29 GMT+0800">2025-09-23 19:25:29</span>
+                    <span class="datetime" data-updated="Tue Sep 23 2025 20:00:18 GMT+0800">2025-09-23 20:00:18</span>
                 </span>
             
         
@@ -438,8 +438,11 @@ Bash会出现目标路径已存在的提示，如下图所示。</p>
 <h1 id="git拉取远程仓库最新内容">Git拉取远程仓库最新内容</h1>
 <p>要仅同步远程仓库的更新内容而无需重新完整克隆，可以使用如下命令完成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 仓库目录    <span class="comment"># 进入本地仓库</span></span><br><span class="line">git pull origin   <span class="comment"># 自动拉取远程最新代码并合并到当前分支</span></span><br></pre></td></tr></table></figure>
-<p>🔍 原理说明： * <code>git pull</code> = <code>git fetch</code>
-(获取远程更新) + <code>git merge</code> (合并到本地分支)</p>
+<p>🔍 原理说明：</p>
+<ul>
+<li><code>git pull</code> = <code>git fetch</code> (获取远程更新) +
+<code>git merge</code> (合并到本地分支)</li>
+</ul>
 <p>所以这种方法只会下载差异文件，传输量通常只有几十KB到几MB，并且保留完整的版本历史记录和分支信息。</p>
 <p>🔍 进阶技巧：查看远程更新内容后再合并</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin   <span class="comment"># 仅获取更新不自动合并</span></span><br><span class="line">git diff HEAD...origin/main   <span class="comment"># 查看本地与远程差异</span></span><br><span class="line">git merge origin/main   <span class="comment"># 手动合并更新</span></span><br></pre></td></tr></table></figure>
