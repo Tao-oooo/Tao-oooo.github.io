@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Wed Apr 30 2025 22:45:55 GMT+0800">2025-04-30 22:45:55</span>
+                    <span class="datetime" data-updated="Fri Sep 26 2025 22:09:59 GMT+0800">2025-09-26 22:09:59</span>
                 </span>
             
         
@@ -485,8 +485,8 @@ mjx-container[display="true"] + br {
 <li>离散化越精细，切分后的动作越多，最终导致维度灾难(Curse of
 Dimensionality)。同时，切分后网格的数量与空间维度<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.176ex" height="1.593ex" role="img" focusable="false" viewBox="0 -694 520 704"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g></g></g></svg></mjx-container></span>密切相关，<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.176ex" height="1.593ex" role="img" focusable="false" viewBox="0 -694 520 704"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g></g></g></svg></mjx-container></span>不断增加也会导致网格个数呈指数增长</li>
 </ul>
-<h1 id="确定性策略梯度deterministic-policy-gradient-dpg">确定性策略梯度(Deterministic
-Policy Gradient, DPG)</h1>
+<h1 id="确定性策略梯度deterministic-policy-gradient-dpg用于连续控制">确定性策略梯度(Deterministic
+Policy Gradient, DPG)用于连续控制</h1>
 <p>DPG[1][2]是一种可以用于连续动作空间的方法。DPG最早在2014年被提出，在2016年被应用于神经网络上，被称为DDPG。DPG是一种Actor-Critic方法，因此由Policy
 Network和Value Network两个网络组成，如下图所示。</p>
 <table>
@@ -750,8 +750,8 @@ learning. In ICLR, 2016.</p>
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%8E%A7%E5%88%B6%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">离散控制和连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6deterministic-policy-gradient-dpg"><span class="nav-text">确定性策略梯度(Deterministic
-Policy Gradient, DPG)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%8E%A7%E5%88%B6%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">离散控制和连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6deterministic-policy-gradient-dpg%E7%94%A8%E4%BA%8E%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">确定性策略梯度(Deterministic
+Policy Gradient, DPG)用于连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 
@@ -786,7 +786,7 @@ Policy Gradient, DPG)</span></a></li><li class="nav-item nav-level-1"><a class="
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">24.8k</span>
+                    <span class="item-value border-box word">25.8k</span>
                 </span>
             
 
@@ -934,8 +934,8 @@ Policy Gradient, DPG)</span></a></li><li class="nav-item nav-level-1"><a class="
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%8E%A7%E5%88%B6%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">离散控制和连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6deterministic-policy-gradient-dpg"><span class="nav-text">确定性策略梯度(Deterministic
-Policy Gradient, DPG)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%8E%A7%E5%88%B6%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">离散控制和连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6deterministic-policy-gradient-dpg%E7%94%A8%E4%BA%8E%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6"><span class="nav-text">确定性策略梯度(Deterministic
+Policy Gradient, DPG)用于连续控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
     </div>
 </div>
 
