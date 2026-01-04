@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Tao-oooo">
+    
+    <title>
+        
+            Hexo警示块 |
+        
+        Tao-oooo
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo/Tao-oooo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+        
+            
+                
+<link rel="stylesheet" href="/css/admonition.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"tao-oooo.github.io","root":"/","language":"en","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Tao-oooo","author":"Tao-oooo","avatar":"/images/logo/Tao-oooo.png","logo":"/images/logo/Tao-oooo.png","favicon":"/images/logo/Tao-oooo.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"道可道 非常道 || 名可名 非常名","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/admonition.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo/Tao-oooo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Tao-oooo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+
+<div class="fade-in-down-animation">
+    <div class="page-template-container border-box keep-container ">
+        <!-- page top -->
+        
+
+        <!-- page bottom -->
+        <div class="page-template-bottom border-box">
+            <!-- use page template -->
+            
+
+            <!-- page content -->
+            <div class="page-content border-box keep-markdown-body ">
+                
+                    <h1 id="概述">概述</h1>
+<p>Hexo警示块是指让Hexo博客能够支持渲染Markdown中的警示块功能，如下图所示。
+<img lazyload="" alt="图一" data-src="../images/Hexo警示块/image-1.png"></p>
+<h1 id="安装步骤">安装步骤</h1>
+<h2 id="安装hexo-admonition插件">安装hexo-admonition插件</h2>
+<p>第一步是安装Hexo内容辅助插件<code>hexo-admonition</code>，安装命令如下：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-admonition --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置样式">配置样式</h2>
+<h3 id="配置css样式">配置css样式</h3>
+<p>首先，我们先在<code>source/</code>目录下新建文件夹<code>css</code>，然后在<code>css</code>文件夹下新建<code>css样式文件</code>，可以命名为<code>admonition.css</code>。
+其次，将下述代码放到<code>admonition.css</code>中，当然，可以修改代码中的参数来定制自己想要的样式。
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.admonition</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1.5625em</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    <span class="attribute">border-left</span>: .<span class="number">3rem</span> solid <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: .<span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0.1rem</span> <span class="number">0.4rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">05</span>), <span class="number">0</span> <span class="number">0</span> <span class="number">0.05rem</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fafafa</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">p</span><span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">margin</span>: -.<span class="number">6rem</span> -.<span class="number">6rem</span> .<span class="number">8em</span> -.<span class="number">6rem</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">padding</span>: .<span class="number">4rem</span> .<span class="number">6rem</span> .<span class="number">4rem</span> <span class="number">2.5rem</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="built_in">rgba</span>(<span class="number">66</span>, <span class="number">185</span>, <span class="number">131</span>, .<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: .<span class="number">9rem</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#42b983</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">184</span>,<span class="number">212</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">145</span>,<span class="number">0</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span>, <span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">82</span>,<span class="number">82</span>,.<span class="number">1</span>);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.info</span>, <span class="selector-class">.admonition</span><span class="selector-class">.todo</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.warning</span>, <span class="selector-class">.admonition</span><span class="selector-class">.attention</span>, <span class="selector-class">.admonition</span><span class="selector-class">.caution</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span><span class="selector-class">.failure</span>, <span class="selector-class">.admonition</span><span class="selector-class">.missing</span>, <span class="selector-class">.admonition</span><span class="selector-class">.fail</span>, <span class="selector-class">.admonition</span><span class="selector-class">.error</span> {</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#ff5252</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.info</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.todo</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#00b8d4</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.warning</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.attention</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.caution</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff9100</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.failure</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.missing</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.fail</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>,<span class="selector-class">.error</span>&gt;<span class="selector-class">.admonition-title</span><span class="selector-pseudo">::before</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff5252</span>;;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.admonition</span>&gt;<span class="selector-pseudo">:last-child</span> {</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置keep.yml文件">配置keep.yml文件</h3>
+<p>配置css样式之后还不能被直接使用，需要在<code>source/_data/keep.yml</code>中配置之后才可被真正使用。从<code>keep.yml</code>中找到如下代码：
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># Option values: true | false</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/css/admonition.css</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /css/custom-1.css</span></span><br><span class="line">      <span class="comment"># - /css/custom-2.css</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span></span><br><span class="line">      <span class="comment"># e.g.</span></span><br><span class="line">      <span class="comment"># - /js/custom-1.js</span></span><br><span class="line">      <span class="comment"># - /js/custom-2.js</span></span><br><span class="line">    <span class="comment"># - ...</span></span><br></pre></td></tr></table></figure>
+在<code>css</code>那一栏填上<code>- /css/admonition.css</code>，这一步表示将样式添加到主体中。</p>
+<h2 id="清理hexo缓存及生成静态文件">清理Hexo缓存及生成静态文件</h2>
+<p>因为<code>keep.yml</code>被改动，所以保险起见还需要重新清理Hexo缓存及生成静态文件，使用如下2条命令即可。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure> 到这里，博客应该就可以渲染Markdown警示块的效果了。</p>
+<h1 id="警示块markdown语法">警示块Markdown语法</h1>
+<p>警示块的Markdown语法如下样例所示： <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!! note 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure></p>
+<div class="admonition note">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!! warning 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!! error 警示块标题</span><br><span class="line"><span class="code">    这是一个警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition error">
+<p class="admonition-title">
+警示块标题
+</p>
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!! warning ""</span><br><span class="line"><span class="code">    这是一个没有标题的警示块</span></span><br></pre></td></tr></table></figure>
+<div class="admonition warning">
+<p>
+这是一个没有标题的警示块
+</p>
+</div>
+<hr>
+<p>还有一些其他的警示块类型可以看<a class="link" target="_blank" rel="noopener" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">reStructuredText
+Directives<i class="fas fa-external-link-alt"></i></a>进行查看。</p>
+<p>这里需要注意的是，为了让警示块能够尽可能的正常显示，警示块部分前后最好有空行，否则可能会失效。</p>
+
+                
+            </div>
+
+            <!-- comment plugin -->
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Tao-oooo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">43.6k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+    
+        
+    
+
+</body>
+</html>
