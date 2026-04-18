@@ -362,7 +362,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Apr 18 2026 22:14:08 GMT+0800">2026-04-18 22:14:08</span>
+                    <span class="datetime" data-updated="Sat Apr 18 2026 22:29:15 GMT+0800">2026-04-18 22:29:15</span>
                 </span>
             
         
@@ -688,7 +688,7 @@ Prompts并采用Rejection Sampling <strong>生成推理数据</strong></li>
 </ul>
 <p>同时，为了避免再次出现语言混合、可读性差的问题，奖励函数再次引入
 <strong>语言一致性奖励</strong> ，所以，这一阶段的奖励函数如下：</p>
-<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="727.602ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 321600 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="merror" data-mjx-error="'_' allowed only in math mode" title="'_' allowed only in math mode"><rect data-background="true" width="321600" height="950" y="-200"></rect><title>'_' allowed only in math mode</title><g data-mml-node="mtext" style="font-family: serif;"><text data-variant="-explicitFont" transform="scale(1,-1)" font-size="884px"> \begin{equation} \tag{8} \label{8}    \begin{aligned}       Reward &amp;= \textcolor{red}{Reward_\text{reasoning}} + \textcolor{blue}{Reward_\text{general}} + Reward_\text{language} \\       &amp;= \textcolor{red}{Reward_\text{rule}} + \textcolor{blue}{Reward_\text{reward_model} + Reward_{\text{format}}} + Reward_\text{language} \\       &amp;= \textcolor{red}{Reward_\text{acc} + Reward_\text{format}} + \textcolor{blue}{Reward_\text{reward_model} + Reward_{\text{format}}} + Reward_\text{language}    \end{aligned} \end{equation} </text></g></g></g></g></svg></mjx-container></span></p>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="809.05ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 357600 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="merror" data-mjx-error="'_' allowed only in math mode" title="'_' allowed only in math mode"><rect data-background="true" width="357600" height="950" y="-200"></rect><title>'_' allowed only in math mode</title><g data-mml-node="mtext" style="font-family: serif;"><text data-variant="-explicitFont" transform="scale(1,-1)" font-size="884px"> \begin{equation} \tag{8} \label{8}    \begin{aligned}       Reward &amp;= \textcolor{red}{Reward_\text{reasoning}} + \textcolor{blue}{Reward_\text{general}} + Reward_\text{language} \\       &amp;= \textcolor{red}{Reward_\text{rule}} + \textcolor{blue}{          Reward_{\text{reward_model}} + Reward_{\text{format}}       } + Reward_\text{language} \\       &amp;= \textcolor{red}{          Reward_{text{acc}} + Reward_{\text{format}}       } + \textcolor{blue}{          Reward_{\text{reward_model}} + Reward_{\text{format}}       } + Reward_\text{language}    \end{aligned} \end{equation} </text></g></g></g></g></svg></mjx-container></span></p>
 <p>这一部分的强化学习细节可见<a href="#second-rl-stage-的训练细节">Second RL Stage
 的训练细节</a>，经过这个阶段后的模型就是DeepSeek-R1。</p>
 <h2 id="基于模型的奖励函数">基于模型的奖励函数</h2>
