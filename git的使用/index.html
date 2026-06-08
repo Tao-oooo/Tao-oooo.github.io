@@ -156,17 +156,74 @@ mjx-container[display="true"] + br {
 
 
 <body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
+.progress-bar-container {
+  position fixed
+  top 0
+  left 0
+  z-index $z-index-9
+  width 100%
 
-    
-        <span class="pjax-progress-bar"></span>
-        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
-    
-</div>
+  if (hexo-config('pjax') && hexo-config('pjax.enable') == true) {
 
+    .pjax-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-8
+      width 0
+      height 2px
+      background var(--pjax-progress-bar-color)
+      visibility hidden
+      opacity 0
+      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
+
+
+      &.show {
+        visibility visible
+        opacity 1
+      }
+    }
+
+
+    .pjax-progress-icon {
+      position absolute
+      top 0.4rem
+      right 0.3rem
+      z-index $z-index-8
+      color var(--text-color-3)
+      font-size 1.1rem
+      visibility hidden
+
+      +keep-tablet() {
+        top 0.3rem
+        right 0.2rem
+        font-size 1rem
+      }
+
+      &.show {
+        visibility visible
+      }
+    }
+  }
+
+  if (hexo-config('scroll') && hexo-config('scroll.progress_bar') == true) {
+    .scroll-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-7
+      width 0
+      height var(--header-scroll-progress-bar-height)
+      background var(--primary-color)
+      visibility hidden
+      transition-t("width", "0", "0.1", "linear")
+
+      &.hide {
+        display none !important
+      }
+    }
+  }
+}
 
 
 <main class="page-container border-box">
@@ -176,141 +233,586 @@ mjx-container[display="true"] + br {
     <!-- page content -->
     <div class="page-main-content border-box">
         <div class="page-main-content-top">
-            
-<header class="header-wrapper">
+            $pc-search-icon-font-size = 1.5rem
+$menu-bar-line-height = 2.5px
+$menu-icon-gap = 0.1rem
+$pc-menu-item-gap = 1.8rem
+$mobile-menu-item-gap = 1.2rem
+$logo-image-box-width = 2.68rem
+$mobile-menu-icon-wrap-width = 1.6rem
+$mobile-menu-icon-wrap-margin = 0.4rem
 
-    <div class="border-box header-content">
-        <div class="left flex-start border-box">
-            
-                <a class="logo-image border-box" href="/">
-                    <img src="/images/logo/Tao-oooo.png">
-                </a>
-            
-            <a class="site-name border-box" href="/">
-               Tao-oooo
-            </a>
-        </div>
 
-        <div class="right border-box">
-            <div class="pc border-box">
-                <ul class="menu-list border-box">
-                    
-                        
-                        <li class="menu-item flex-start border-box">
-                            <a class="menu-text-color border-box" href="/">
-                                
-                                HOME
-                                
-                            </a>
-                            
-                        </li>
-                    
-                        
-                        <li class="menu-item flex-start border-box">
-                            <a class="menu-text-color border-box" href="/archives">
-                                
-                                ARCHIVES
-                                
-                            </a>
-                            
-                        </li>
-                    
-                        
-                        <li class="menu-item flex-start border-box">
-                            <a class="menu-text-color border-box" href="/tags">
-                                
-                                TAGS
-                                
-                            </a>
-                            
-                        </li>
-                    
-                        
-                        <li class="menu-item flex-start border-box">
-                            <a class="menu-text-color border-box" href="/categories">
-                                
-                                CATEGORIES
-                                
-                            </a>
-                            
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="menu-text-color fas search fa-search"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="mobile border-box flex-start">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+.header-wrapper {
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  width 100%
+  height 100%
+  padding-top var(--header-scroll-progress-bar-height)
+  background var(--background-color-1)
+  box-shadow 1px 2px 6px var(--shadow-color)
 
-    <div class="header-drawer">
-        <ul class="drawer-menu-list border-box">
-            
-                
-                <li class="drawer-menu-item border-box not-sub-menu">
-                    <label class="drawer-menu-label border-box">
-                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
-                            
-                            HOME
-                        </a>
-                        
-                    </label>
-                    
-                </li>
-            
-                
-                <li class="drawer-menu-item border-box not-sub-menu">
-                    <label class="drawer-menu-label border-box">
-                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
-                            
-                            ARCHIVES
-                        </a>
-                        
-                    </label>
-                    
-                </li>
-            
-                
-                <li class="drawer-menu-item border-box not-sub-menu">
-                    <label class="drawer-menu-label border-box">
-                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
-                            
-                            TAGS
-                        </a>
-                        
-                    </label>
-                    
-                </li>
-            
-                
-                <li class="drawer-menu-item border-box not-sub-menu">
-                    <label class="drawer-menu-label border-box">
-                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
-                            
-                            CATEGORIES
-                        </a>
-                        
-                    </label>
-                    
-                </li>
-            
-        </ul>
-    </div>
+  &:hover {
+    box-shadow 1px 2px 10px var(--shadow-hover-color)
+  }
 
-    <div class="window-mask"></div>
 
-</header>
+  .header-content {
+    z-index $z-index-5
+    display flex
+    flex-direction row
+    align-items center
+    justify-content space-between
+    width var(--page-content-width)
+    max-width var(--page-content-max-width)
+    height 100%
+    transition-t("max-width, width", "0, 0", "0.1, 0.1", "ease, ease")
 
+    &.has-first-screen {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    .has-toc & {
+      max-width var(--page-content-max-width-2)
+    }
+
+
+    +keep-tablet() {
+      width var(--page-content-width-tablet)
+    }
+
+
+    +keep-mobile() {
+      width var(--page-content-width-mobile)
+    }
+
+
+    .left {
+      height 100%
+      font-size 2rem
+
+      transition-t("transform, transform-origin", "0, 0", "0.2, 0.2", "linear, linear")
+
+      .header-shrink & {
+        transform scale(0.78)
+        transform-origin left
+      }
+
+
+      if (hexo-config('base_info') && hexo-config('base_info.logo')) {
+        .logo-image {
+          flex-shrink 0
+          width $logo-image-box-width
+          height $logo-image-box-width
+          margin-right 0.5rem
+
+
+          +keep-tablet() {
+            width $logo-image-box-width * 0.9
+            height $logo-image-box-width * 0.9
+          }
+
+
+          +keep-mobile() {
+            width $logo-image-box-width * 0.8
+            height $logo-image-box-width * 0.8
+          }
+
+
+          img {
+            width 100%
+            border-radius 0.4rem
+          }
+        }
+      }
+
+
+      .site-name {
+        color var(--text-color-1)
+        font-weight 600
+        font-size var(--header-title-font-size)
+        font-family var(--header-title-font-family)
+        line-height 1
+        letter-spacing 1px
+
+        +keep-tablet() {
+          font-size calc(var(--header-title-font-size) * 0.9)
+        }
+
+
+        +keep-mobile() {
+          font-size calc(var(--header-title-font-size) * 0.8)
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            color var(--first-screen-header-font-color-light)
+            filter brightness(92%)
+
+            .dark-mode & {
+              color var(--first-screen-header-font-color-dark)
+              filter brightness(106%)
+            }
+          }
+        }
+
+
+        .show-header-drawer & {
+          color var(--text-color-1) !important
+        }
+      }
+    }
+
+
+    .right {
+      .pc {
+        .menu-list {
+          display flex
+          gap $pc-menu-item-gap
+          align-items center
+
+          +keep-tablet() {
+            display none
+          }
+
+
+          .menu-item {
+            font-size 1rem
+            cursor pointer
+
+            &.search {
+              font-size $pc-search-icon-font-size
+              &::before {
+                display none !important
+              }
+            }
+
+
+            .menu-text-color {
+              color var(--text-color-3)
+            }
+
+
+            &::before {
+              position absolute
+              bottom -10px
+              left 50%
+              box-sizing border-box
+              width 0
+              height 2.6px
+              background var(--primary-color)
+              border-radius 3px
+              transform translateX(-50%)
+              content ''
+              transition-t("transform, bottom, width", "0, 0, 0", "0.2, 0.2, 0.2", "linear, linear, ease")
+
+              .header-shrink & {
+                bottom calc(-1 * calc(var(--header-shrink-height) * 0.5 - 12px))
+              }
+            }
+
+
+            &:hover
+            &.active {
+              &::before {
+                width 100%
+              }
+            }
+
+
+            .menu-icon {
+              display var(--header-menu-icon)
+              margin-right $menu-icon-gap
+            }
+
+
+            .is-home & {
+              if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+                .menu-text-color {
+                  color var(--first-screen-header-font-color-light)
+                }
+
+
+                .dark-mode & {
+                  .menu-text-color {
+                    color var(--first-screen-header-font-color-dark)
+                  }
+                }
+              }
+            }
+
+
+            &.has-sub-menu {
+              &::after {
+                position absolute
+                bottom 0
+                left 0
+                box-sizing border-box
+                width 100%
+                height 100%
+                content ''
+              }
+
+              &:hover {
+                &::after {
+                  bottom -100%
+                }
+
+                .collapse-icon {
+                  transform rotate(180deg)
+                }
+
+                .sub-menu-list {
+                  display flex
+                }
+              }
+            }
+
+
+            .collapse-icon {
+              margin-left $menu-icon-gap
+              transition-t("transform", "0", "0.3", "ease")
+            }
+          }
+
+
+          .sub-menu-list {
+            position absolute
+            bottom -280%
+            left 50%
+            display none
+            gap $pc-menu-item-gap
+            justify-content flex-start
+            box-sizing border-box
+            padding 0.8rem 1.6rem
+            background var(--background-color-1)
+            border-radius 0.6rem
+            box-shadow 0 0 8px var(--shadow-color)
+            transform translateX(-50%)
+
+            .sub-menu-item {
+              white-space nowrap
+
+              .menu-text-color {
+                color var(--text-color-3) !important
+              }
+
+              &:hover
+              &.active {
+                .menu-text-color {
+                  color var(--primary-color) !important
+                }
+              }
+
+              .sub-menu-icon {
+                display var(--header-menu-icon)
+                margin-right $menu-icon-gap * 4
+              }
+            }
+          }
+        }
+      }
+
+
+      .mobile {
+        gap 1rem
+
+        .icon-item {
+          position relative
+          display none
+          width 20px
+          height 20px
+          color var(--text-color-3)
+          font-size 1.2rem
+          cursor pointer
+
+          i {
+            color var(--text-color-3)
+
+            .show-header-drawer & {
+              color var(--text-color-3) !important
+            }
+
+            .reset-color & {
+              color var(--text-color-3) !important
+            }
+          }
+
+
+          +keep-tablet() {
+            display flex
+            align-items center
+            justify-content center
+          }
+        }
+
+
+        .menu-bar {
+          .menu-bar-middle {
+            position relative
+            width 18px
+            height $menu-bar-line-height
+            background var(--text-color-3)
+
+            &::before
+            &::after {
+              position absolute
+              left 0
+              width 100%
+              height $menu-bar-line-height
+              background var(--text-color-3)
+              content ''
+              transition-t("transform", "0", "0.38", "ease")
+            }
+
+
+            &::before {
+              top -6px
+
+              .show-header-drawer & {
+                transform translateY(6px) rotate(45deg)
+              }
+            }
+
+
+            &::after {
+              bottom -6px
+
+              .show-header-drawer & {
+                transform translateY(-6px) rotate(-45deg)
+              }
+            }
+
+
+            .reset-color & {
+              background var(--text-color-3) !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+
+
+            .show-header-drawer & {
+              background transparent !important
+
+              &::before
+              &::after {
+                background var(--text-color-3) !important
+              }
+            }
+          }
+        }
+
+
+        .is-home & {
+          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
+            .icon-item i {
+              color var(--first-screen-header-font-color-light)
+            }
+
+            .menu-bar .menu-bar-middle {
+              background var(--first-screen-header-font-color-light)
+
+              &::before
+              &::after {
+                background var(--first-screen-header-font-color-light)
+              }
+            }
+
+            .dark-mode & {
+              .icon-item i {
+                color var(--first-screen-header-font-color-dark)
+              }
+
+              .menu-bar .menu-bar-middle {
+                background var(--first-screen-header-font-color-dark)
+
+                &::before
+                &::after {
+                  background var(--first-screen-header-font-color-dark)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .header-drawer {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-2
+    display none
+    justify-content center
+    box-sizing border-box
+    width 100%
+    padding var(--header-height) 0 2rem 0
+    background var(--background-color-1)
+    transform scaleY(0)
+    transform-origin top
+    transition-t("transform", "0", "0.38", "ease")
+
+    +keep-tablet() {
+      display flex
+    }
+
+
+    .show-header-drawer & {
+      transform scaleY(1)
+    }
+
+
+    .drawer-menu-list {
+      display flex
+      flex-direction column
+      gap 1.2rem
+      align-items flex-start
+      justify-content flex-start
+      width var(--page-content-width)
+      max-width var(--page-content-max-width)
+      height 100%
+      margin-top 1rem
+
+      +keep-tablet() {
+        width var(--page-content-width-tablet)
+      }
+
+
+      +keep-mobile() {
+        width var(--page-content-width-mobile)
+      }
+
+
+      .drawer-menu-item {
+        width 100%
+        padding 0.6rem 0
+        font-size 1.06rem
+        border-bottom 0.1rem solid var(--background-color-3)
+
+        &.active {
+          .drawer-menu-label {
+            .drawer-menu-text-color {
+              color var(--primary-color)
+            }
+          }
+        }
+
+
+        &.show-sub-menu {
+          .collapse-icon {
+            transform rotate(-90deg)
+          }
+
+
+          .drawer-sub-menu-list {
+            display flex
+            height auto
+          }
+        }
+
+
+        .drawer-menu-label {
+          display flex
+          align-items center
+          justify-content space-between
+          width 100%
+
+          .left-side {
+            width 100%
+
+            .menu-icon-wrap {
+              display var(--header-menu-icon)
+              width $mobile-menu-icon-wrap-width
+              margin-right $mobile-menu-icon-wrap-margin
+            }
+          }
+
+
+          .right-side {
+            margin-left 0.4rem
+            cursor pointer
+            transition-t("transform", "0", "0.2", "ease")
+          }
+        }
+      }
+
+
+      .drawer-sub-menu-list {
+        position relative
+        display none
+        flex-direction column
+        justify-content flex-start
+        box-sizing border-box
+        width 100%
+        height 0
+        padding-top 0.6rem
+        padding-bottom 0.6rem
+        padding-left $mobile-menu-icon-wrap-width
+        transition-t("display, height", "0, 0", "0.2, 0.2", "linear, linear")
+        disable-user-select()
+
+        .sub-menu-item {
+          margin-top 1rem
+          padding 0.6rem 0
+
+          &.active {
+            a
+            a i {
+              color var(--primary-color)
+            }
+          }
+
+
+          .sub-menu-icon-wrap {
+            display var(--header-menu-icon)
+            width $mobile-menu-icon-wrap-width
+            margin-right $mobile-menu-icon-wrap-margin
+          }
+        }
+      }
+    }
+  }
+
+
+  .window-mask {
+    position absolute
+    top 0
+    left 0
+    z-index $z-index-1
+    display none
+    box-sizing border-box
+    width 100%
+    height 100vh
+    background rgba(0, 0, 0, 0.4)
+    visibility hidden
+    opacity 0
+    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
+
+    +keep-tablet() {
+      display block
+    }
+
+
+    .show-header-drawer & {
+      visibility visible
+      opacity 1
+    }
+  }
+}
+
+
+.show-header-drawer {
+  overflow hidden
+}
 
         </div>
 
@@ -319,375 +821,444 @@ mjx-container[display="true"] + br {
             <div class="main-content border-box">
                 
 
-                    
-<div class="fade-in-down-animation">
-    <div class="post-page-container border-box">
-        <div class="post-content-container border-box">
-            
+                    @import "../../common/stylus-variables.styl"
 
-            <div class="post-content-bottom border-box">
-                
-                    <div class="post-title">
-                        Git的使用
-                    </div>
-                
-
-                
-                    <div class="post-header border-box">
-                        
-                            <div class="avatar-box border-box">
-                                <img src="/images/logo/Tao-oooo.png">
-                            </div>
-                        
-                        <div class="info-box">
-                            <div class="author border-box">
-                                <span class="name">Tao-oooo</span>
-                                
-                                    <span class="author-badge">Lv4</span>
-                                
-                            </div>
-                            <div class="meta-info border-box">
-                                
-
-<div class="post-meta-info-container border-box post">
-    <div class="post-meta-info border-box">
-        
-
-        
-            <span class="meta-info-item post-create-date">
-                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-01-27 11:17:58</span>
-            </span>
-
-            
-                <span class="meta-info-item post-update-date">
-                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Jul 19 2025 16:08:11 GMT+0800">2025-07-19 16:08:11</span>
-                </span>
-            
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/Handbook/">Handbook</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Git/">Git</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub/">GitHub</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Git%E7%9A%84%E4%BD%BF%E7%94%A8/">Git的使用</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub%E4%B8%8A%E4%BC%A0/">GitHub上传</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-            <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
-            </span>
-        
-        
-            <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>5 Mins</span>
-            </span>
-        
-        
-            <span class="meta-info-item post-pv">
-                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-            </span>
-        
-    </div>
-
-    
-</div>
-
-                            </div>
-                        </div>
-                    </div>
-                
-
-                <div class="post-content keep-markdown-body ">
-                    
-
-                    
-                         <h1 id="进入自己的个人网站">进入自己的个人网站</h1>
-<p>个人网站仓库地址： https://github.com/Tao-oooo/Tao-oooo.github.io.git
-去掉中间部分即为个人网站地址 https://tao-oooo.github.io/</p>
-<h1 id="github仓库中创建文件夹">Github仓库中创建文件夹</h1>
-<ol type="1">
-<li>点击Create New File</li>
-<li>输入文件夹名字</li>
-</ol>
-<p>输入名字后这里还是File，这时需要在名字后加上”/“，此时会自动生成文件夹
-<img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-10.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-11.png">
-因为Github不允许创建空文件，因此需要新建一个临时文件 <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-12.png">
-然后点击右上角“Commit changes” <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-13.png"> <img lazyload="" alt="创建文件夹" data-src="../images/Git的使用/image-14.png"></p>
-<h1 id="初次使用github上传代码">初次使用Github上传代码</h1>
-<h2 id="在-github-上创建新的仓库">在 Github 上创建新的仓库</h2>
-<p>这边可以看网上的资料创建仓库。</p>
-<h2 id="安装-git-工具包">安装 Git 工具包</h2>
-<p>Git 工具包可以去官方网站下载，并安装。 安装完成后，Windows
-系统的开始菜单中会有 Git 软件，如下图所示： <img lazyload="" alt="Git 软件" data-src="../images/Git的使用/image-9.png"> 其中， Git Bash
-就是 Git 工具的命令行窗口，后续的 GitHub
-相关操作都会在此命令行窗口中执行。</p>
-<h2 id="本地生成-ssh-key">本地生成 SSH Key</h2>
-<p>在 GitHub 上添加 SSH Key 之前需要在本地先生成 SSH Key。
-打开上面讲到的 Git Bash 命令行窗口，先使用以下命令配置一下 Git Config：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"emile-name@email.com"</span></span><br></pre></td></tr></table></figure> <code>username</code> 和 <code>emile-name@email.com</code>
-的信息要与 Github 上申请的账号一致。</p>
-<p>然后通过以下命令生成 SSH Key： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"emile-name@email.com"</span></span><br></pre></td></tr></table></figure> 这里的邮箱也要与 Github
-上的一致，使用此命令后，如果不需要做其他特殊设置的话可以一路回车到底，最后
-Git Bash 上可见如下的画面： <img lazyload="" alt="生成 SSH Key" data-src="../images/Git的使用/image-1.png"></p>
-<p>有时候，这一步可能会出现下图所示的生成失败的情况，这个时候可以使用管理员打开CMD，将上述命令在CMD中执行即可。
-<img lazyload="" alt="image-15" data-src="../images/Git的使用/image-15.png"></p>
-<p>然后回到Git Bash中使用如下命令查看 SSH Key 的内容： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-内容如下： <img lazyload="" alt="查看 SSH Key" data-src="../images/Git的使用/image-2.png"></p>
-<p>最后复制上述 SSH Key 的内容，填到 Github 网站即可。</p>
-<h2 id="在github上添加ssh-key">在GitHub上添加SSH Key</h2>
-<p>接下来登录GitHub，点击右上角账户，选择<code>settings</code>进入<code>SSH and GPG keys</code>页面。然后点击<code>Add SSH Key</code>，填上Title(如果有多个的话最好起一个有意义的名字)，接着在Key文本框中粘贴上面的SSH
-Key。</p>
-<h2 id="从本地仓库上传代码到-github-上">从本地仓库上传代码到 Github
-上</h2>
-<h3 id="检查是否与-github-连接成功">检查是否与 Github 连接成功</h3>
-<p>添加 SSH Key 后，在 Git Bash 中输入如下命令查看是否成功连接 Github：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>有时候可能会出现报如下错误的情况
-[https://zhuanlan.zhihu.com/p/521340971]，
-<code>ssh: connect to host github.com port 22: Connection refused</code>
-这个错误提示的是连接 <code>github.com</code>
-的22端口被拒绝了。此时可以尝试连接 443 端口，做法是修改 SSH
-的配置文件。在 Git Bash 中使用 vim 命令打开 config： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
-然后再config文件中输入如下文本： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure> 然后输入如下命令保存退出
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure> 回车后即可保存，再次检验是否连接成功 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>如果连接成功，则会提示如下信息
-(如果是第一次的会提示是否continue，输入yes即可)： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi xxxxx! You've successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
-如图所示： <img lazyload="" alt="SSH 连接成功" data-src="../images/Git的使用/image-3.png"></p>
-<h3 id="上传文件">上传文件</h3>
-<p>首先进入本地仓库文件夹，如果还没有本地仓库文件夹，那么可以创建一个新的文件夹。通常的做法是，本地仓库文件夹的名称与
-GitHub 仓库名称一致。新创建的文件夹没有 Git Branch
-的概念，所以需要先创建分支。可以使用如下命令创建主分支： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-完成后会在文件夹后面显示主分支名，如图中红框所示： <img lazyload="" alt="创建主分支" data-src="../images/Git的使用/image-4.png">
-<code>master</code> 就是主分支名字，最新版的 GitHub 主分支名变成了
-<code>main</code> ，但两者其实是一个意思。</p>
-<p>如果我们从 GitHub 上手动下载了项目文件夹 (非 <code>git clone</code>
-的方式下载的项目) ，那么此文件夹同样会没有分支名称。所以使用 Git Bash
-进入项目文件夹时并不会显示 <code>master</code> 或 <code>main</code>
-之类的分支名称。此时如果希望将修改后的项目代码上传到 GitHub
-，那么同样需要使用上述命令创建分支。为了避免出现未知问题，建议使用
-<code>git clone</code> 命令拉取项目代码，而非使用手动下载的方式。使用
-<code>git clone</code>
-拉取的项目文件夹会将整个项目的代码更新状态统一保存，方便后续查看。</p>
-<p>一种简单的查看项目文件夹是否创建分支的方法：打开隐藏文件可视化，如果项目文件夹中出现
-<code>.git</code> 文件夹，则说明此项目有分支信息，否则无分支信息。</p>
-<p>然后使用如下命令与 Github 上新建项目连接： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin xxx</span><br></pre></td></tr></table></figure> xxx
-部分就是 Github 仓库的链接，如下图所示： <img lazyload="" alt="连接 GitHub 仓库地址" data-src="../images/Git的使用/image-5.png"></p>
-<p>接着使用如下命令将本地仓库中的文件加入暂存区： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<code>.</code> 表示将本地文件夹下所有文件都加入暂存区。 如图所示： <img lazyload="" alt="暂存区" data-src="../images/Git的使用/image-6.png"></p>
-<p>然后为本地上传文件添加注释，方便以后查看： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"20240922"</span></span><br></pre></td></tr></table></figure> “20240922”
-就是加的注释，可以按照需求添加内容。 <img lazyload="" alt="Commit" data-src="../images/Git的使用/image-7.png"></p>
-<p>最后就可以提交本地文件到 Github 新建项目中了，使用如下命令：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure> <img lazyload="" alt="提交" data-src="../images/Git的使用/image-8.png"></p>
-<h1 id="参考文献">参考文献</h1>
-<p>https://zhuanlan.zhihu.com/p/138305054
-https://zhuanlan.zhihu.com/p/193140870</p>
-
-                    
-                </div>
-
-                
-                        
-<div class="post-copyright-info-container border-box">
-    <div class="copyright-info-content border-box">
-        <div class="copyright-info-top border-box">
-            <div class="copyright-post-title border-box text-ellipsis">
-                Git的使用
-            </div>
-
-            <div class="copyright-post-link border-box text-ellipsis">
-                git的使用/index.html
-            </div>
-        </div>
-
-        <div class="copyright-info-bottom border-box">
-            <div class="copyright-post-author bottom-item">
-                <div class="type">
-                    Author
-                </div>
-                <div class="content">Tao-oooo</div>
-            </div>
-
-            <div class="post-time bottom-item">
-                <div class="type">
-                    Published
-                </div>
-                <div class="content">2025-01-27 11:17</div>
-            </div>
+$avatar-width = 3.2rem
+$arrow-icon-width = 1rem
+$post-nav-max-width = 14rem
+$post-title-font-size = 1.6rem
+$toc-container-width = 15rem
+$spacer-padding = 2rem
 
 
-            <div class="post-license bottom-item">
-                <div class="type">
-                    License
-                </div>
-                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
-                        
-                            <i class="fa-brands fa-creative-commons"></i>
-                            <i class="fa-brands fa-creative-commons-by"></i>
-                            <i class="fa-brands fa-creative-commons-nc"></i>
-                            <i class="fa-brands fa-creative-commons-sa"></i>
-                        
-                    </a>
-                </div>
-            </div>
-        </div>
+.post-page-container {
+  display flex
+  justify-content space-between
+  width 100%
+  height 100%
 
-        <i class="copyright-bg fa-solid fa-copyright"></i>
-    </div>
-    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
-    </div>
-</div>
+  &.show-toc {
+    .pc-post-toc {
+      display block
+    }
 
-                
-
-                <div class="post-bottom-tags-and-share border-box">
-                    <div>
-                        
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Git/">Git</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/GitHub/">GitHub</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Git%E7%9A%84%E4%BD%BF%E7%94%A8/">Git的使用</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/GitHub%E4%B8%8A%E4%BC%A0/">GitHub上传</a>
-                                    </li>
-                                
-                            </ul>
-                        
-                    </div>
-                    <div>
-                        
-                            <div class="post-share-container border-box">
-    <ul class="share-list-wrap border-box">
-        <li class="qq share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to QQ"
-        >
-            <i class="fa-brands fa-qq"></i>
-        </li>
-        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
-            data-tooltip-content="Share to WeChat"
-            data-tooltip-img-tip="Scan by WeChat"
-            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
-        >
-            <i class="fa-brands fa-weixin"></i>
-        </li>
-        <li class="weibo share-item border-box flex-center tooltip"
-            data-tooltip-content="Share to WeiBo"
-        >
-            <i class="fa-brands fa-weibo"></i>
-        </li>
-    </ul>
-</div>
-
-                        
-                    </div>
-                </div>
-
-                
-
-                
-                    <div class="post-nav border-box">
-                        
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/hexo%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/index.html"
-                                   title="Hexo基本用法"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Hexo基本用法</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                        
-                            <div class="next-post">
-                                <a class="next"
-                                   rel="next"
-                                   href="/template/index.html"
-                                   title="Template"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Template</span>
-                                        <span class="post-nav-item">Next posts</span>
-                                    </span>
-                                    <span class="right arrow-icon flex-center">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                    </div>
-                
-
-                
-                    
+    .post-content-container {
+      width 'calc(100% - %s)' % $toc-container-width
+    }
+  }
 
 
+  &.encrypt {
+    .post-aging-tips {
+      display none !important
+    }
+  }
 
 
+  +keep-tablet() {
+    .pc-post-toc {
+      display none !important
+    }
+
+    .post-content-container {
+      width 100% !important
+    }
+  }
 
 
-                
-            </div>
-        </div>
+  .post-content-container {
+    order 0
+    width 100%
+    height 100%
 
-        
-            <div class="pc-post-toc right-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90-ssh-key"><span class="nav-text">本地生成 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8github%E4%B8%8A%E6%B7%BB%E5%8A%A0ssh-key"><span class="nav-text">在GitHub上添加SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">从本地仓库上传代码到 Github
-上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">检查是否与 Github 连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
-    </div>
-</div>
 
-            </div>
-        
-    </div>
-</div>
+    keep-container(1, 0, 2rem)
+
+    +keep-mobile() {
+      padding 0 0.2rem !important
+      box-shadow none !important
+
+      &:hover {
+        box-shadow none !important
+      }
+    }
+
+
+    .post-content-top {
+      display flex
+      align-items flex-end
+      width 100%
+      padding-top $spacer-padding
+      padding-right $spacer-padding
+      overflow hidden
+      background-color var(--background-color-2)
+      border-top-left-radius var(--box-border-radius)
+      border-top-right-radius var(--box-border-radius)
+
+      +keep-tablet() {
+        height 12.8rem
+        padding-top $spacer-padding * 0.8
+        padding-right $spacer-padding  * 0.8
+
+        .cover-post-title {
+          padding $spacer-padding * 0.5 * 0.8 $spacer-padding * 0.8 !important
+          font-size $post-title-font-size * 0.9 !important
+          line-height 1.5 !important
+        }
+      }
+
+
+      +keep-mobile() {
+        height 11.8rem
+        padding-top $spacer-padding * 0.6
+        padding-right $spacer-padding  * 0.6
+
+        .cover-post-title {
+          padding $spacer-padding * 0.5 * 0.6 $spacer-padding * 0.6 !important
+          font-size $post-title-font-size * 0.8 !important
+          line-height 1.4 !important
+        }
+      }
+
+
+      .cover-post-title {
+        position relative
+        z-index $z-index-1
+        box-sizing border-box
+        max-width 100%
+        max-height 100%
+        padding $spacer-padding * 0.5 $spacer-padding
+        overflow-y auto
+        color var(--text-color-2)
+        font-weight 600
+        font-size $post-title-font-size
+        line-height 1.6
+        background var(--background-color-1-transparent)
+        border-top-right-radius var(--box-border-radius)
+        -webkit-backdrop-filter blur(2px)
+        backdrop-filter blur(2px)
+      }
+
+
+      .post-cover {
+        position absolute
+        top 0
+        left 0
+        box-sizing border-box
+        width 100%
+        height 100%
+        object-fit cover
+      }
+    }
+
+
+    .post-content-bottom {
+      padding $spacer-padding
+
+      &.has-cover {
+        padding-top $spacer-padding * 0.5
+      }
+
+      +keep-mobile() {
+        padding $spacer-padding * 0.5 0 !important
+      }
+
+      .post-title {
+        color var(--text-color-2)
+        font-weight 600
+        font-size $post-title-font-size
+        line-height 1.6
+        text-align var(--post-title-align)
+
+        +keep-tablet() {
+          font-size $post-title-font-size * 0.9
+        }
+
+        +keep-mobile() {
+          font-size $post-title-font-size * 0.8
+        }
+      }
+
+
+      .post-header {
+        display flex
+        justify-content flex-start
+        width 100%
+        margin-top 1rem
+
+        +keep-tablet() {
+          margin-top 0.9rem
+          transform scale(0.9)
+          transform-origin left top
+        }
+
+        .avatar-box {
+          display var(--post-author-avatar)
+          flex-shrink 0
+          width $avatar-width
+          height $avatar-width
+          margin-right 0.8rem
+          padding 0.1rem
+          border 1px solid var(--border-color)
+          border-radius 50%
+
+          img {
+            width 100%
+            height 100%
+            background var(--avatar-background-color)
+            border-radius 50%
+          }
+        }
+
+
+        .info-box {
+          display flex
+          flex-direction column
+          justify-content space-between
+          box-sizing border-box
+          width 100%
+          height 100%
+          padding 0.2rem 0
+
+          .author {
+            display var(--post-author-name)
+            align-items center
+            font-weight 600
+            font-size 1.18rem
+
+            .name {
+              color var(--text-color-3)
+            }
+
+            .author-badge {
+              margin-left 0.8rem
+              padding 0 0.4rem
+              color #fff
+              font-weight 500
+              font-size 0.8rem
+              background var(--primary-color)
+              border-radius 0.4rem
+            }
+          }
+
+          .meta-info {
+            margin-top 0.1rem
+          }
+        }
+      }
+
+
+      .post-content {
+        margin-top calc(var(--component-gap) * 0.8)
+        padding-bottom calc(var(--component-gap) * 0.8)
+        color var(--text-color-3)
+        text-align justify
+        word-wrap break-word
+
+        +keep-tablet() {
+          margin-top calc(var(--component-gap) * 0.6)
+          padding-bottom calc(var(--component-gap) * 0.6)
+        }
+
+
+        .post-aging-tips {
+          position relative
+          display none
+          box-sizing border-box
+          margin-bottom 1.8rem
+          padding 1rem
+          color var(--keep-warning-color)
+          line-height 1.6
+          background var(--keep-warning-background-color)
+          border 0.1rem solid var(--keep-warning-border-color)
+          border-radius 0.4rem
+
+          i {
+            margin-right 0.4rem
+            color var(--keep-warning-color)
+          }
+
+          .days {
+            color var(--keep-warning-color)
+          }
+        }
+
+
+        .post-encrypt-box {
+          margin-left $avatar-width + 0.8rem
+          padding 1rem 0
+
+          .password-input {
+            width 60%
+            margin 0
+            padding 0.8rem 1.2rem
+            color var(--text-color-3)
+            font-weight 400 !important
+            font-size 1.2rem
+            letter-spacing 2px
+            background none
+            border none
+            border-bottom 0.2rem solid var(--border-color)
+            outline none
+
+            +keep-tablet() {
+              width 80%
+            }
+
+            &.error {
+              border 0.2rem solid var(--keep-danger-color)
+            }
+
+            &::placeholder {
+              color var(--text-color-4)
+              font-size 1.1rem
+              letter-spacing 1px
+            }
+
+            &:hover
+            &:focus {
+              background var(--background-color-2)
+            }
+          }
+        }
+
+        if (hexo-config('post') && hexo-config('post.copyright_info') == true) {
+          border-bottom 2px dashed var(--border-color)
+        }
+      }
+
+
+      .post-bottom-tags-and-share {
+        display flex
+        justify-content space-between
+        width 100%
+        margin-top 1rem
+
+        .post-tags-box {
+          display flex
+          flex-wrap wrap
+          align-items center
+          justify-content flex-start
+          width 100%
+          font-size 0.96rem
+
+
+          .tag-item {
+            margin-right 0.4rem
+            line-height 2
+
+            .icon {
+              color var(--text-color-3)
+              font-size 0.88rem
+            }
+          }
+        }
+      }
+
+
+      .post-nav {
+        height 2.8rem
+        margin-top var(--component-gap)
+
+        .prev-post
+        .next-post {
+          box-sizing border-box
+          max-width $post-nav-max-width
+          height 100%
+          keep-container(1, 0.8rem, 0)
+          border-radius 0.32rem
+
+
+          a {
+            position relative
+            display block
+            box-sizing border-box
+            width 100%
+            height 100%
+
+            &.prev {
+              padding-left $arrow-icon-width
+            }
+
+            &.next {
+              padding-right $arrow-icon-width
+            }
+
+            .arrow-icon {
+              position absolute
+              top 0
+              width $arrow-icon-width
+              height 100%
+
+              &.left {
+                left 0
+              }
+
+              &.right {
+                right 0
+              }
+            }
+
+            .title {
+              width 100%
+              height 100%
+            }
+          }
+        }
+
+        .prev-post {
+          float left
+        }
+
+        .next-post {
+          float right
+        }
+
+        .post-nav-item {
+          display none
+
+          +keep-tablet() {
+            display inline-block
+          }
+        }
+
+
+        .post-nav-title-item {
+          +keep-tablet() {
+            display none
+          }
+        }
+      }
+    }
+  }
+
+
+  .pc-post-toc {
+    position sticky
+    top calc(var(--header-height) + var(--component-gap))
+    display none
+    flex-shrink 0
+    box-sizing border-box
+    width $toc-container-width
+    max-height calc(100vh - calc(var(--header-height) + var(--component-gap)))
+    transition-t("top, display, max-height", "0, 0, 0", "0.2, 0.1, 0.2", "ease, ease, ease")
+
+    &.right-toc {
+      order 1
+      padding 2rem 0 2rem 1.8rem
+    }
+
+    &.left-toc {
+      order -1
+      padding 2rem 1.8rem 2rem 0
+    }
+
+    .header-shrink & {
+      top calc(var(--header-shrink-height) + var(--component-gap))
+      max-height calc(100vh - calc(var(--header-shrink-height) + var(--component-gap)))
+    }
+  }
+}
 
 
                 
@@ -695,48 +1266,108 @@ https://zhuanlan.zhihu.com/p/193140870</p>
         </div>
 
         <div class="page-main-content-bottom border-box">
-            
-<footer class="footer border-box">
-    <div class="copyright-info info-item">
-    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
-    
-            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Tao-oooo</a>
-        
-    </div>
+            .footer {
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  padding 1rem 0
+  color var(--text-color-4)
+  font-size 1rem
 
-    <div class="theme-info info-item">
-        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
-    </div>
+  a {
+    color var(--text-color-4)
 
-    
+    &:hover {
+      color var(--primary-color)
+    }
 
-    
-        <div class="count-info info-item">
-            
-                <span class="count-item border-box word">
-                    <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">73.9k</span>
-                </span>
-            
+    &.no-pointer {
+      pointer-events none
+    }
+  }
 
-            
-                <span class="count-item border-box uv">
-                    <span class="item-type border-box">Unique Visitor</span>
-                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
-                </span>
-            
 
-            
-                <span class="count-item border-box pv">
-                    <span class="item-type border-box">Page View</span>
-                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
-                </span>
-            
-        </div>
-    
+  .info-item {
+    position relative
+    display flex
+    flex-wrap wrap
+    align-items center
+    justify-content center
+    box-sizing border-box
+    margin 0.2rem 0
+    color var(--text-color-4)
 
-    
-</footer>
+    &.count-info {
+      display flex
+
+      .count-item {
+        &.uv
+        &.pv {
+          display none
+        }
+      }
+    }
+
+
+    &.deploy-info {
+
+      display flex
+
+      a
+      .tooltip {
+        display flex
+        align-items center
+      }
+
+      img {
+        height 1.08rem
+        margin 0 0.4rem
+      }
+    }
+
+
+    &.count-info
+    &.record-info {
+
+      .count-item
+      .record-item {
+        margin-right 15px
+
+        &::before {
+          position absolute
+          top 50%
+          left -10px
+          box-sizing border-box
+          transform translateY(-56%)
+          content '|'
+        }
+
+
+        &:first-child {
+          &::before {
+            display none
+          }
+        }
+
+
+        &:last-child {
+          margin-right 0
+        }
+
+
+        .item-type {
+          margin-right 4px
+        }
+      }
+    }
+  }
+
+
+  .icon-animate {
+    animation heartbeat-animate 1.2s ease-in-out infinite
+  }
+}
 
         </div>
     </div>
@@ -744,116 +1375,456 @@ https://zhuanlan.zhihu.com/p/193140870</p>
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            <div class="post-tools-container border-box">
-    <ul class="post-tools-list border-box">
-        <!-- PC encrypt again -->
-        
+            $li-margin-bottom = 0.8rem
+$post-tool-button-width = 2.5rem
 
-        <!-- PC TOC show toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
+.post-tools-container {
+  padding-top var(--component-gap)
 
-        <!-- PC go comment -->
-        
+  .post-tools-list {
+    li {
+      margin-bottom $li-margin-bottom
 
-        <!-- PC full screen -->
-        <li class="tools-item flex-center full-screen">
-            <i class="fa-solid fa-expand"></i>
-        </li>
-    </ul>
-</div>
+      &:last-child {
+        margin-bottom 0
+      }
+    }
+
+
+    li.tools-item {
+      position relative
+      box-sizing border-box
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.2rem
+      background var(--background-color-1)
+      border-radius 50%
+      box-shadow 2px 2px 5px var(--shadow-color)
+      cursor pointer
+
+      &:hover {
+        box-shadow 2px 2px 8px var(--shadow-hover-color)
+      }
+
+      i {
+        color var(--text-color-3)
+      }
+
+
+      &:hover {
+        color var(--background-color-1)
+        background var(--primary-color)
+
+        i {
+          color var(--background-color-1) !important
+        }
+      }
+
+
+      &.toggle-show-toc {
+        display none
+      }
+
+
+      &.go-to-comments {
+        .post-comments-count {
+          position absolute
+          top 0
+          right -1rem
+          display none
+          align-items center
+          justify-content center
+          box-sizing border-box
+          min-width 1.1rem
+          height 1.1rem
+          padding 0 0.2rem
+          color var(--badge-color)
+          font-size 12px
+          background var(--badge-background-color)
+          border-radius 0.4rem
+
+          +keep-tablet() {
+            display none !important
+          }
+        }
+      }
+    }
+
+
+    li.status-item {
+      width $post-tool-button-width
+      height $post-tool-button-width
+      color var(--text-color-3)
+      font-size 1.6rem
+      cursor pointer
+
+
+      &.post-lock {
+        cursor default
+
+        .fa-lock-open {
+          display none
+          color var(--keep-success-color)
+        }
+
+        &.decrypt {
+          cursor pointer
+
+          .fa-lock-open {
+            display block
+          }
+
+          .fa-lock {
+            display none
+          }
+        }
+      }
+    }
+  }
+}
 
         </div>
     
 
     <!-- side tools -->
     <div class="side-tools">
-        <div class="side-tools-container border-box ">
-    <ul class="side-tools-list side-tools-show-handle border-box">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
+        $tools-item-width = 2.2rem
+$tools-item-font-size = 1.1rem
+$tools-item-border-radius = 0.2rem
 
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
+.side-tools-show-handle {
+  transform translateX(100%)
+  opacity 0
+  transition-t("transform, opacity", "0, 0", "0.26, 0.26", "linear, linear")
 
-        <!-- toggle mode -->
-        
-            <li class="tools-item tool-toggle-theme-mode flex-center">
-                <i class="fas fa-moon"></i>
-            </li>
-        
+  &.show {
+    transform translateX(0)
+    opacity 1
+  }
+}
 
-        <!-- rss -->
-        
+.side-tools-container {
+  .tools-item {
+    width $tools-item-width
+    height $tools-item-width
+    margin-bottom 0.25rem
+    color var(--text-color-3)
+    font-size $tools-item-font-size
+    background var(--background-color-1)
+    border-right none
+    border-radius $tools-item-border-radius
+    box-shadow 0.1rem 0.1rem 0.2rem var(--shadow-color)
+    cursor pointer
 
-        <!-- to bottom -->
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
+    i {
+      color var(--text-color-3)
+    }
 
-    <ul class="exposed-tools-list border-box">
-        
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
-        
+    &:hover {
+      color var(--background-color-1)
+      background var(--primary-color)
+      box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
 
-        
+      i {
+        color var(--background-color-1)
+      }
+    }
 
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
 
-        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
-            <i class="arrow fas fa-arrow-up"></i>
-            <span class="percent"></span>
-        </li>
-    </ul>
-</div>
+    +keep-tablet() {
+      width $tools-item-width * 0.9
+      height $tools-item-width * 0.9
+      font-size $tools-item-font-size * 0.9
+
+      &.toggle-show-toc-tablet
+      &.go-to-comments-tablet {
+        display flex !important
+      }
+    }
+
+    &.rss {
+
+      a {
+        width 100%
+        height 100%
+        border-radius $tools-item-border-radius
+
+        &:hover {
+          color var(--background-color-1)
+          background var(--primary-color)
+          box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+        }
+      }
+    }
+
+    &.toggle-show-toc-tablet
+    &.go-to-comments-tablet {
+      display none
+    }
+  }
+
+
+  .exposed-tools-list {
+
+    .tool-scroll-to-top {
+      display none
+
+      &.show {
+        display flex
+      }
+
+
+      &.show-arrow {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      &.show-percent {
+        .percent {
+          display flex
+        }
+
+        .arrow {
+          display none
+        }
+      }
+
+
+      &:hover {
+        .percent {
+          display none
+        }
+
+        .arrow {
+          display flex
+        }
+      }
+
+
+      .percent {
+        font-size 1rem
+      }
+    }
+  }
+}
 
     </div>
 
     <!-- image mask -->
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
-</div>
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
 
 
     <!-- local search -->
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
+        $icon-size = 1.2rem
+$search-header-height = 3rem
+
+.search-pop-overlay {
+  position fixed
+  top 0
+  left 0
+  z-index $z-index-8
+  display flex
+  width 100%
+  height 100%
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease")
+
+  &.active {
+    background rgba(0, 0, 0, 0.35)
+    visibility visible
+
+    .search-popup {
+      transform scale(1)
+    }
+  }
+
+
+  .search-popup {
+    z-index $z-index-6
+    width 70%
+    height 80%
+    margin auto
+    background var(--background-color-1)
+    border-radius 0.4rem
+    transform scale(0)
+    transition-t("transform", "0", "0.3", "ease")
+
+    +keep-tablet() {
+      width 80%
+    }
+
+    +keep-mobile() {
+      width 90%
+    }
+
+    .search-header {
+      display flex
+      align-items center
+      height $search-header-height
+      padding 0 1rem
+      background var(--text-color-6)
+      border-top-left-radius 0.2rem
+      border-top-right-radius 0.2rem
+
+      .search-input-field-pre {
+        margin-right 0.2rem
+        color var(--text-color-3)
+        font-size 1.3rem
+        cursor pointer
+      }
+
+      .search-input-container {
+        flex-grow 1
+        padding 0.2rem
+
+        .search-input {
+          width 100%
+          color var(--text-color-3)
+          font-size 1.2rem
+          background transparent
+          border 0
+          outline 0
+
+          &::-webkit-search-cancel-button {
+            display none
+          }
+
+          &::-webkit-input-placeholder {
+            color var(--text-color-4)
+            font-size 1rem
+          }
+        }
+      }
+
+
+      .close-popup-btn {
+        color var(--text-color-3)
+        font-size $icon-size
+        cursor pointer
+
+        &:hover {
+          color var(--text-color-1)
+        }
+      }
+    }
+
+
+    #search-result {
+      position relative
+      display flex
+      box-sizing border-box
+      height 'calc(100% - %s)' % $search-header-height
+      padding 0.3rem 1.5rem
+      overflow auto
+
+      .search-result-list {
+        width 100%
+        height 100%
+        font-size 1rem
+
+        li {
+          box-sizing border-box
+          margin 0.8rem 0
+          padding 0.8rem 0
+          border-bottom 0.1rem dashed var(--border-color)
+
+          &:last-child {
+            border-bottom none
+          }
+
+
+          .search-result-title {
+            position relative
+            display flex
+            align-items center
+            margin-bottom 0.8rem
+            padding-left 1rem
+            font-weight bold
+
+            &::after {
+              position absolute
+              top 50%
+              left 0
+              width 0.4rem
+              height 0.4rem
+              background var(--text-color-3)
+              border-radius 50%
+              transform translateY(-50%)
+              content ''
+            }
+          }
+
+
+          .search-result {
+            margin 0
+            padding-left 1rem
+            line-height 2rem
+            word-wrap break-word
+          }
+
+          a {
+            &:hover {
+              color var(--text-color-3)
+            }
+          }
+
+          .search-keyword {
+            color var(--primary-color)
+            font-weight bold
+            border-bottom 0.1rem dashed var(--primary-color)
+          }
+        }
+      }
+
+
+      #no-result {
+        margin auto
+        color var(--text-color-4)
+      }
+    }
+  }
+}
+
 
     
 
@@ -861,12 +1832,118 @@ https://zhuanlan.zhihu.com/p/193140870</p>
     
         <div class="tablet-post-toc-mask">
             <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="nav-text">进入自己的个人网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E4%BB%93%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">Github仓库中创建文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81"><span class="nav-text">初次使用Github上传代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-github-%E4%B8%8A%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">在 Github 上创建新的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git-%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-text">安装 Git 工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90-ssh-key"><span class="nav-text">本地生成 SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8github%E4%B8%8A%E6%B7%BB%E5%8A%A0ssh-key"><span class="nav-text">在GitHub上添加SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0-github-%E4%B8%8A"><span class="nav-text">从本地仓库上传代码到 Github
-上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E4%B8%8E-github-%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">检查是否与 Github 连接成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-text">上传文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
-    </div>
-</div>
+                .post-toc-wrap {
+  width 100%
+  height 100%
+  overflow-y auto
+  font-size 0.92rem
+
+  &::-webkit-scrollbar-thumb {
+    background var(--toc-scrollbar-color)
+    border-radius 0.3rem
+  }
+
+  &::-webkit-scrollbar-track {
+    background transparent
+  }
+
+  .post-toc {
+
+    ol {
+      position relative
+      box-sizing border-box
+      margin 0
+      text-align left
+      list-style none
+
+      a {
+        transition-property all
+      }
+    }
+
+
+    .nav {
+
+      .nav-item {
+        position relative
+        box-sizing border-box
+        overflow hidden
+        line-height 2
+        white-space nowrap
+        text-overflow ellipsis
+
+
+        &.active {
+          > .nav-child {
+            display block
+          }
+        }
+
+
+        .nav-link {
+          position relative
+          box-sizing border-box
+          padding-left 0.8rem
+
+          &:hover {
+            .nav-number
+            .nav-text {
+              color var(--primary-color)
+            }
+          }
+
+          &.active-current {
+            > .nav-child {
+              display block
+
+              > .nav-item {
+                display block
+              }
+            }
+
+
+            &::before {
+              position absolute
+              top 50%
+              left 0
+              width 0.2rem
+              height 1.2rem
+              background var(--primary-color)
+              border-radius 0.2rem
+              transform translateY(-50%)
+              content ''
+            }
+
+            .nav-number
+            .nav-text {
+              color var(--primary-color)
+            }
+          }
+
+
+          .nav-number
+          .nav-text {
+            color var(--toc-text-color)
+          }
+        }
+
+
+        .nav-child {
+          padding-left 1rem
+
+
+          if (hexo-config('toc') && hexo-config('toc.expand_all') == true) {
+            display block
+          }
+          else {
+            display none
+          }
+        }
+      }
+    }
+  }
+}
+
 
             </div>
         </div>
