@@ -154,816 +154,193 @@ mjx-container[display="true"] + br {
 
 
 <body>
-.progress-bar-container {
-  position fixed
-  top 0
-  left 0
-  z-index $z-index-9
-  width 100%
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-  if (hexo-config('pjax') && hexo-config('pjax.enable') == true) {
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
 
-    .pjax-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-8
-      width 0
-      height 2px
-      background var(--pjax-progress-bar-color)
-      visibility hidden
-      opacity 0
-      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
-
-
-      &.show {
-        visibility visible
-        opacity 1
-      }
-    }
-
-
-    .pjax-progress-icon {
-      position absolute
-      top 0.4rem
-      right 0.3rem
-      z-index $z-index-8
-      color var(--text-color-3)
-      font-size 1.1rem
-      visibility hidden
-
-      +keep-tablet() {
-        top 0.3rem
-        right 0.2rem
-        font-size 1rem
-      }
-
-      &.show {
-        visibility visible
-      }
-    }
-  }
-
-  if (hexo-config('scroll') && hexo-config('scroll.progress_bar') == true) {
-    .scroll-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-7
-      width 0
-      height var(--header-scroll-progress-bar-height)
-      background var(--primary-color)
-      visibility hidden
-      transition-t("width", "0", "0.1", "linear")
-
-      &.hide {
-        display none !important
-      }
-    }
-  }
-}
 
 
 <main class="page-container border-box">
     <!-- home first screen  -->
     
-        if (hexo-config('first_screen')) {
-  $temp-fs-bg-img-light = hexo-config('first_screen.background_img')
-  $temp-fs-bg-img-dark = hexo-config('first_screen.background_img_dark')
-}
-else {
-  $temp-fs-bg-img-light = ''
-  $temp-fs-bg-img-dark = ''
-}
+        
+<div class="first-screen-container border-box flex-center fade-in-down-animation">
+    <div class="first-screen-content border-box">
+        <div class="top-placeholder border-box"></div>
 
-$fs-bg-img-light = $temp-fs-bg-img-light ? $temp-fs-bg-img-light : '/images/bg.svg'
-$fs-bg-img-dark = $temp-fs-bg-img-dark ? $temp-fs-bg-img-dark : $fs-bg-img-light
+        <div class="middle-placeholder border-box">
+            
+                <div class="description border-box">
+                    
+                        
+                            
+                                <div class="desc-item border-box"><span class="desc">道可道 非常道</span><span class="cursor">｜</span></div>
+                            
+                        
+                            
+                                <div class="desc-item border-box"><span class="desc">名可名 非常名</span><span class="cursor">｜</span></div>
+                            
+                        
+                    
+                </div>
+            
 
-$root = hexo-config('root')
+            
+        </div>
 
-.first-screen-container {
-  width 100%
-  height 100vh
-  overflow hidden
-  background-image url($root + $fs-bg-img-light)
-  background-position-x center
-  background-position-y center
-  background-size cover
-  background-repeat-x no-repeat
-  background-repeat-y no-repeat
-
-
-  .dark-mode & {
-    background-image url($root + $fs-bg-img-dark)
-  }
-
-  .first-screen-content {
-    display flex
-    flex-direction column
-    align-items center
-    justify-content space-between
-    width 80%
-    height 90%
-    padding-top calc(var(--header-height) * 0.5)
-
-    +keep-tablet() {
-      padding-top calc(var(--header-height) * 0.5 * 0.9)
-    }
-
-    +keep-mobile() {
-      padding-top calc(var(--header-height) * 0.5 * 0.8)
-    }
-
-    .description {
-      display var(--first-screen-display)
-      color var(--first-screen-font-color-light)
-      font-weight bold
-      font-size var(--first-screen-font-size)
-      font-family var(--first-screen-font-family)
-      line-height 1.8
-      text-align center
-      transform translateY(var(--first-screen-font-offset))
-      opacity 0
-
-      .dark-mode & {
-        color var(--first-screen-font-color-dark)
-
-        .desc-item {
-          .desc
-          .cursor {
-            color var(--first-screen-font-color-dark)
-          }
-        }
-      }
-
-
-      .desc-item {
-        .desc {
-          color var(--first-screen-font-color-light)
-        }
-
-        .cursor {
-          color var(--first-screen-font-color-light)
-          animation blink-caret 0.8s step-end infinite
-        }
-      }
-
-
-      +keep-tablet() {
-        font-size calc(var(--first-screen-font-size) * 0.9)
-      }
-    }
-
-
-    .bottom-placeholder {
-      width 100%
-
-      .sc-icon-list {
-        display flex
-        justify-content center
-
-        .sc-icon-item {
-          display flex
-          align-items center
-          margin 0 1rem
-          cursor pointer
-
-          i {
-            color var(--first-screen-icon-color-light)
-            font-size var(--first-screen-icon-size)
-          }
-
-
-          svg {
-            width var(--first-screen-icon-size)
-            height var(--first-screen-icon-size)
-
-            path {
-              fill var(--first-screen-icon-color-light)
-            }
-          }
-
-
-          .dark-mode & {
-            i {
-              color var(--first-screen-icon-color-dark)
-            }
-
-            svg {
-              path {
-                fill var(--first-screen-icon-color-dark)
-              }
-            }
-          }
-
-
-          +keep-tablet() {
-            i {
-              font-size calc(var(--first-screen-icon-size) * 0.9)
-            }
-
-            svg {
-              width calc(var(--first-screen-icon-size) * 0.9)
-              height calc(var(--first-screen-icon-size) * 0.9)
-            }
-          }
-
-
-          a {
-            display flex !important
-            align-items center !important
-          }
-        }
-      }
-    }
-  }
-}
+        <div class="bottom-placeholder border-box">
+            
+        </div>
+    </div>
+</div>
 
     
 
     <!-- page content -->
     <div class="page-main-content border-box is-home">
         <div class="page-main-content-top">
-            $pc-search-icon-font-size = 1.5rem
-$menu-bar-line-height = 2.5px
-$menu-icon-gap = 0.1rem
-$pc-menu-item-gap = 1.8rem
-$mobile-menu-item-gap = 1.2rem
-$logo-image-box-width = 2.68rem
-$mobile-menu-icon-wrap-width = 1.6rem
-$mobile-menu-icon-wrap-margin = 0.4rem
+            
+<header class="header-wrapper transparent-1">
+
+    <div class="border-box header-content has-first-screen">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo/Tao-oooo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Tao-oooo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box active">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu active">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
 
-
-.header-wrapper {
-  display flex
-  align-items center
-  justify-content center
-  box-sizing border-box
-  width 100%
-  height 100%
-  padding-top var(--header-scroll-progress-bar-height)
-  background var(--background-color-1)
-  box-shadow 1px 2px 6px var(--shadow-color)
-
-  &:hover {
-    box-shadow 1px 2px 10px var(--shadow-hover-color)
-  }
-
-
-  .header-content {
-    z-index $z-index-5
-    display flex
-    flex-direction row
-    align-items center
-    justify-content space-between
-    width var(--page-content-width)
-    max-width var(--page-content-max-width)
-    height 100%
-    transition-t("max-width, width", "0, 0", "0.1, 0.1", "ease, ease")
-
-    &.has-first-screen {
-      max-width var(--page-content-max-width-2)
-    }
-
-
-    .has-toc & {
-      max-width var(--page-content-max-width-2)
-    }
-
-
-    +keep-tablet() {
-      width var(--page-content-width-tablet)
-    }
-
-
-    +keep-mobile() {
-      width var(--page-content-width-mobile)
-    }
-
-
-    .left {
-      height 100%
-      font-size 2rem
-
-      transition-t("transform, transform-origin", "0, 0", "0.2, 0.2", "linear, linear")
-
-      .header-shrink & {
-        transform scale(0.78)
-        transform-origin left
-      }
-
-
-      if (hexo-config('base_info') && hexo-config('base_info.logo')) {
-        .logo-image {
-          flex-shrink 0
-          width $logo-image-box-width
-          height $logo-image-box-width
-          margin-right 0.5rem
-
-
-          +keep-tablet() {
-            width $logo-image-box-width * 0.9
-            height $logo-image-box-width * 0.9
-          }
-
-
-          +keep-mobile() {
-            width $logo-image-box-width * 0.8
-            height $logo-image-box-width * 0.8
-          }
-
-
-          img {
-            width 100%
-            border-radius 0.4rem
-          }
-        }
-      }
-
-
-      .site-name {
-        color var(--text-color-1)
-        font-weight 600
-        font-size var(--header-title-font-size)
-        font-family var(--header-title-font-family)
-        line-height 1
-        letter-spacing 1px
-
-        +keep-tablet() {
-          font-size calc(var(--header-title-font-size) * 0.9)
-        }
-
-
-        +keep-mobile() {
-          font-size calc(var(--header-title-font-size) * 0.8)
-        }
-
-
-        .is-home & {
-          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-            color var(--first-screen-header-font-color-light)
-            filter brightness(92%)
-
-            .dark-mode & {
-              color var(--first-screen-header-font-color-dark)
-              filter brightness(106%)
-            }
-          }
-        }
-
-
-        .show-header-drawer & {
-          color var(--text-color-1) !important
-        }
-      }
-    }
-
-
-    .right {
-      .pc {
-        .menu-list {
-          display flex
-          gap $pc-menu-item-gap
-          align-items center
-
-          +keep-tablet() {
-            display none
-          }
-
-
-          .menu-item {
-            font-size 1rem
-            cursor pointer
-
-            &.search {
-              font-size $pc-search-icon-font-size
-              &::before {
-                display none !important
-              }
-            }
-
-
-            .menu-text-color {
-              color var(--text-color-3)
-            }
-
-
-            &::before {
-              position absolute
-              bottom -10px
-              left 50%
-              box-sizing border-box
-              width 0
-              height 2.6px
-              background var(--primary-color)
-              border-radius 3px
-              transform translateX(-50%)
-              content ''
-              transition-t("transform, bottom, width", "0, 0, 0", "0.2, 0.2, 0.2", "linear, linear, ease")
-
-              .header-shrink & {
-                bottom calc(-1 * calc(var(--header-shrink-height) * 0.5 - 12px))
-              }
-            }
-
-
-            &:hover
-            &.active {
-              &::before {
-                width 100%
-              }
-            }
-
-
-            .menu-icon {
-              display var(--header-menu-icon)
-              margin-right $menu-icon-gap
-            }
-
-
-            .is-home & {
-              if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-                .menu-text-color {
-                  color var(--first-screen-header-font-color-light)
-                }
-
-
-                .dark-mode & {
-                  .menu-text-color {
-                    color var(--first-screen-header-font-color-dark)
-                  }
-                }
-              }
-            }
-
-
-            &.has-sub-menu {
-              &::after {
-                position absolute
-                bottom 0
-                left 0
-                box-sizing border-box
-                width 100%
-                height 100%
-                content ''
-              }
-
-              &:hover {
-                &::after {
-                  bottom -100%
-                }
-
-                .collapse-icon {
-                  transform rotate(180deg)
-                }
-
-                .sub-menu-list {
-                  display flex
-                }
-              }
-            }
-
-
-            .collapse-icon {
-              margin-left $menu-icon-gap
-              transition-t("transform", "0", "0.3", "ease")
-            }
-          }
-
-
-          .sub-menu-list {
-            position absolute
-            bottom -280%
-            left 50%
-            display none
-            gap $pc-menu-item-gap
-            justify-content flex-start
-            box-sizing border-box
-            padding 0.8rem 1.6rem
-            background var(--background-color-1)
-            border-radius 0.6rem
-            box-shadow 0 0 8px var(--shadow-color)
-            transform translateX(-50%)
-
-            .sub-menu-item {
-              white-space nowrap
-
-              .menu-text-color {
-                color var(--text-color-3) !important
-              }
-
-              &:hover
-              &.active {
-                .menu-text-color {
-                  color var(--primary-color) !important
-                }
-              }
-
-              .sub-menu-icon {
-                display var(--header-menu-icon)
-                margin-right $menu-icon-gap * 4
-              }
-            }
-          }
-        }
-      }
-
-
-      .mobile {
-        gap 1rem
-
-        .icon-item {
-          position relative
-          display none
-          width 20px
-          height 20px
-          color var(--text-color-3)
-          font-size 1.2rem
-          cursor pointer
-
-          i {
-            color var(--text-color-3)
-
-            .show-header-drawer & {
-              color var(--text-color-3) !important
-            }
-
-            .reset-color & {
-              color var(--text-color-3) !important
-            }
-          }
-
-
-          +keep-tablet() {
-            display flex
-            align-items center
-            justify-content center
-          }
-        }
-
-
-        .menu-bar {
-          .menu-bar-middle {
-            position relative
-            width 18px
-            height $menu-bar-line-height
-            background var(--text-color-3)
-
-            &::before
-            &::after {
-              position absolute
-              left 0
-              width 100%
-              height $menu-bar-line-height
-              background var(--text-color-3)
-              content ''
-              transition-t("transform", "0", "0.38", "ease")
-            }
-
-
-            &::before {
-              top -6px
-
-              .show-header-drawer & {
-                transform translateY(6px) rotate(45deg)
-              }
-            }
-
-
-            &::after {
-              bottom -6px
-
-              .show-header-drawer & {
-                transform translateY(-6px) rotate(-45deg)
-              }
-            }
-
-
-            .reset-color & {
-              background var(--text-color-3) !important
-
-              &::before
-              &::after {
-                background var(--text-color-3) !important
-              }
-            }
-
-
-            .show-header-drawer & {
-              background transparent !important
-
-              &::before
-              &::after {
-                background var(--text-color-3) !important
-              }
-            }
-          }
-        }
-
-
-        .is-home & {
-          if (hexo-config('first_screen') && hexo-config('first_screen.enable') == true) {
-            .icon-item i {
-              color var(--first-screen-header-font-color-light)
-            }
-
-            .menu-bar .menu-bar-middle {
-              background var(--first-screen-header-font-color-light)
-
-              &::before
-              &::after {
-                background var(--first-screen-header-font-color-light)
-              }
-            }
-
-            .dark-mode & {
-              .icon-item i {
-                color var(--first-screen-header-font-color-dark)
-              }
-
-              .menu-bar .menu-bar-middle {
-                background var(--first-screen-header-font-color-dark)
-
-                &::before
-                &::after {
-                  background var(--first-screen-header-font-color-dark)
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-
-  .header-drawer {
-    position absolute
-    top 0
-    left 0
-    z-index $z-index-2
-    display none
-    justify-content center
-    box-sizing border-box
-    width 100%
-    padding var(--header-height) 0 2rem 0
-    background var(--background-color-1)
-    transform scaleY(0)
-    transform-origin top
-    transition-t("transform", "0", "0.38", "ease")
-
-    +keep-tablet() {
-      display flex
-    }
-
-
-    .show-header-drawer & {
-      transform scaleY(1)
-    }
-
-
-    .drawer-menu-list {
-      display flex
-      flex-direction column
-      gap 1.2rem
-      align-items flex-start
-      justify-content flex-start
-      width var(--page-content-width)
-      max-width var(--page-content-max-width)
-      height 100%
-      margin-top 1rem
-
-      +keep-tablet() {
-        width var(--page-content-width-tablet)
-      }
-
-
-      +keep-mobile() {
-        width var(--page-content-width-mobile)
-      }
-
-
-      .drawer-menu-item {
-        width 100%
-        padding 0.6rem 0
-        font-size 1.06rem
-        border-bottom 0.1rem solid var(--background-color-3)
-
-        &.active {
-          .drawer-menu-label {
-            .drawer-menu-text-color {
-              color var(--primary-color)
-            }
-          }
-        }
-
-
-        &.show-sub-menu {
-          .collapse-icon {
-            transform rotate(-90deg)
-          }
-
-
-          .drawer-sub-menu-list {
-            display flex
-            height auto
-          }
-        }
-
-
-        .drawer-menu-label {
-          display flex
-          align-items center
-          justify-content space-between
-          width 100%
-
-          .left-side {
-            width 100%
-
-            .menu-icon-wrap {
-              display var(--header-menu-icon)
-              width $mobile-menu-icon-wrap-width
-              margin-right $mobile-menu-icon-wrap-margin
-            }
-          }
-
-
-          .right-side {
-            margin-left 0.4rem
-            cursor pointer
-            transition-t("transform", "0", "0.2", "ease")
-          }
-        }
-      }
-
-
-      .drawer-sub-menu-list {
-        position relative
-        display none
-        flex-direction column
-        justify-content flex-start
-        box-sizing border-box
-        width 100%
-        height 0
-        padding-top 0.6rem
-        padding-bottom 0.6rem
-        padding-left $mobile-menu-icon-wrap-width
-        transition-t("display, height", "0, 0", "0.2, 0.2", "linear, linear")
-        disable-user-select()
-
-        .sub-menu-item {
-          margin-top 1rem
-          padding 0.6rem 0
-
-          &.active {
-            a
-            a i {
-              color var(--primary-color)
-            }
-          }
-
-
-          .sub-menu-icon-wrap {
-            display var(--header-menu-icon)
-            width $mobile-menu-icon-wrap-width
-            margin-right $mobile-menu-icon-wrap-margin
-          }
-        }
-      }
-    }
-  }
-
-
-  .window-mask {
-    position absolute
-    top 0
-    left 0
-    z-index $z-index-1
-    display none
-    box-sizing border-box
-    width 100%
-    height 100vh
-    background rgba(0, 0, 0, 0.4)
-    visibility hidden
-    opacity 0
-    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease")
-
-    +keep-tablet() {
-      display block
-    }
-
-
-    .show-header-drawer & {
-      visibility visible
-      opacity 1
-    }
-  }
-}
-
-
-.show-header-drawer {
-  overflow hidden
-}
 
         </div>
 
@@ -972,185 +349,907 @@ $mobile-menu-icon-wrap-margin = 0.4rem
             <div class="main-content border-box">
                 
 
-                    .home-content-container {
-  background var(--background-color-1)
+                    <div class="home-content-container fade-in-down-animation">
+    
+    <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
 
-  if (hexo-config('home') && hexo-config('home.announcement')) {
-    .website-announcement {
-      keep-container(var(--home-post-hover-scale), 1rem, 1.8rem)
-      display flex
-      align-items center
-      justify-content space-between
-      margin-top -0.6rem
+                
 
-      +keep-tablet() {
-        margin-top -0.4rem
-      }
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Aode%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">
+                            高效梯度计算（三）：ODE约束下的伴随灵敏度方法
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            在《高效梯度计算（一）：线性约束下的伴随灵敏度方法》和《高效梯度计算（二）：非线性约束下的伴随灵敏度方法》中分别整理了线性约束和非线性约束下的伴随灵敏度方法。沿着这个思路，本篇将伴随灵敏度法进一步应用到
+ODE 约束的问题中。
+ODE 约束下的梯...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 08 2026 22:43:36 GMT+0800"
+                >2026-06-08 22:43:36</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%95%B0%E5%AD%A6/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%B3%95/">伴随灵敏度法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97/">梯度计算</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ODE%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98/">ODE约束问题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9Aode%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">
+                            高效梯度计算（二）：非线性约束下的伴随灵敏度方法
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            《高效梯度计算（一）：线性约束下的伴随灵敏度方法》这篇笔记中梳理了线性约束下的梯度求解方法，接下来继续梳理伴随灵敏度方法在非线性约束优化问题中的应用。
+非线性约束问题的梯度计算
+现在非线性约束问题：
+
+其中 
+是标量损失函数，其他各部分尺寸...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Jun 03 2026 21:58:37 GMT+0800"
+                >2026-06-03 21:58:37</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%95%B0%E5%AD%A6/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%B3%95/">伴随灵敏度法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97/">梯度计算</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98/">非线性约束问题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">
+                            高效梯度计算（一）：线性约束下的伴随灵敏度方法
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            《Neural Ordinary
+Differential Equations》一文提到出了一种称为”伴随灵敏度方法（Adjoint
+Sensitivity Method）“的高效梯度计算策略，用于求解 Neural ODE
+模型。为深入理解该...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat May 30 2026 19:27:07 GMT+0800"
+                >2026-05-30 19:27:07</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E6%95%B0%E5%AD%A6/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">优化算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%B3%95/">伴随灵敏度法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97/">梯度计算</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98/">线性约束问题</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E9%AB%98%E6%95%88%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BA%BF%E6%80%A7%E7%BA%A6%E6%9D%9F%E4%B8%8B%E7%9A%84%E4%BC%B4%E9%9A%8F%E7%81%B5%E6%95%8F%E5%BA%A6%E6%96%B9%E6%B3%95/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E4%B9%8Bdeepseekmath/index.html">
+                            文献阅读之DeepSeekMath
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            介绍
+从 Data，Pretraining，SFT，RL 的角度学习 DeepSeekMath
+模型的训练过程。
+Math Pre-Training
+数据收集和清洗
+要训练数学模型，那么必然需要一个数学相关的数据集，本文中作者在Common...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 08 2026 22:45:41 GMT+0800"
+                >2026-06-08 22:45:41</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DeepSeekMath/">DeepSeekMath</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GRPO/">GRPO</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E4%B9%8Bdeepseekmath/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Atrust-region-policy-optimization%E3%80%8B%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+                            文献阅读《Trust-Region-Policy-Optimization》（三）
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            前文：
+《文献阅读《Trust-Region-Policy-Optimization》（一）》
+《文献阅读《Trust-Region-Policy-Optimization》（二）》
+参数化策略的优化
+作者在这一节中进行了符号上的调整，其中 ...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 08 2026 22:45:30 GMT+0800"
+                >2026-06-08 22:45:30</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TRPO/">TRPO</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%BD%AE%E4%BF%A1%E5%9F%9F/">置信域</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Trust-Region/">Trust Region</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Atrust-region-policy-optimization%E3%80%8B%EF%BC%88%E4%B8%89%EF%BC%89/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Atrust-region-policy-optimization%E3%80%8B%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+                            文献阅读《Trust-Region-Policy-Optimization》（二）
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            前文：
+《文献阅读《Trust-Region-Policy-Optimization》（一）》
+一般随机策略的单调性保证
+(Monotonic Improvement Guarantee for General Stochastic Polic...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 08 2026 22:45:36 GMT+0800"
+                >2026-06-08 22:45:36</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TRPO/">TRPO</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%BD%AE%E4%BF%A1%E5%9F%9F/">置信域</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Trust-Region/">Trust Region</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Atrust-region-policy-optimization%E3%80%8B%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Btrpo/index.html">
+                            强化学习：基础篇（十三）之TRPO
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            TRPO也属于Policy-based算法，但与Policy
+Gradient相比，它的计算量很大，但训练过程稳定，收敛很快。
+Gradient Ascent
+现在有优化问题：
+
+可以使用梯度上升算法进行优化：
+
+在点计算梯度
+参数更...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Apr 19 2026 19:03:52 GMT+0800"
+                >2026-04-19 19:03:52</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TRPO/">TRPO</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Trust-Region-Policy-Optimization/">Trust Region Policy Optimization</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Policy-Optimization/">Policy Optimization</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E4%B9%8Btrpo/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Adeepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learning%E3%80%8B/index.html">
+                            文献阅读《DeepSeek-R1 Incentivizing Reasoning Capability in LLMs via Reinforcement Learning》
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            介绍
+
+语言模型可以通过CoT Prompt（Chain-of-Thought）增强推理能力
+
+早期的做法主要有2种：1）使用Few-Shot方法，给模型提供几个案例；2）在Prompt中加上”Let’s
+think step by ste...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 08 2026 22:45:01 GMT+0800"
+                >2026-06-08 22:45:01</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/LLM/">LLM</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LLM/">LLM</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DeepSeek/">DeepSeek</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reasoning-Model/">Reasoning Model</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E3%80%8Adeepseek-r1-incentivizing-reasoning-capability-in-llms-via-reinforcement-learning%E3%80%8B/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Ba2c/index.html">
+                            强化学习：基础篇（十二）之A2C
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            Advantage Actor-Critic (A2C)
+在《强化学习：基础篇（十一）之Baseline》笔记中讲到了Baseline的概念，并且将Baseline应用到了REINFORCE算法上。在本笔记中，我们将Baseline应用到Actor...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Feb 23 2026 21:06:46 GMT+0800"
+                >2026-02-23 21:06:46</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/REINFORCE/">REINFORCE</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Bootstrapping/">Bootstrapping</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/REINFORCE-with-Baseline/">REINFORCE with Baseline</a></li>
+                        
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E4%B9%8Ba2c/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bbaseline/index.html">
+                            强化学习：基础篇（十一）之Baseline
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            介绍
+在《强化学习：基础篇（十）之Dueling
+Network》笔记中引入了优势函数(Advantage
+Function)的概念，其定义为，其中的就是本文中提到的Baseline。
+本笔记针对Policy
+Gradient算法展开，所以...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Feb 23 2026 21:08:11 GMT+0800"
+                >2026-02-23 21:08:11</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/AI/">AI</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/AI/RL/">RL</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/REINFORCE/">REINFORCE</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Baseline/">Baseline</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/REINFORCE-with-Baseline/">REINFORCE with Baseline</a></li>
+                        
+                    
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%B9%8Bbaseline/index.html">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+    </ul>
+    
+    <div class="paginator border-box flex-center">
+        <div class="border-box first-page paginator-btn not-allow">
+            <a class="border-box"><i class="fa-solid fa-angle-double-left"></i></a>
+        </div>
+
+        <div class="border-box paginator-btn">
+            <a class="border-box"
+               href="/"
+            ><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
 
 
-      +keep-mobile() {
-        margin-top -0.2rem
-
-        .announcement {
-          font-size 0.9rem
-        }
-
-        .icon {
-          font-size 1rem !important
-        }
-      }
+        <div class="page-number-box border-box flex-center">
+            <input class="page-number-input border-box base-style"
+                   type="number"
+                   value="1"
+                   min="1"
+                   max="5"
+            /><span class="delimiter base-style">/</span><span class="base-style">5</span>
+        </div>
 
 
-      .announcement {
-        width 100%
-        padding 0 0.5rem
-        color var(--text-color-3)
+        <div class="border-box paginator-btn allowed">
+            <a class="border-box"
+               href="/page/2/"
+            ><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
 
-        p {
-          width 100%
-          overflow hidden
-          white-space nowrap
-          text-overflow ellipsis
-        }
-      }
+        <div class="border-box last-page paginator-btn allowed">
+            <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
 
-      .icon {
-        flex-shrink 0
-        padding 0.2rem
-        font-size 1.2rem
-
-        &.left {
-          color var(--keep-danger-color)
-          font-size 1.5rem
-          transform-origin left bottom
-          animation shake 1s ease infinite
-        }
-
-        &.right {
-          color var(--text-color-4)
-          cursor pointer
-
-          &:hover {
-            color var(--text-color-3)
-          }
-        }
-      }
-    }
-  }
-
-  .home-post-list {
-
-    .home-post-item {
-      position relative
-
-      keep-container(var(--home-post-hover-scale), 0, 2.8rem)
-
-      .post-sticky-box {
-        position absolute
-        z-index $z-index-1
-        display flex
-        align-items center
-        box-sizing border-box
-        padding 0.1rem 0.4rem
-        color var(--text-color-4)
-        font-size 12px
-        letter-spacing 1px
-        background var(--background-color-3)
-        border-radius 0.3rem
-        transform scale(0.86)
-        cursor default
-        disable-user-select()
-
-        &.cover-offset {
-          top 0.6rem
-          right 0.6rem
-        }
-
-        &.card-offset {
-          top 0.8rem
-          right 0.8rem
-        }
-
-        +keep-mobile() {
-          padding 0
-          background none
-          transform rotate(45deg)
-
-          .sticky-name {
-            display none
-          }
-        }
-      }
 
 
-      .home-post-item-top {
-        width 100%
-        overflow hidden
-        background-color var(--background-color-2)
-        border-top-left-radius var(--box-border-radius)
-        border-top-right-radius var(--box-border-radius)
-
-        +keep-mobile() {
-          height 8rem !important
-        }
-
-        .home-cover {
-          width 100%
-          height 100%
-          object-fit cover
-          transform-origin center center
-          transition-t("transform", "0", "1", "linear")
-
-          &:hover {
-            transform scale(1.03)
-          }
-        }
-      }
-
-
-      .home-post-item-bottom {
-        padding 2rem
-
-        .sticky-icon {
-          position absolute
-          top 1.2rem
-          right 1.2rem
-          color var(--text-color-4)
-          font-size 1.2rem
-          transform rotate(45deg)
-        }
-
-
-        .home-post-title {
-          margin 0
-          color var(--text-color-2)
-          font-weight 600
-          font-size 1.4rem
-          line-height 1.5
-
-
-          +keep-tablet() {
-            font-size 1.3rem
-          }
-
-
-          +keep-mobile() {
-            font-size 1.2rem
-          }
-        }
-
-
-        .home-post-content {
-          margin 1.8rem 0
-          color var(--text-color-3)
-          text-align justify
-          word-wrap break-word
-        }
-      }
-    }
-  }
-}
+</div>
 
 
                 
@@ -1158,108 +1257,48 @@ $mobile-menu-icon-wrap-margin = 0.4rem
         </div>
 
         <div class="page-main-content-bottom border-box">
-            .footer {
-  display flex
-  flex-direction column
-  align-items center
-  justify-content center
-  padding 1rem 0
-  color var(--text-color-4)
-  font-size 1rem
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Tao-oooo</a>
+        
+    </div>
 
-  a {
-    color var(--text-color-4)
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
 
-    &:hover {
-      color var(--primary-color)
-    }
+    
 
-    &.no-pointer {
-      pointer-events none
-    }
-  }
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">74.8k</span>
+                </span>
+            
 
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
 
-  .info-item {
-    position relative
-    display flex
-    flex-wrap wrap
-    align-items center
-    justify-content center
-    box-sizing border-box
-    margin 0.2rem 0
-    color var(--text-color-4)
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
-    &.count-info {
-      display flex
-
-      .count-item {
-        &.uv
-        &.pv {
-          display none
-        }
-      }
-    }
-
-
-    &.deploy-info {
-
-      display flex
-
-      a
-      .tooltip {
-        display flex
-        align-items center
-      }
-
-      img {
-        height 1.08rem
-        margin 0 0.4rem
-      }
-    }
-
-
-    &.count-info
-    &.record-info {
-
-      .count-item
-      .record-item {
-        margin-right 15px
-
-        &::before {
-          position absolute
-          top 50%
-          left -10px
-          box-sizing border-box
-          transform translateY(-56%)
-          content '|'
-        }
-
-
-        &:first-child {
-          &::before {
-            display none
-          }
-        }
-
-
-        &:last-child {
-          margin-right 0
-        }
-
-
-        .item-type {
-          margin-right 4px
-        }
-      }
-    }
-  }
-
-
-  .icon-animate {
-    animation heartbeat-animate 1.2s ease-in-out infinite
-  }
-}
+    
+</footer>
 
         </div>
     </div>
@@ -1269,342 +1308,85 @@ $mobile-menu-icon-wrap-margin = 0.4rem
 
     <!-- side tools -->
     <div class="side-tools">
-        $tools-item-width = 2.2rem
-$tools-item-font-size = 1.1rem
-$tools-item-border-radius = 0.2rem
+        <div class="side-tools-container border-box side-tools-show-handle">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
-.side-tools-show-handle {
-  transform translateX(100%)
-  opacity 0
-  transition-t("transform, opacity", "0, 0", "0.26, 0.26", "linear, linear")
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
 
-  &.show {
-    transform translateX(0)
-    opacity 1
-  }
-}
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
 
-.side-tools-container {
-  .tools-item {
-    width $tools-item-width
-    height $tools-item-width
-    margin-bottom 0.25rem
-    color var(--text-color-3)
-    font-size $tools-item-font-size
-    background var(--background-color-1)
-    border-right none
-    border-radius $tools-item-border-radius
-    box-shadow 0.1rem 0.1rem 0.2rem var(--shadow-color)
-    cursor pointer
+        <!-- rss -->
+        
 
-    i {
-      color var(--text-color-3)
-    }
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
 
-    &:hover {
-      color var(--background-color-1)
-      background var(--primary-color)
-      box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
+    <ul class="exposed-tools-list border-box">
+        
 
-      i {
-        color var(--background-color-1)
-      }
-    }
+        
 
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
 
-    +keep-tablet() {
-      width $tools-item-width * 0.9
-      height $tools-item-width * 0.9
-      font-size $tools-item-font-size * 0.9
-
-      &.toggle-show-toc-tablet
-      &.go-to-comments-tablet {
-        display flex !important
-      }
-    }
-
-    &.rss {
-
-      a {
-        width 100%
-        height 100%
-        border-radius $tools-item-border-radius
-
-        &:hover {
-          color var(--background-color-1)
-          background var(--primary-color)
-          box-shadow 0.2rem 0.2rem 0.4rem var(--shadow-color)
-        }
-      }
-    }
-
-    &.toggle-show-toc-tablet
-    &.go-to-comments-tablet {
-      display none
-    }
-  }
-
-
-  .exposed-tools-list {
-
-    .tool-scroll-to-top {
-      display none
-
-      &.show {
-        display flex
-      }
-
-
-      &.show-arrow {
-        .percent {
-          display none
-        }
-
-        .arrow {
-          display flex
-        }
-      }
-
-
-      &.show-percent {
-        .percent {
-          display flex
-        }
-
-        .arrow {
-          display none
-        }
-      }
-
-
-      &:hover {
-        .percent {
-          display none
-        }
-
-        .arrow {
-          display flex
-        }
-      }
-
-
-      .percent {
-        font-size 1rem
-      }
-    }
-  }
-}
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
 
     </div>
 
     <!-- image mask -->
-    .zoom-in-image-mask {
-  position fixed
-  top 0
-  right 0
-  bottom 0
-  left 0
-  z-index $z-index-8
-  display flex
-  align-items center
-  justify-content center
-  box-sizing border-box
-  background rgba(0, 0, 0, 0)
-  visibility hidden
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
-
-  &.show {
-    background rgba(0, 0, 0, 0.5)
-    visibility visible
-
-    .zoom-in-image {
-      cursor zoom-out
-    }
-  }
-
-  .zoom-in-image {
-    position absolute
-    z-index $z-index-9
-    transform-origin center center
-    will-change transform
-    transition-t("transform", "0", "0.3", "linear")
-  }
-}
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
 
 
     <!-- local search -->
     
-        $icon-size = 1.2rem
-$search-header-height = 3rem
-
-.search-pop-overlay {
-  position fixed
-  top 0
-  left 0
-  z-index $z-index-8
-  display flex
-  width 100%
-  height 100%
-  background rgba(0, 0, 0, 0)
-  visibility hidden
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease")
-
-  &.active {
-    background rgba(0, 0, 0, 0.35)
-    visibility visible
-
-    .search-popup {
-      transform scale(1)
-    }
-  }
-
-
-  .search-popup {
-    z-index $z-index-6
-    width 70%
-    height 80%
-    margin auto
-    background var(--background-color-1)
-    border-radius 0.4rem
-    transform scale(0)
-    transition-t("transform", "0", "0.3", "ease")
-
-    +keep-tablet() {
-      width 80%
-    }
-
-    +keep-mobile() {
-      width 90%
-    }
-
-    .search-header {
-      display flex
-      align-items center
-      height $search-header-height
-      padding 0 1rem
-      background var(--text-color-6)
-      border-top-left-radius 0.2rem
-      border-top-right-radius 0.2rem
-
-      .search-input-field-pre {
-        margin-right 0.2rem
-        color var(--text-color-3)
-        font-size 1.3rem
-        cursor pointer
-      }
-
-      .search-input-container {
-        flex-grow 1
-        padding 0.2rem
-
-        .search-input {
-          width 100%
-          color var(--text-color-3)
-          font-size 1.2rem
-          background transparent
-          border 0
-          outline 0
-
-          &::-webkit-search-cancel-button {
-            display none
-          }
-
-          &::-webkit-input-placeholder {
-            color var(--text-color-4)
-            font-size 1rem
-          }
-        }
-      }
-
-
-      .close-popup-btn {
-        color var(--text-color-3)
-        font-size $icon-size
-        cursor pointer
-
-        &:hover {
-          color var(--text-color-1)
-        }
-      }
-    }
-
-
-    #search-result {
-      position relative
-      display flex
-      box-sizing border-box
-      height 'calc(100% - %s)' % $search-header-height
-      padding 0.3rem 1.5rem
-      overflow auto
-
-      .search-result-list {
-        width 100%
-        height 100%
-        font-size 1rem
-
-        li {
-          box-sizing border-box
-          margin 0.8rem 0
-          padding 0.8rem 0
-          border-bottom 0.1rem dashed var(--border-color)
-
-          &:last-child {
-            border-bottom none
-          }
-
-
-          .search-result-title {
-            position relative
-            display flex
-            align-items center
-            margin-bottom 0.8rem
-            padding-left 1rem
-            font-weight bold
-
-            &::after {
-              position absolute
-              top 50%
-              left 0
-              width 0.4rem
-              height 0.4rem
-              background var(--text-color-3)
-              border-radius 50%
-              transform translateY(-50%)
-              content ''
-            }
-          }
-
-
-          .search-result {
-            margin 0
-            padding-left 1rem
-            line-height 2rem
-            word-wrap break-word
-          }
-
-          a {
-            &:hover {
-              color var(--text-color-3)
-            }
-          }
-
-          .search-keyword {
-            color var(--primary-color)
-            font-weight bold
-            border-bottom 0.1rem dashed var(--primary-color)
-          }
-        }
-      }
-
-
-      #no-result {
-        margin auto
-        color var(--text-color-4)
-      }
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 
